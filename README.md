@@ -86,6 +86,9 @@
         * XSS
         * Middle Man
         * 非对称加密和RSA
+    * 兼容性
+        * Modernizr
+        * IE hacks
 * WebApp架构
     * MVC、MVP、MXX
     * 一个简单的框架
