@@ -19,13 +19,19 @@
 * Javscript的函数化编程
     * 高阶函数和柯里化
     * Javascript Promise
+* ECMAScript特性
+    * 与Javascript的关系
+    * Array和相关方法
+    * Object和相关方法
+    * Iterator和Generator
 * 面向浏览器编程
     * DOM编程
         * 操作DOM元素
         * Event接口
-    * BOM与DOM的区别和联系
-    * Timer和EventLoop
-    * `window`和`document`
+    * BOM编程
+        * BOM与DOM的区别和联系
+        * Timer和EventLoop
+        * `window`和`document`
     * 文档加载
         * script标签
         * iframe标签
@@ -89,6 +95,7 @@
     * 兼容性
         * Modernizr
         * IE hacks
+        * caniuse.com
 * WebApp架构
     * MVC、MVP、MXX
     * 一个简单的框架
@@ -111,3 +118,5 @@
     * Mocha、Jasmine、Chai
     * Webdrive与Selenium
 * 参考资料
+    * 社区名人堂
+    * 参考文献
