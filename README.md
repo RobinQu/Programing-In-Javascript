@@ -73,8 +73,12 @@
             * mimtproxy
         * benchmark.js和perfjs.com
     * Javascript工程
-        * 从shell脚本开始
-        * Grunt与Gulp
+        * 自动化工具
+            * 从shell脚本开始
+            * Grunt
+            * Gulp
+            * bower
+            * Yeoman
         * Git和CI
     * 安全特性
         * SSL
