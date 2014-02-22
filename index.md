@@ -80,7 +80,7 @@
         * 同源策略和跨域技巧
         * XSS
         * Middle Man
-        * 非对称加密和RSSA
+        * 非对称加密和RSA
 * WebApp架构
     * MVC、MVP、MXX
     * 一个简单的框架
@@ -89,9 +89,13 @@
     * 规范与定义
     * 常见实现
 * 使用NodeJS进行服务器端编程
+    * V8、异步IO、事件驱动
     * 应用层模块
     * V8编程与node扩展
-    * NPM、部署和维护
+    * 部署和维护
+        * 使用NPM管理依赖
+        * pm2监控
+        * 使用Docker进行部署
     * 云上的Nodejs
     * 对Nodejs现状的思考和看法
 * Javascript的自动化测试
