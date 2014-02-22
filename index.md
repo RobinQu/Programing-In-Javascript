@@ -14,6 +14,7 @@
     * 基于对象和原型
     * 模拟经典继承模型
     * 设计模式
+    * Javascript AOP
 * Javscript的函数化编程
     * 高阶函数和柯里化
     * Javascript Promise
@@ -38,8 +39,9 @@
     * 文件与存储
         * File接口
         * 本地存储
-            * Cookies
             * DOM存储
+                * Cookies
+                * Data API
             * Flash存储
             * LocalStorage、Application Storage、Session Storage
     * 多媒体
@@ -66,7 +68,8 @@
         * 开发者工具和性能监测
             * Chrome DevTool
             * Safari Developer Tool
-            * Filddler和mimtproxy
+            * Filddler
+            * mimtproxy
         * benchmark.js和perfjs.com
     * Javascript工程
         * 从shell脚本开始
