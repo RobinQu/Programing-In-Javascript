@@ -27,7 +27,7 @@
 * 面向浏览器编程
     * DOM编程
         * 操作DOM元素
-        * Event接口
+        * [Event接口](chapters/Browser_Scripting/DOM_Scripting/EventAPI.md)
     * BOM编程
         * BOM与DOM的区别和联系
         * Timer和EventLoop
