@@ -51,6 +51,7 @@
                 * Data API
             * Flash存储
             * LocalStorage、Application Storage、Session Storage
+            * IndexedDB和已废除的WebSQL
     * 多媒体
         * Canvas
         * Webp、SVG等图片资源
@@ -109,7 +110,7 @@
     * V8编程与node扩展
     * 部署和维护
         * 使用NPM管理依赖
-        * pm2监控
+        * pm2与监控
         * 使用Docker进行部署
     * 云上的Nodejs
     * 对Nodejs现状的思考和看法
