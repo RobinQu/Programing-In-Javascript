@@ -29,6 +29,8 @@
         * 操作DOM元素
         * [Event接口](chapters/Browser_Scripting/DOM_Scripting/EventAPI.md)
     * BOM编程
+        * [脚本执行方式](chapters/Browser_Scripting/BOM_Scripting/ScriptExecution.md)
+        * script标签和脚本执行顺序
         * BOM与DOM的区别和联系
         * Timer和EventLoop
         * `window`和`document`
