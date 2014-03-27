@@ -1,0 +1,35 @@
+@mixin clearfix {
+  *zoom:1;
+  &:before, &:after { content: " "; display: table; }
+  &:after { clear: both; }
+}
+.clearfix { @include clearfix; }
+
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.back-toc, .misc {
+  ul {
+    padding-left: 0;
+    margin-left: 0;
+    & :first-child {
+      margin-left: 0;
+    }
+  }
+}
+
+header {
+  border-bottom: 3px solid black;
+  margin-bottom: 2rem;
+}
+
+footer {
+  border-top: 1px solid black;
+  margin: 2rem 0;
+}

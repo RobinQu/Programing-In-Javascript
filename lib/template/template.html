@@ -12,27 +12,36 @@
 </head>
 <body>
 <header class="clearfix">
-  <div class="left">
-    <a href="/">返回目录</a>
+  <div class="left back-toc">
+    <ul class="inline-list">
+      <li><a href="/">返回目录</a></li>
+      <li><a href="https://github.com/RobinQu">Github</a></li>
+      
+    </ul>
   </div>
   <div class="right">
-    <ul class="inline">
-      <li></li>
+    <ul class="inline-list">
+      <li>Javascript编程指南</li>
     </ul>
   </div>
 </header>
 <div class="primary">
   <%=content%>
 </div>
-<footer>
-<p><strong>Programing in Javascript</strong> is a open-sourced book.</p>
-
-<ul>
-  <li><a href="https://github.com/RobinQu/Programing-In-Javascript/blob/master/README.md">Contributors</a></li>
-  <li><a href="https://github.com/RobinQu/Programing-In-Javascript/issues">Issues</a></li>
-  <li>Build Date: <%= buildDate %></li>
-  <li>Rev <%= revision %></li>
-</ul>
+<footer class="misc clearfix">
+  <p class="hint">建议在新版的Chrome、Safari、Firefox中阅读</p>
+  <div class="left">
+    <ul class="inline-list">
+      <li><a href="https://github.com/RobinQu/Programing-In-Javascript/blob/master/README.md">Contributors</a></li>
+      <li><a href="https://github.com/RobinQu/Programing-In-Javascript/issues">Issues</a></li>
+    </ul>
+  </div>
+  <div class="right">
+    <ul class="inline-list">
+      <li>Rev <a href="https://github.com/RobinQu/Programing-In-Javascript/tree/<%= revision %>"><%= revision %></a></li>
+      <li><%= buildDate %></li>
+    </ul>
+  </div>
 </footer>
 </body>
 </html>

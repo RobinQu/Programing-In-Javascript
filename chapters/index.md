@@ -30,7 +30,6 @@
     * 文档加载
         * [脚本执行方式](Browser_Scripting/Document_Loading/ScriptExecution.md)
         * [Script标签和脚本执行顺序](Browser_Scripting/Document_Loading/ScriptTag.md)
-        * script标签
         * iframe标签
         * 文档流
     * 网络通讯

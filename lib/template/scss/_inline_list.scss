@@ -1,0 +1,33 @@
+$inline-list-top-margin: 1rem;
+$inline-list-bottom-margin: 1rem;
+$inline-list-default-float-margin: 1rem;
+$inline-list-opposite-margin: 0rem;
+$inline-list-padding: 0.5rem;
+$inline-list-overflow: auto;
+$inline-list-display: block;
+//$inline-list-children-display: block;
+//
+// @mixins
+//
+// We use this mixin to create inline lists
+@mixin inline-list {
+  margin: $inline-list-top-margin auto $inline-list-bottom-margin auto;
+  margin-left: $inline-list-default-float-margin;
+  margin-right: $inline-list-opposite-margin;
+  padding: $inline-list-padding;
+  list-style: none;
+  overflow: $inline-list-overflow;
+
+  & > li {
+    list-style: none;
+    float: left;
+    margin: 0;
+    margin-left: 2em;
+    display: $inline-list-display;
+//    &>* { display: $inline-list-children-display; }
+  }
+}
+
+.inline-list {
+  @include inline-list();
+}

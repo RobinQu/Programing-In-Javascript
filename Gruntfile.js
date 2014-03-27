@@ -113,17 +113,13 @@ module.exports = function(grunt) {
       cname: {
         src: "CNAME",
         dest: "dist/CNAME"
-      },
-      wb: {
-        src: "lib/template/wb_07ba57aa1824144c.txt",
-        dest: "dist/wb_07ba57aa1824144c.txt"
       }
     }
   });
   
   grunt.registerTask("default", "build");
   
-  grunt.registerTask("build", ["revision", "clean:build", "copy:cname", "copy:wb", "sass:build", "committers", "markdown:all"]);
+  grunt.registerTask("build", ["revision", "clean:build", "copy:cname", "sass:build", "committers", "markdown:all"]);
   
   grunt.registerTask("preview", ["build", "connect:preview:keepalive"]);
   
