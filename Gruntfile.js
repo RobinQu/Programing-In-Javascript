@@ -68,7 +68,8 @@ module.exports = function(grunt) {
     revision: {
       options: {
         property: "meta.revision",
-        ref: "HEAD"
+        ref: "HEAD",
+        short: false
       }
     },
     
