@@ -1,0 +1,31 @@
+{
+  "name": "Programing-In-Javascript",
+  "version": "0.0.1",
+  "description": "An open-sourced Javascript Guide and Tutorial",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/RobinQu/Programing-In-Javascript.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RobinQu/Programing-In-Javascript/issues"
+  },
+  "homepage": "https://github.com/RobinQu/Programing-In-Javascript",
+  "devDependencies": {
+    "grunt-markdown": "~0.5.0",
+    "grunt": "~0.4.4",
+    "grunt-build-control": "~0.1.2",
+    "time-grunt": "~0.2.10",
+    "load-grunt-tasks": "~0.4.0",
+    "grunt-contrib-clean": "~0.5.0",
+    "cheerio": "~0.13.1",
+    "grunt-git-committers": "~0.1.2",
+    "grunt-git-revision": "0.0.1",
+    "grunt-sass": "~0.12.0"
+  }
+}
