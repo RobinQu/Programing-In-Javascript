@@ -315,3 +315,47 @@ pre {
 pre code, pre tt {
   background-color: transparent;
   border: none; }
+
+.inline-list {
+  margin: 1rem auto 1rem auto;
+  margin-left: 1rem;
+  margin-right: 0rem;
+  padding: 0.5rem;
+  list-style: none;
+  overflow: auto; }
+  .inline-list > li {
+    list-style: none;
+    float: left;
+    margin: 0;
+    margin-left: 1rem;
+    display: block; }
+
+.clearfix {
+  *zoom: 1; }
+  .clearfix:before, .clearfix:after {
+    content: " ";
+    display: table; }
+  .clearfix:after {
+    clear: both; }
+
+.left {
+  float: left; }
+
+.right {
+  float: right; }
+
+.back-toc ul, .misc ul {
+  padding-left: 0;
+  margin-left: 0; }
+  .back-toc ul :first-child, .misc ul :first-child {
+    margin-left: 0; }
+
+header {
+  border-bottom: 3px solid black;
+  margin-bottom: 2rem; }
+  header ul li.seperator {
+    color: #ececec; }
+
+footer {
+  border-top: 1px solid black;
+  margin: 2rem 0; }

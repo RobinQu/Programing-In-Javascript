@@ -12,13 +12,24 @@
 </head>
 <body>
 <header class="clearfix">
-  <div class="left">
-    <a href="/">返回目录</a>
+  <div class="left back-toc">
+    <ul class="inline-list">
+      <li><a href="/">目录</a></li>
+      
+        <li class="seperator">></li>
+        <li>面向浏览器编程</li>
+      
+        <li class="seperator">></li>
+        <li>文档加载</li>
+      
+      
+      <li class="seperator">></li>
+      <li class="current"><strong>当前页面</strong></li>
+      
+    </ul>
   </div>
   <div class="right">
-    <ul class="inline">
-      <li></li>
-    </ul>
+    <a href="/"><img src="/images/logo.png" alt="Javascript编程语言" width="256" height="50" /></a>
   </div>
 </header>
 <div class="primary">
@@ -70,15 +81,21 @@ a === 2; // ==&gt; true</code></pre>
 <p>利用MessageChannel等新特性可以触发一些函数的执行<a href="https://github.com/kriskowal/asap/blob/master/asap.js">^5</a>。也许Javascript的其他的角落也有不少其他执行脚本的入口吧。</p>
 
 </div>
-<footer>
-<p><strong>Programing in Javascript</strong> is a open-sourced book.</p>
-
-<ul>
-  <li><a href="https://github.com/RobinQu/Programing-In-Javascript/blob/master/README.md">Contributors</a></li>
-  <li><a href="https://github.com/RobinQu/Programing-In-Javascript/issues">Issues</a></li>
-  <li>Build Date: Thu Mar 27 2014 14:10:06 GMT+0800 (CST)</li>
-  <li>Rev 5e0255a</li>
-</ul>
+<footer class="misc clearfix">
+  <p class="hint">建议在新版的Chrome、Safari、Firefox中阅读</p>
+  <div class="left">
+    <ul class="inline-list">
+      <li><a href="https://github.com/RobinQu/Programing-In-Javascript/">Source</a></li>
+      <li><a href="https://github.com/RobinQu/Programing-In-Javascript/blob/master/README.md">Contributors</a></li>
+      <li><a href="https://github.com/RobinQu/Programing-In-Javascript/issues">Issues</a></li>
+    </ul>
+  </div>
+  <div class="right">
+    <ul class="inline-list">
+      <li>Rev <a href="https://github.com/RobinQu/Programing-In-Javascript/tree/5870e0e/chapters/Browser_Scripting/Document_Loading/ScriptExecution.md">5870e0e</a></li>
+      <li>Thu Mar 27 2014 17:42:10 GMT+0800 (CST)</li>
+    </ul>
+  </div>
 </footer>
 </body>
 </html>
