@@ -96,6 +96,17 @@ module.exports = function(grunt) {
           livereload: false
         }
       }
+    },
+    
+    gitcommit: {
+      contributor: {
+        files: {
+          src: ["CONTRIBUTORS.md"]
+        },
+        options: {
+          message: "update CONTRIBUTORS.md"
+        }
+      }
     }
   });
   
@@ -105,5 +116,5 @@ module.exports = function(grunt) {
   
   grunt.registerTask("preview", ["build", "connect:preview:keepalive"]);
   
-  grunt.registerTask("publish", ["build", "buildcontrol:deploy"]);
+  grunt.registerTask("publish", ["build", "gitcommit:contributor", "buildcontrol:deploy"]);
 };
