@@ -42,46 +42,46 @@
 <li><code>document.currentScript</code>可以获得当前正在运行的脚本(Chrome 29+, FF4+)</li>
 <li>脚本顺序再默认情况下和script标签出现的顺序一致</li>
 </ul>
-<p>假设如下简单代码<a href="http://jsfiddle.net/nGeZP/">^1</a>，最终会产生三个alert依次为“A”、“B”、“C”。</p>
+<p>假设如下简单代码<sup id="fnref1"><a href="#fn1">1</a></sup>，最终会产生三个alert依次为“A”、“B”、“C”。</p>
 <pre><code>&lt;!-- HTML Code --&gt;
 &lt;script&gt;alert(&quot;A&quot;);&lt;/script&gt;
 &lt;script&gt;alert(&quot;B&quot;);&lt;/script&gt;
-&lt;script&gt;alert(&quot;C&quot;);&lt;/script&gt;</code></pre>
-<p>我们再考虑有网络请求的情况<a href="http://jsfiddle.net/uPk4z/3/">^2</a>：</p>
+&lt;script&gt;alert(&quot;C&quot;);&lt;/script&gt;
+</code></pre><p>我们再考虑有网络请求的情况<sup id="fnref2"><a href="#fn2">2</a></sup>：</p>
 <pre><code>&lt;!-- HTML code --&gt;
 &lt;script  src=&quot;https://snipt.net/raw/7b08744009c450e07c0bfc1d606fc72e/&quot;&gt;&lt;/script&gt;
 &lt;script  src=&quot;https://snipt.net/raw/a2e8c05c1f6fc0e47d259aa899304e89/&quot;&gt;&lt;/script&gt;
-&lt;script  src=&quot;https://snipt.net/raw/4fab3017d3d46cbfc4bbd88aab006650/&quot;&gt;&lt;/script&gt;</code></pre>
-<p>三个文件都需要先下载再运行，且第二个文件的尺寸远大于另外两个文件。但结果依然是弹出三个alert，内容分别是”A”、”B”、”C”。</p>
+&lt;script  src=&quot;https://snipt.net/raw/4fab3017d3d46cbfc4bbd88aab006650/&quot;&gt;&lt;/script&gt;
+</code></pre><p>三个文件都需要先下载再运行，且第二个文件的尺寸远大于另外两个文件。但结果依然是弹出三个alert，内容分别是”A”、”B”、”C”。</p>
 <p>从上面两个例子，可以充分了解到script标签的柱塞式执行。</p>
 <h2 id="async-">async属性</h2>
-<p>async属性是HTML5的新特性<a href="http://www.w3.org/html/wg/drafts/html/master/scripting-1.html#attr-script-async">^3</a>，这意味着其兼容性并不乐观（IE10+）。</p>
+<p>async属性是HTML5的新特性<sup id="fnref3"><a href="#fn3">3</a></sup>，这意味着其兼容性并不乐观（IE10+）。</p>
 <p>async表示该script标签并不柱塞，也不同步执行。浏览器只需要在脚本下载完毕后再执行即可——不必柱塞页面渲染等待该脚本的下载和执行。</p>
-<p>如下代码<a href="http://jsfiddle.net/6234b/">^4</a>，会得到三个alert，但是alert的内容分别是”A”,”C”,”B”。</p>
+<p>如下代码<sup id="fnref4"><a href="#fn4">4</a></sup>，会得到三个alert，但是alert的内容分别是”A”,”C”,”B”。</p>
 <pre><code>&lt;!-- HTML code --&gt;
 &lt;script  src=&quot;https://snipt.net/raw/7b08744009c450e07c0bfc1d606fc72e/&quot;&gt;&lt;/script&gt;
 &lt;script  src=&quot;https://snipt.net/raw/a2e8c05c1f6fc0e47d259aa899304e89/&quot; async=true&gt;&lt;/script&gt;
-&lt;script  src=&quot;https://snipt.net/raw/4fab3017d3d46cbfc4bbd88aab006650/&quot;&gt;&lt;/script&gt;</code></pre>
-<p>可以看到，第二个script标签在加入<code>async</code>并没有阻止后续文档解析和脚本执行。</p>
+&lt;script  src=&quot;https://snipt.net/raw/4fab3017d3d46cbfc4bbd88aab006650/&quot;&gt;&lt;/script&gt;
+</code></pre><p>可以看到，第二个script标签在加入<code>async</code>并没有阻止后续文档解析和脚本执行。</p>
 <p>考究这个属性产生的原有，其实有大量的脚本加载器在做这样的事情：</p>
 <pre><code>var script = document.createElement(&quot;script&quot;);
 script.src = &quot;file.js&quot;;
-document.body.appendChild(script);</code></pre>
-<p>不难想象，通过脚本异步插入的script标签达到的效果和带async属性的script标签是一样的。换句话说，由脚本插入的script标签默认是async的。</p>
+document.body.appendChild(script);
+</code></pre><p>不难想象，通过脚本异步插入的script标签达到的效果和带async属性的script标签是一样的。换句话说，由脚本插入的script标签默认是async的。</p>
 <p>另外，对內联脚本设置async属性是没有意义的，也不产生其他效果。其包含的脚本总是立即执行的。</p>
 <h2 id="defer-">defer属性</h2>
 <p>带有defer属性的脚本，同样会推迟脚本的执行，并且不会阻止文档解析。就如同这个脚本，放置到了文档的末尾（<code>&lt;/body&gt;</code>之前）。</p>
-<p>如下代码<a href="http://jsfiddle.net/P85kR/">^5</a>的宏观现象和加了async属性的例子是一样的，都会得到”A”、”C”、”B”的三个alert。但是其原理是不一样的。</p>
+<p>如下代码<sup id="fnref5"><a href="#fn5">5</a></sup>的宏观现象和加了async属性的例子是一样的，都会得到”A”、”C”、”B”的三个alert。但是其原理是不一样的。</p>
 <pre><code>&lt;!-- HTML code --&gt;
 &lt;script  src=&quot;https://snipt.net/raw/7b08744009c450e07c0bfc1d606fc72e/&quot;&gt;&lt;/script&gt;
 &lt;script  src=&quot;https://snipt.net/raw/a2e8c05c1f6fc0e47d259aa899304e89/&quot; defer=true&gt;&lt;/script&gt;
-&lt;script  src=&quot;https://snipt.net/raw/4fab3017d3d46cbfc4bbd88aab006650/&quot;&gt;&lt;/script&gt;</code></pre>
-<p>defer属性是会确保脚本在文档解析完毕后执行的——即使这个脚本在文档解析过程中就已经下载完毕变成可执行的状态，浏览器也会推迟这个脚本的执行，直到文档解析完毕<a href="http://peter.sh/experiments/asynchronous-and-deferred-javascript-execution-explained/">^6</a>，并在DOMContentLoaded之前<a href="https://www.webkit.org/blog/1395/running-scripts-in-webkit/">^7</a>。</p>
+&lt;script  src=&quot;https://snipt.net/raw/4fab3017d3d46cbfc4bbd88aab006650/&quot;&gt;&lt;/script&gt;
+</code></pre><p>defer属性是会确保脚本在文档解析完毕后执行的——即使这个脚本在文档解析过程中就已经下载完毕变成可执行的状态，浏览器也会推迟这个脚本的执行，直到文档解析完毕<sup id="fnref6"><a href="#fn6">6</a></sup>，并在DOMContentLoaded之前<sup id="fnref7"><a href="#fn7">7</a></sup>。</p>
 <p>同时，带有defer的脚本彼此之间，能保证其执行顺序。</p>
 <p>注意，defer属性并不是每个浏览器支持，即便支持的浏览器，也会因为版本不一样导致具体行为不一致。另外，大家可以通过将script标签放置到文档末尾这种简单的做法达到defer属性一样的效果。</p>
 <p>defer属性早在IE4就被支持，但是这个defer属性和现代浏览器的行为是有区别的。只有IE10以上，才开始按照标准执行defer属性。</p>
 <h2 id="async-defer-">async与defer的影响</h2>
-<p>参考W3C的官方文档<a href="http://www.w3.org/html/wg/drafts/html/master/scripting-1.html#attr-script-defer">^8</a>，defer和async两个属性是可以互相影响的：</p>
+<p>参考W3C的官方文档<sup id="fnref8"><a href="#fn8">8</a></sup>，defer和async两个属性是可以互相影响的：</p>
 <blockquote>
 <p>There are three possible modes that can be selected using these attributes. If the async attribute is present, then the script will be executed asynchronously, as soon as it is available. If the async attribute is not present but the defer attribute is present, then the script is executed when the page has finished parsing. If neither attribute is present, then the script is fetched and executed immediately, before the user agent continues parsing the page.</p>
 </blockquote>
@@ -93,13 +93,13 @@ document.body.appendChild(script);</code></pre>
 </ul>
 <p>规范里没有提到两种属性都有时的效果，但这是文档中被允许的。这样的具体效果会在后面讨论。</p>
 <h2 id="document-write-">document.write的影响</h2>
-<p>docuemnt.write允许向打开的文档流中写入文档内容；内嵌到HTML里面的docuemnt.write可以就地添加文档内容。考虑到docuemnt.write写入script标签的情况<a href="http://jsfiddle.net/3uEKM/1/">^9</a>:</p>
+<p>docuemnt.write允许向打开的文档流中写入文档内容；内嵌到HTML里面的docuemnt.write可以就地添加文档内容。考虑到docuemnt.write写入script标签的情况<sup id="fnref9"><a href="#fn9">9</a></sup>:</p>
 <pre><code>&lt;!-- HTML code --&gt;
 &lt;script  src=&quot;https://snipt.net/raw/7b08744009c450e07c0bfc1d606fc72e/&quot;&gt;&lt;/script&gt;
 &lt;script&gt;document.write(&quot;\&lt;script  src=https://snipt.net/raw/a2e8c05c1f6fc0e47d259aa899304e89 \/\&gt;\&lt;\/script\&gt;&quot;);&lt;/script&gt;
-&lt;script  src=&quot;https://snipt.net/raw/4fab3017d3d46cbfc4bbd88aab006650/&quot;&gt;&lt;/script&gt;</code></pre>
-<p>观察到执行顺序和普通的script标签没有区别。即使你插入的标签带有async或defer，其行为也是没有区别的。</p>
-<p>让人纠结的是反过来<a href="http://jsfiddle.net/fV9Sv/">^10</a>使用。由于第二个脚本是通过<code>document.write</code>写入的。被延迟的脚本在执行时，document已经关闭，<code>document.write</code>是没有任何效果的。所以，不管使用defer还是async，第二个脚本始终没有运行。</p>
+&lt;script  src=&quot;https://snipt.net/raw/4fab3017d3d46cbfc4bbd88aab006650/&quot;&gt;&lt;/script&gt;
+</code></pre><p>观察到执行顺序和普通的script标签没有区别。即使你插入的标签带有async或defer，其行为也是没有区别的。</p>
+<p>让人纠结的是反过来<sup id="fnref10"><a href="#fn10">10</a></sup>使用。由于第二个脚本是通过<code>document.write</code>写入的。被延迟的脚本在执行时，document已经关闭，<code>document.write</code>是没有任何效果的。所以，不管使用defer还是async，第二个脚本始终没有运行。</p>
 <h2 id="-">浏览器兼容性</h2>
 <h3 id="defer-">defer属性</h3>
 <iframe src="http://caniuse.com/script-defer/embed/" style="width:100%;" seamless="" border="0"></iframe>
@@ -108,6 +108,31 @@ document.body.appendChild(script);</code></pre>
 <iframe src="http://caniuse.com/script-async/embed/" style="width:100%;" seamless="" border="0"></iframe>
 
 <h3 id="-">测试用例</h3>
+<hr>
+<div class="footnotes">
+<ol>
+<li id="fn1"><p><a href="http://jsfiddle.net/nGeZP/">http://jsfiddle.net/nGeZP/</a></p>
+<a href="#fnref1" class="footnoteBackLink" title="Jump back to footnote 1 in the text.">↩</a></li>
+<li id="fn2"><p><a href="http://jsfiddle.net/uPk4z/3/">http://jsfiddle.net/uPk4z/3/</a></p>
+<a href="#fnref2" class="footnoteBackLink" title="Jump back to footnote 2 in the text.">↩</a></li>
+<li id="fn3"><p><a href="http://www.w3.org/html/wg/drafts/html/master/scripting-1.html#attr-script-async">http://www.w3.org/html/wg/drafts/html/master/scripting-1.html#attr-script-async</a></p>
+<a href="#fnref3" class="footnoteBackLink" title="Jump back to footnote 3 in the text.">↩</a></li>
+<li id="fn4"><p><a href="http://jsfiddle.net/6234b/">http://jsfiddle.net/6234b/</a></p>
+<a href="#fnref4" class="footnoteBackLink" title="Jump back to footnote 4 in the text.">↩</a></li>
+<li id="fn5"><p><a href="http://jsfiddle.net/P85kR/">http://jsfiddle.net/P85kR/</a></p>
+<a href="#fnref5" class="footnoteBackLink" title="Jump back to footnote 5 in the text.">↩</a></li>
+<li id="fn6"><p><a href="http://peter.sh/experiments/asynchronous-and-deferred-javascript-execution-explained/">http://peter.sh/experiments/asynchronous-and-deferred-javascript-execution-explained/</a></p>
+<a href="#fnref6" class="footnoteBackLink" title="Jump back to footnote 6 in the text.">↩</a></li>
+<li id="fn7"><p><a href="https://www.webkit.org/blog/1395/running-scripts-in-webkit/">https://www.webkit.org/blog/1395/running-scripts-in-webkit/</a></p>
+<a href="#fnref7" class="footnoteBackLink" title="Jump back to footnote 7 in the text.">↩</a></li>
+<li id="fn8"><p><a href="http://www.w3.org/html/wg/drafts/html/master/scripting-1.html#attr-script-defer">http://www.w3.org/html/wg/drafts/html/master/scripting-1.html#attr-script-defer</a></p>
+<a href="#fnref8" class="footnoteBackLink" title="Jump back to footnote 8 in the text.">↩</a></li>
+<li id="fn9"><p><a href="http://jsfiddle.net/3uEKM/1/">http://jsfiddle.net/3uEKM/1/</a></p>
+<a href="#fnref9" class="footnoteBackLink" title="Jump back to footnote 9 in the text.">↩</a></li>
+<li id="fn10"><p><a href="http://jsfiddle.net/fV9Sv/">http://jsfiddle.net/fV9Sv/</a></p>
+<a href="#fnref10" class="footnoteBackLink" title="Jump back to footnote 10 in the text.">↩</a></li>
+</ol>
+</div>
 
 </div>
 <footer class="misc clearfix">
@@ -121,8 +146,8 @@ document.body.appendChild(script);</code></pre>
   </div>
   <div class="right">
     <ul class="inline-list">
-      <li>Rev <a href="https://github.com/RobinQu/Programing-In-Javascript/tree/5870e0e/chapters/Browser_Scripting/Document_Loading/ScriptTag.md">5870e0e</a></li>
-      <li>Thu Mar 27 2014 17:42:10 GMT+0800 (CST)</li>
+      <li>Rev <a href="https://github.com/RobinQu/Programing-In-Javascript/tree/65f38de/chapters/Browser_Scripting/Document_Loading/ScriptTag.md">65f38de</a></li>
+      <li>Thu Mar 27 2014 19:21:58 GMT+0800 (CST)</li>
     </ul>
   </div>
 </footer>

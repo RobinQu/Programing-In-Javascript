@@ -45,9 +45,9 @@
 </ul>
 <h3 id="script-">script标签</h3>
 <p>最基本，最常用的脚本引入方式。例如：</p>
-<pre><code>&lt;script src=&quot;http://code.jquery.com/jquery-1.11.0.min.js&quot;&gt;&lt;/script&gt;</code></pre>
-<p>尽管在HTML4和XHTML里面，要求开发者使用<code>type</code>属性来制定脚本的类型。但是主流浏览器都默认认为脚本类型是<code>text/javascript</code>。</p>
-<p>在HTML5的规范内<a href="http://www.w3.org/html/wg/drafts/html/master/scripting-1.html#the-script-element">^1</a>，<code>script</code>标签的type属性是完全可选的。</p>
+<pre><code>&lt;script src=&quot;http://code.jquery.com/jquery-1.11.0.min.js&quot;&gt;&lt;/script&gt;
+</code></pre><p>尽管在HTML4和XHTML里面，要求开发者使用<code>type</code>属性来制定脚本的类型。但是主流浏览器都默认认为脚本类型是<code>text/javascript</code>。</p>
+<p>在HTML5的规范内<sup id="fnref1"><a href="#fn1">1</a></sup>，<code>script</code>标签的type属性是完全可选的。</p>
 <h3 id="eval-">eval函数</h3>
 <ul>
 <li><code>eval</code> is evil</li>
@@ -55,12 +55,12 @@
 </ul>
 <pre><code>var a = 1;
 eval(&quot;a=2&quot;);
-a === 2; // ==&gt; true</code></pre>
-<h3 id="function-">Function构造函数</h3>
+a === 2; // ==&gt; true
+</code></pre><h3 id="function-">Function构造函数</h3>
 <ul>
-<li>function是“first-class citizen”<a href="https://developer.mozilla.org/en-US/docs/functional-javascript/First-class_citizen">^2</a>；自然有相应的构造函数</li>
+<li>function是“first-class citizen”<sup id="fnref2"><a href="#fn2">2</a></sup>；自然有相应的构造函数</li>
 <li><code>new Function(arg1, arg2, ..., fnStr)</code></li>
-<li><code>Function</code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">^3</a>构造函数本质是创建一个函数对象；其创建的函数执行也并不能访问其所在创建环境的闭包，只能访问本地作用域（local scope）和全局作用域（global scope）</li>
+<li><code>Function</code><sup id="fnref3"><a href="#fn3">3</a></sup>构造函数本质是创建一个函数对象；其创建的函数执行也并不能访问其所在创建环境的闭包，只能访问本地作用域（local scope）和全局作用域（global scope）</li>
 <li><code>Function()</code>和<code>new Function()</code>效果一样</li>
 </ul>
 <pre><code>(function() {
@@ -69,16 +69,31 @@ a === 2; // ==&gt; true</code></pre>
   func();
   a === 2; // ==&gt; false
 }());
-a === 2; // ==&gt; true</code></pre>
-<h3 id="settimeout-setinterval">setTimeout和setInterval</h3>
-<pre><code>setTimeout(&quot;alert(&#39;haha&#39;)&quot;, 0);</code></pre>
-<p>这个和eval有异曲同工之妙，对作用域的访问也是类似的。</p>
-<p>另外要说名，以上几点，除了script标签的方法之外，其他方法都在<code>strict</code>模式<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope/Strict_mode">^4</a>下不可用。</p>
+a === 2; // ==&gt; true
+</code></pre><h3 id="settimeout-setinterval">setTimeout和setInterval</h3>
+<pre><code>setTimeout(&quot;alert(&#39;haha&#39;)&quot;, 0);
+</code></pre><p>这个和eval有异曲同工之妙，对作用域的访问也是类似的。</p>
+<p>另外要说名，以上几点，除了script标签的方法之外，其他方法都在<code>strict</code>模式<sup id="fnref4"><a href="#fn4">4</a></sup>下不可用。</p>
 <h3 id="html-">HTML內联事件回调</h3>
-<pre><code>&lt;a href=&#39;#hello&#39; onclick=&quot;alert(this.href)&quot;&gt;Say hello&lt;/a&gt;</code></pre>
-<p>这样如同在click事件的<code>Target Phase</code>运行了一个回调。<code>this</code>指向目标元素本身。</p>
+<pre><code>&lt;a href=&#39;#hello&#39; onclick=&quot;alert(this.href)&quot;&gt;Say hello&lt;/a&gt;
+</code></pre><p>这样如同在click事件的<code>Target Phase</code>运行了一个回调。<code>this</code>指向目标元素本身。</p>
 <h3 id="-hack">其他Hack</h3>
-<p>利用MessageChannel等新特性可以触发一些函数的执行<a href="https://github.com/kriskowal/asap/blob/master/asap.js">^5</a>。也许Javascript的其他的角落也有不少其他执行脚本的入口吧。</p>
+<p>利用MessageChannel等新特性可以触发一些函数的执行<sup id="fnref5"><a href="#fn5">5</a></sup>。也许Javascript的其他的角落也有不少其他执行脚本的入口吧。</p>
+<hr>
+<div class="footnotes">
+<ol>
+<li id="fn1"><p><a href="http://www.w3.org/html/wg/drafts/html/master/scripting-1.html#the-script-element">http://www.w3.org/html/wg/drafts/html/master/scripting-1.html#the-script-element</a></p>
+<a href="#fnref1" class="footnoteBackLink" title="Jump back to footnote 1 in the text.">↩</a></li>
+<li id="fn2"><p><a href="https://developer.mozilla.org/en-US/docs/functional-javascript/First-class_citizen">https://developer.mozilla.org/en-US/docs/functional-javascript/First-class_citizen</a></p>
+<a href="#fnref2" class="footnoteBackLink" title="Jump back to footnote 2 in the text.">↩</a></li>
+<li id="fn3"><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function</a></p>
+<a href="#fnref3" class="footnoteBackLink" title="Jump back to footnote 3 in the text.">↩</a></li>
+<li id="fn4"><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope/Strict_mode">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions_and_function_scope/Strict_mode</a></p>
+<a href="#fnref4" class="footnoteBackLink" title="Jump back to footnote 4 in the text.">↩</a></li>
+<li id="fn5"><p><a href="https://github.com/kriskowal/asap/blob/master/asap.js">https://github.com/kriskowal/asap/blob/master/asap.js</a></p>
+<a href="#fnref5" class="footnoteBackLink" title="Jump back to footnote 5 in the text.">↩</a></li>
+</ol>
+</div>
 
 </div>
 <footer class="misc clearfix">
@@ -92,8 +107,8 @@ a === 2; // ==&gt; true</code></pre>
   </div>
   <div class="right">
     <ul class="inline-list">
-      <li>Rev <a href="https://github.com/RobinQu/Programing-In-Javascript/tree/5870e0e/chapters/Browser_Scripting/Document_Loading/ScriptExecution.md">5870e0e</a></li>
-      <li>Thu Mar 27 2014 17:42:10 GMT+0800 (CST)</li>
+      <li>Rev <a href="https://github.com/RobinQu/Programing-In-Javascript/tree/65f38de/chapters/Browser_Scripting/Document_Loading/ScriptExecution.md">65f38de</a></li>
+      <li>Thu Mar 27 2014 19:21:58 GMT+0800 (CST)</li>
     </ul>
   </div>
 </footer>

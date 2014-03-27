@@ -43,19 +43,19 @@
 <p>在应用Javascript进行DOM编程时时，事件的产生源头很多，同时，事件的订阅也存在多种形式。从事件源头看，拥有能够接受事件DOM事件的对象，都实现了<code>EventTarget</code>接口。下面这三个方法，大家应该都不陌生。</p>
 <pre><code>EventTarget.addEventListener ()
 EventTarget.removeEventListener ()
-EventTarget.dispatchEvent ()</code></pre>
-<p>DOM内的文档元素，大多都有如下的继承状态:</p>
+EventTarget.dispatchEvent ()
+</code></pre><p>DOM内的文档元素，大多都有如下的继承状态:</p>
 <pre><code>EventTarget -&gt; Node -&gt; |-&gt; Element -&gt; HTMLElement -&gt; ...
                        |-&gt; Document
-                       |-&gt; ...</code></pre>
-<p>如上所述，大多素我们获取的节点，都是有相关的事件方法的。但由于历史原因，有大量DOM0时期（即没有标准化）的代码，可以使用以下两种办法注册事件监听：</p>
+                       |-&gt; ...
+</code></pre><p>如上所述，大多素我们获取的节点，都是有相关的事件方法的。但由于历史原因，有大量DOM0时期（即没有标准化）的代码，可以使用以下两种办法注册事件监听：</p>
 <ul>
 <li><p>通过HTML属性</p>
-<pre><code>  &lt;button onclick=&quot;alert(&#39;Hello world!&#39;)&quot;&gt;</code></pre>
-</li>
+<pre><code>  &lt;button onclick=&quot;alert(&#39;Hello world!&#39;)&quot;&gt;
+</code></pre></li>
 <li><p>通过DOM元素属性</p>
-<pre><code>  myButton.onclick = function(event){alert(&#39;Hello world&#39;);};</code></pre>
-</li>
+<pre><code>  myButton.onclick = function(event){alert(&#39;Hello world&#39;);};
+</code></pre></li>
 </ul>
 <h3 id="-">事件派发</h3>
 <p>事件可以通过调用<code>EventTarget.dispatchEvent()</code>进行派发，浏览器自己也需要遵循该方法的行为自动派发相应事件。整个事件派发的流程如下：</p>
@@ -123,8 +123,8 @@ EventTarget.dispatchEvent ()</code></pre>
   </div>
   <div class="right">
     <ul class="inline-list">
-      <li>Rev <a href="https://github.com/RobinQu/Programing-In-Javascript/tree/5870e0e/chapters/Browser_Scripting/DOM_Scripting/EventAPI.md">5870e0e</a></li>
-      <li>Thu Mar 27 2014 17:42:10 GMT+0800 (CST)</li>
+      <li>Rev <a href="https://github.com/RobinQu/Programing-In-Javascript/tree/65f38de/chapters/Browser_Scripting/DOM_Scripting/EventAPI.md">65f38de</a></li>
+      <li>Thu Mar 27 2014 19:21:58 GMT+0800 (CST)</li>
     </ul>
   </div>
 </footer>
