@@ -1,7 +1,8 @@
 [![Programing in Javascript](https://raw.githubusercontent.com/RobinQu/Programing-In-Javascript/master/lib/template/images/logo.png)](http://pij.robinqu.me/)
 
+一本开源的Javascript编程指南!
 
-一本开源的Javascript编程指南
+阅读入口： http://pij.robinqu.me/
 
 ## Buildbot
 
@@ -9,17 +10,19 @@
 `master`分支是书籍的工程项目，运用Grunt和一些自任务来完成转译、上传等任务。
 
 安装依赖
+
 ```
 npm install
 npm install grunt-cli -g
 ```
 
-### 转译任务（Markdwon转换为HTML）
+### 转译任务
 
 ```
 grunt build
 ```
-输出文件将会保存在`dist`目录。
+
+Markdwon转换为HTML。输出文件将会保存在`dist`目录。
 
 ### 发布任务
 
