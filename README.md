@@ -1,4 +1,4 @@
-[![Programing in Javascript](http://0.0.0.0:9000/images/logo.png)](http://pij.robinqu.me/)
+[![Programing in Javascript](https://raw.githubusercontent.com/RobinQu/Programing-In-Javascript/master/lib/template/images/logo.png)](http://pij.robinqu.me/)
 
 
 一本开源的Javascript编程指南
