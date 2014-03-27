@@ -1,7 +1,11 @@
 # Programing in Javascript
+
+
 **An open-sourced Javascript Guide and Tutorial**
 
-**Javascript编程语言 - 一本开源的Javascript编程指南**
+**Javascript编程语言; 一本开源的Javascript编程指南**
+
+[阅读入口](http://pij.robinqu.me/)
 
 ## Buildbot
 
@@ -31,6 +35,16 @@ grunt publish
 ```
 
 由于发布是发布到该git repo，非contributor是无法发布成功的。
+
+### 预览任务
+
+开启开发服务器，预览生成后的结果。
+
+```
+grunt preview
+```
+
+
 
 ## Contributions
 
