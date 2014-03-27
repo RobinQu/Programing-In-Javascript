@@ -107,12 +107,19 @@ module.exports = function(grunt) {
           message: "update CONTRIBUTORS.md"
         }
       }
+    },
+    
+    copy: {
+      cname: {
+        src: "CNAME",
+        dest: "dist/CNAME"
+      }
     }
   });
   
   grunt.registerTask("default", "build");
   
-  grunt.registerTask("build", ["revision", "clean:build", "sass:build", "committers", "markdown:all"]);
+  grunt.registerTask("build", ["revision", "clean:build", "copy:cname", "sass:build", "committers", "markdown:all"]);
   
   grunt.registerTask("preview", ["build", "connect:preview:keepalive"]);
   
