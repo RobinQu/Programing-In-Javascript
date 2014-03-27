@@ -14,15 +14,19 @@
 <header class="clearfix">
   <div class="left back-toc">
     <ul class="inline-list">
-      <li><a href="/">返回目录</a></li>
-      <li><a href="https://github.com/RobinQu">Github</a></li>
-      
+      <li><a href="/">目录</a></li>
+      <% _.each(breadcrumbs, function(item) { %>
+        <li class="seperator">></li>
+        <li><%= item.localized %></li>
+      <% }); %>
+      <% if(breadcrumbs.length) { %>
+      <li class="seperator">></li>
+      <li class="current"><strong>当前页面</strong></li>
+      <% } %>
     </ul>
   </div>
   <div class="right">
-    <ul class="inline-list">
-      <li>Javascript编程指南</li>
-    </ul>
+    <a href="/"><img src="/images/logo.png" alt="Javascript编程语言" width="256" height="50" /></a>
   </div>
 </header>
 <div class="primary">
@@ -32,13 +36,14 @@
   <p class="hint">建议在新版的Chrome、Safari、Firefox中阅读</p>
   <div class="left">
     <ul class="inline-list">
+      <li><a href="https://github.com/RobinQu/Programing-In-Javascript/">Source</a></li>
       <li><a href="https://github.com/RobinQu/Programing-In-Javascript/blob/master/README.md">Contributors</a></li>
       <li><a href="https://github.com/RobinQu/Programing-In-Javascript/issues">Issues</a></li>
     </ul>
   </div>
   <div class="right">
     <ul class="inline-list">
-      <li>Rev <a href="https://github.com/RobinQu/Programing-In-Javascript/tree/<%= revision %>"><%= revision %></a></li>
+      <li>Rev <a href="https://github.com/RobinQu/Programing-In-Javascript/tree/<%= revision %>/<%= filepath %>"><%= revision %></a></li>
       <li><%= buildDate %></li>
     </ul>
   </div>

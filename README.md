@@ -1,11 +1,7 @@
-# Programing in Javascript
+[![Programing in Javascript](http://0.0.0.0:9000/images/logo.png)](http://pij.robinqu.me/)
 
 
-**An open-sourced Javascript Guide and Tutorial**
-
-**Javascript编程语言; 一本开源的Javascript编程指南**
-
-[阅读入口](http://pij.robinqu.me/)
+一本开源的Javascript编程指南
 
 ## Buildbot
 

@@ -27,6 +27,13 @@
 header {
   border-bottom: 3px solid black;
   margin-bottom: 2rem;
+  ul {
+    li {
+      &.seperator {
+        color: #ececec;
+      }
+    }
+  }
 }
 
 footer {

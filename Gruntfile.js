@@ -111,15 +111,32 @@ module.exports = function(grunt) {
     
     copy: {
       cname: {
-        src: "CNAME",
+        src: "lib/template/CNAME",
         dest: "dist/CNAME"
+      },
+      graphic: {
+        files: [{
+          src: "**/*.{jpg,png,gif}",
+          dest: "dist",
+          cwd: "chapters",
+          dot: true,
+          expand: true
+        }]
+      },
+      cssimages: {
+        files: [{
+          cwd: "lib/template",
+          src: "images/**/*.{jpg,png,gif}",
+          dest: "dist",
+          expand: true
+        }]
       }
     }
   });
   
   grunt.registerTask("default", "build");
   
-  grunt.registerTask("build", ["revision", "clean:build", "copy:cname", "sass:build", "committers", "markdown:all"]);
+  grunt.registerTask("build", ["revision", "clean:build", "copy:cname", "copy:graphic", "copy:cssimages", "sass:build", "committers", "markdown:all"]);
   
   grunt.registerTask("preview", ["build", "connect:preview:keepalive"]);
   
