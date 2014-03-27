@@ -316,6 +316,12 @@ pre code, pre tt {
   background-color: transparent;
   border: none; }
 
+.footnotes {
+  border-top: 5px dashed #ececec;
+  padding-top: 2rem; }
+  .footnotes:before {
+    content: "批注列表："; }
+
 .inline-list {
   margin: 1rem auto 1rem auto;
   margin-left: 1rem;
