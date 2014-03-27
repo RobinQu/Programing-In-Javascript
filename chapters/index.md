@@ -24,12 +24,12 @@
         * 操作DOM元素
         * [Event接口](Browser_Scripting/DOM_Scripting/EventAPI.md)
     * BOM编程
-        * [脚本执行方式](Browser_Scripting/BOM_Scripting/ScriptExecution.md)
-        * [script标签和脚本执行顺序](Browser_ScriptingScriptExecution/ScriptTag.md)
         * BOM与DOM的区别和联系
         * Timer和EventLoop
         * `window`和`document`
     * 文档加载
+        * [脚本执行方式](Browser_Scripting/Document_Loading/ScriptExecution.md)
+        * [Script标签和脚本执行顺序](Browser_Scripting/Document_Loading/ScriptTag.md)
         * script标签
         * iframe标签
         * 文档流

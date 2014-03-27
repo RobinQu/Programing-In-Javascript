@@ -1,4 +1,4 @@
-# Script Tags
+# Script标签和脚本执行顺序
 
 这里详细聊聊和script标签相关的脚本执行顺序。
 
