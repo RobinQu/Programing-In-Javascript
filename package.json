@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/RobinQu/Programing-In-Javascript",
   "devDependencies": {
-    "grunt-markdown": "https://github.com/RobinQu/grunt-markdown/archive/master.tar.gz",
+    "grunt-markdown": "https://github.com/RobinQu/grunt-markdown/archive/footnote.tar.gz",
     "grunt": "~0.4.4",
     "grunt-build-control": "~0.1.2",
     "time-grunt": "~0.2.10",
