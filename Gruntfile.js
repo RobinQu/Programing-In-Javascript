@@ -80,12 +80,30 @@ module.exports = function(grunt) {
         nomerges: true,
         output: "CONTRIBUTORS.md"
       }
+    },
+    
+    connect: {
+      options: {
+        port: 9000,
+        livereload: 35729,
+        // Change this to "0.0.0.0" to access the server from outside
+        hostname: "0.0.0.0"
+      },
+      preview: {
+        options: {
+          open: true,
+          base: ["dist"],
+          livereload: false
+        }
+      }
     }
   });
   
   grunt.registerTask("default", "build");
   
   grunt.registerTask("build", ["revision", "clean:build", "sass:build", "committers", "markdown:all"]);
+  
+  grunt.registerTask("preview", ["build", "connect:preview:keepalive"]);
   
   grunt.registerTask("publish", ["build", "buildcontrol:deploy"]);
 };
