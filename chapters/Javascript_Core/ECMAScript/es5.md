@@ -203,5 +203,6 @@ function(item, index, array) {}
 [^20]: https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/reduceRight
 [^21]: https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function/bind
 [^22]: http://www.ietf.org/rfc/rfc4627.txt
-[^23]: http://stackoverflow.com/questions/8099270/use-of-reserved-words-in-javascript
-[^24]: http://ejohn.org/blog/javascript-getters-and-setters/
+[^23]: http://en.wikipedia.org/wiki/ISO_8601
+[^24]: http://stackoverflow.com/questions/8099270/use-of-reserved-words-in-javascript
+[^25]: http://ejohn.org/blog/javascript-getters-and-setters/
