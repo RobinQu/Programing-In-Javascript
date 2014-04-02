@@ -4,7 +4,7 @@
 * Javascript核心
     * Javascript语法基础
         * 变量、表达式
-        * [数据类型](Javascript_Core/Basics/Types)
+        * [数据类型](Javascript_Core/Javascript_Basics/Types.md)
         * 函数
         * 正则表达式
         * 语法规范
@@ -17,7 +17,7 @@
         * 高阶函数和柯里化
         * Javascript Promise
     * ECMAScript特性
-        * ES5
+        * [ES5](Javascript_Core/ECMAScript/es5.md)
         * ES6
 * 面向浏览器编程
     * DOM编程

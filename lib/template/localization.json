@@ -3,5 +3,8 @@
   "Document_Loading": "文档加载",
   "DOM_Scripting": "DOM编程",
   "BOM_Scripting": "BOM编程",
-  "index": "目录"
+  "index": "目录",
+  "Javascript_Core": "Javascript核心",
+  "Javascript_Basics": "Javascript语法基础",
+  "ECMAScript": "ECMAScript特性"
 }
