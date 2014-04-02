@@ -29,7 +29,7 @@ module.exports = function(grunt) {
           },
           template: "lib/template/template.html",
           templateContext: {
-            buildDate: new Date(),
+            buildDate: (new Date()).toISOString(),
             revision: "<%= meta.revision %>"
           },
           postCompile: build.postCompile
@@ -69,7 +69,7 @@ module.exports = function(grunt) {
       options: {
         property: "meta.revision",
         ref: "HEAD",
-        short: false
+        short: true
       }
     },
     

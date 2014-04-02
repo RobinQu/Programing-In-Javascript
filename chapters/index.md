@@ -1,24 +1,24 @@
 # 目录
 
 * 引言
-* Javascript语法基础
-    * 变量、数据类型、表达式
-    * 函数
-    * 正则表达式
-    * 语法规范
-* 面向对象的Javascript
-    * 基于对象和原型
-    * 模拟经典继承模型
-    * 设计模式
-    * Javascript AOP
-* Javscript的函数化编程
-    * 高阶函数和柯里化
-    * Javascript Promise
-* ECMAScript特性
-    * 与Javascript的关系
-    * Array和相关方法
-    * Object和相关方法
-    * Iterator和Generator
+* Javascript核心
+    * Javascript语法基础
+        * 变量、表达式
+        * [数据类型](Javascript_Core/Basics/Types)
+        * 函数
+        * 正则表达式
+        * 语法规范
+    * 面向对象的Javascript
+        * 基于对象和原型
+        * 模拟经典继承模型
+        * 设计模式
+        * Javascript AOP
+    * Javscript的函数化编程
+        * 高阶函数和柯里化
+        * Javascript Promise
+    * ECMAScript特性
+        * ES5
+        * ES6
 * 面向浏览器编程
     * DOM编程
         * 操作DOM元素

@@ -6,6 +6,8 @@
 
 ## Buildbot
 
+[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+
 
 `master`分支是书籍的工程项目，运用Grunt和一些自任务来完成转译、上传等任务。
 
