@@ -5,8 +5,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="Javascript编程语言 - 一本开源的Javascript编程指南; An open-sourced Javascript Guide and Tutorial">
-<meta name="keywords" content="Javascript, guide, open-sourced">
+<meta name="description" content="Javascript编程语言 - 一本开源的Javascript编程指南; An open-sourced Javascript Guide and Tutorial; Script标签和脚本执行顺序 这里详细聊聊和script标签相关的脚本执行顺序。 Script标签的默认行为 几个首要特性：  script标签（不带defer或async属性）的会阻止文档渲染。相关脚本会立即下载并执行。 document.currentScript可以获得当前正在运行的脚本(Chrome 29+, FF4+) 脚本顺序再默认情况下和script标签出现的顺序一致  假设如下简">
+<meta name="keywords" content="Javascript, guide, open-sourced ,效果,,0,,2,,3,,4,,5,,6,,7,,8,,9,,10,,29,,#,,Script,,标签,,和,,脚本,,执行,,顺序,,这里,,详细,,聊聊,,script,,相关,,的,,。,,默认,,行为,,几个,,首要,,特性,,：,,*,,（,,不,,带,,`,,defer,,或,,async,,属性,,）,,会,,阻止,,文档,,渲染,,立即,,下载,,并,,document,,.,,currentScript,,可以获得,,当前,,正在,,运行,,(,,Chrome,,+,,,,,FF,,),,再,,情况,,下,,出现,,一致,,假设,,如下,,简单,,代码,,[,,^,,],,，,,最终,,产生,,三个,,alert,,依次,,为,,“,,A,,”,,、,,B,,C,,&lt;,,!,,-,,HTML,,Code,,&gt;,,&quot;,,;,,/,,我们,,考虑,,有,,网络,,请求,,code,,src,,=,,https://snipt.net/raw/7b08744009c450e07c0bfc1d606fc72e/,,https://snipt.net/raw/a2e8c05c1f6fc0e47d259aa899304e89/,,https://snipt.net/raw/4fab3017d3d46cbfc4bbd88aab006650/,,文件,,都,,需要,,先,,且,,第二个,,尺寸,,远大,,于,,另外,,两个,,但,,结果,,依然,,是,,弹出,,内容,,分别,,从,,上面,,例子,,可以,,充分,,了解到,,柱塞,,式,,新,,这,,意味着,,其,,兼容性,,并不,,乐观,,IE,,表示,,该,,也不,,同步,,浏览器,,只,,在,,完毕,,后,,即可,,—,,不必,,页面,,等待,,得到,,但是,,true,,看到,,加入,,并没有,,后续,,解析,,考究,,这个,,原有,,实有,,大量,,加载,,器,,做,,这样,,事情,,var,,createElement,,file,,js,,body,,appendChild,,不难,,想象,,通过,,异步,,插入,,达到,,1,,一样,,换句话说,,由,,对,,內联,,设置,,没,,有意义,,其他,,包含,,总是,,带有,,同样,,推迟,,并且,,不会,,就,,如同,,放置,,到了,,末尾,,之前,,宏观,,现象,,加,,了,,都会,,原理,,不一样,,确保,,即使,,过程,,中,,已经,,变成,,可执行,,状态,,也,,直到,,DOMContentLoaded,,同时,,彼此,,之间,,能,,保证,,注意,,不是,,每个,,支持,,即便,,因为,,版本,,导致,,具体,,不一致,,大家,,将,,到,,这种,,简单的,,做法,,早在,,被,,支,,持,,现代,,区别,,以上,,才,,开始,,按照,,标准,,与,,影响,,参考,,W,,官方,,互相,,There,,are,,three,,possible,,modes,,that,,can,,be,,selected,,using,,these,,attributes,,If,,the,,attribute,,is,,present,,then,,will,,executed,,asynchronously,,as,,soon,,it,,available,,not,,but,,when,,page,,has,,finished,,parsing,,neither,,fetched,,and,,immediately,,before,,user,,agent,,continues,,归纳,,仅有,,没有,,期间,,规范,,里,,提到,,两种,,有时,,这是,,允许,,在后面,,讨论,,write,,docuemnt,,向,,打开,,流,,写入,,；,,内,,嵌,,里面,,就地,,添加,,考虑到,,:,,\,,https://snipt.net/raw/a2e8c05c1f6fc0e47d259aa899304e89,,观察到,,普通的,,你,,也是,,让,,人,,纠结,,反过来,,使用,,由于,,延迟,,时,,关闭,,任何,,所以,,不管,,还,,始终,,iframe,,http://caniuse.com/script-defer/embed/,,style,,width,,100%,,seamless,,border,,http://caniuse.com/script-async/embed/,,测试,,用例,,http://jsfiddle.net/nGeZP/,,http://jsfiddle.net/uPk4z/3/,,http://www.w3.org/html/wg/drafts/html/master/scripting-1.html#attr-script-async,,http://jsfiddle.net/6234b/,,http://jsfiddle.net/P85kR/,,http://peter.sh/experiments/asynchronous-and-deferred-javascript-execution-explained/,,https://www.webkit.org/blog/1395/running-scripts-in-webkit/,,http://www.w3.org/html/wg/drafts/html/master/scripting-1.html#attr-script-defer,,http://jsfiddle.net/3uEKM/1/,,http://jsfiddle.net/fV9Sv/">
 <link rel="stylesheet" type="text/css" href="/style.css" />
 
 </head>
@@ -146,8 +146,8 @@ document.body.appendChild(script);
   </div>
   <div class="right">
     <ul class="inline-list">
-      <li>Rev <a href="https://github.com/RobinQu/Programing-In-Javascript/tree/02c06c3/chapters/Browser_Scripting/Document_Loading/ScriptTag.md">02c06c3</a></li>
-      <li>2014-04-02T09:41:19.345Z</li>
+      <li>Rev <a href="https://github.com/RobinQu/Programing-In-Javascript/tree/5a615fc/chapters/Browser_Scripting/Document_Loading/ScriptTag.md">5a615fc</a></li>
+      <li>2014-04-03T09:30:00.829Z</li>
     </ul>
   </div>
 </footer>

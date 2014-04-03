@@ -5,8 +5,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="Javascript编程语言 - 一本开源的Javascript编程指南; An open-sourced Javascript Guide and Tutorial">
-<meta name="keywords" content="Javascript, guide, open-sourced">
+<meta name="description" content="Javascript编程语言 - 一本开源的Javascript编程指南; An open-sourced Javascript Guide and Tutorial; ES5特性 本文将简单列举ES5的核心特性。ES5多半是扩展原生对象的功能，让Object、Array、Function更加强大。其他的特性包括strict mode和一下期待已久的工具方法（例如JSON.parse等）。 ES5的大部分特性1都在主流浏览器（IE9+）中支持了。而且大部分特性，都可以通过Javascript垫片(pollyfill)在运行时环境实现2。 Object 所有对象操作">
+<meta name="keywords" content="Javascript, guide, open-sourced ,同时,,1,,3,,4,,5,,6,,7,,8,,9,,10,,11,,12,,13,,14,,15,,16,,17,,18,,19,,20,,21,,22,,23,,24,,25,,31,,2014,,4627,,8601,,#,,ES,,特性,,本文,,将,,简单,,列举,,的,,核心,,。,,多半,,是,,扩展,,原生,,对象,,功能,,，,,让,,`,,Object,,、,,Array,,Function,,更加,,强大,,其他,,包括,,strict,,mode,,和,,一下,,期,,待,,已,,久的,,工具,,方法,,（,,例如,,JSON,,.,,parse,,等,,）,,大部,,分,,[,,^,,],,都,,在,,主流,,浏览器,,IE,,+,,中,,支,,持,,了,,而且,,大,,部分,,可以,,通过,,Javascript,,垫片,,(,,pollyfill,,),,运行,,时,,环境,,实现,,所有,,操作,,如果,,o,,不是,,类型,,将会,,抛出,,TypeError,,异常,,getPrototypeOf,,获取,,给,,丁对象,,prototype,,等价,,于,,以前,,_,,proto,,getOwnPropertyDescriptor,,,,,p,,描述,,defineProperty,,相关,,getOwnPropertyNames,,自有,,属性,,名,,列表,,结果,,将不,,包含,,原型,,链,,上,,create,,以,,为,,创建,,新的,,并,,返回,,存,,就,,使用,,其,,定义,,刚,,类似,,调用,,defineProperties,,obj,,attrs,,根据,,规则,,名为,,props,,来,,通常,,多,,个,,seal,,一个,,默认,,状态,,下,,extensible,,:,,添加,,configurable,,修改,,已有,,会,,改变,,这,,两个,,既不,,能,,新,,也不,,freeze,,每个,,own,,property,,做,,如下,,：,,*,,writable,,置,,false,,2,,该,,不可,,可见,,方,,法,,比,,严格的,,限制,,对,,未来,,改动,,preventExtensions,,isSealed,,判断,,是否,,sealed,,true,,则,,那么,,不满足,,以上,,条件,,isFrozen,,或,,isExtensible,,判,,可,,keys,,枚举,,enumerable,,名称,,isPrototypeOf,,v,,检查,,位于,,给定,,propertyIsEnumerable,,isArray,,a,,真正,,indexOf,,e,,i,,“,,严格等,,”,,元素,,数组,,索引,,号,,可选,,搜索,,起点,,lastIndexOf,,最后,,出现,,位置,,起始,,every,,t,,c,,测试,,中的,,满足,,之后,,介绍,,遍历,,支持,,上下文,,灵活,,设置,,回调,,函数,,执行,,传递,,有,,签名,,function,,item,,index,,array,,{,,},,some,,forEach,,f,,map,,按,,顺序,,收集,,值,,这个,,组成,,filter,,书组,,reduce,,r,,从,,左,,向,,右,,聚集,,制定,,初始值,,reduceRight,,向左,,版本,,String,,prototpye,,trim,,去掉,,字符串,,两头,,空白,,符,,换行,,字符,,订阅,,/,,access,,on,,strings,,&quot;,,abc,,=,,b,,bind,,thisTarget,,arg,,argn,,为了,,指定,,当前,,参数,,保留,,this,,text,,rfc,,标准,,解析,,文本,,stringify,,序列,,化为,,Date,,now,,时间,,距,,1970.1.1,,00,,毫秒,,数,,toISOString,,ISO,,生成,,new,,&#x27;,,-,,04,,02,,T,,08,,53.049,,Z,,放开,,关键字,,不允许,,作为,,getter,,setter,,http://kangax.github.io/es5-compat-table/,,https://github.com/es-shims/es5-shim,,https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/GetPrototypeOf,,https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor,,https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/getOwnPropertyNames,,https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/create,,https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/defineProperty,,https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/defineProperties,,https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/seal,,https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/freeze,,https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/preventExtensions,,https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/isSealed,,https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/isFrozen,,https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/isExtensible,,https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/keys,,https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/isPrototypeOf,,https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/indexOf,,https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/lastIndexOf,,https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/reduce,,https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/reduceRight,,https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function/bind,,http://www.ietf.org/rfc/rfc4627.txt,,http://en.wikipedia.org/wiki/ISO_8601,,http://stackoverflow.com/questions/8099270/use-of-reserved-words-in-javascript,,http://ejohn.org/blog/javascript-getters-and-setters/">
 <link rel="stylesheet" type="text/css" href="/style.css" />
 
 </head>
@@ -182,10 +182,12 @@
 <a href="#fnref21" class="footnoteBackLink" title="Jump back to footnote 21 in the text.">↩</a></li>
 <li id="fn22"><p><a href="http://www.ietf.org/rfc/rfc4627.txt">http://www.ietf.org/rfc/rfc4627.txt</a></p>
 <a href="#fnref22" class="footnoteBackLink" title="Jump back to footnote 22 in the text.">↩</a></li>
-<li id="fn23"><p><a href="http://stackoverflow.com/questions/8099270/use-of-reserved-words-in-javascript">http://stackoverflow.com/questions/8099270/use-of-reserved-words-in-javascript</a></p>
+<li id="fn23"><p><a href="http://en.wikipedia.org/wiki/ISO_8601">http://en.wikipedia.org/wiki/ISO_8601</a></p>
 <a href="#fnref23" class="footnoteBackLink" title="Jump back to footnote 23 in the text.">↩</a></li>
-<li id="fn24"><p><a href="http://ejohn.org/blog/javascript-getters-and-setters/">http://ejohn.org/blog/javascript-getters-and-setters/</a></p>
+<li id="fn24"><p><a href="http://stackoverflow.com/questions/8099270/use-of-reserved-words-in-javascript">http://stackoverflow.com/questions/8099270/use-of-reserved-words-in-javascript</a></p>
 <a href="#fnref24" class="footnoteBackLink" title="Jump back to footnote 24 in the text.">↩</a></li>
+<li id="fn25"><p><a href="http://ejohn.org/blog/javascript-getters-and-setters/">http://ejohn.org/blog/javascript-getters-and-setters/</a></p>
+<a href="#fnref25" class="footnoteBackLink" title="Jump back to footnote 25 in the text.">↩</a></li>
 </ol>
 </div>
 
@@ -201,8 +203,8 @@
   </div>
   <div class="right">
     <ul class="inline-list">
-      <li>Rev <a href="https://github.com/RobinQu/Programing-In-Javascript/tree/02c06c3/chapters/Javascript_Core/ECMAScript/es5.md">02c06c3</a></li>
-      <li>2014-04-02T09:41:19.345Z</li>
+      <li>Rev <a href="https://github.com/RobinQu/Programing-In-Javascript/tree/5a615fc/chapters/Javascript_Core/ECMAScript/es5.md">5a615fc</a></li>
+      <li>2014-04-03T09:30:00.829Z</li>
     </ul>
   </div>
 </footer>
