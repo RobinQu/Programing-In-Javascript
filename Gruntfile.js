@@ -32,7 +32,8 @@ module.exports = function(grunt) {
             buildDate: (new Date()).toISOString(),
             revision: "<%= meta.revision %>"
           },
-          postCompile: build.postCompile
+          postCompile: build.postCompile,
+          preCompile: build.preCompile
         }
       }
     },

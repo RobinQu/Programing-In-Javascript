@@ -13,7 +13,7 @@
         * 模拟经典继承模型
         * 设计模式
         * Javascript AOP
-    * Javscript的函数化编程
+    * Javascript的函数化编程
         * 高阶函数和柯里化
         * Javascript Promise
     * ECMAScript特性
@@ -104,12 +104,15 @@
     * V8、异步IO、事件驱动
     * 应用层模块
     * V8编程与node扩展
+    * web中间件
+        * express和connect
+        * koa
+        * 其他
     * 部署和维护
         * 使用NPM管理依赖
         * pm2与监控
         * 使用Docker进行部署
     * 云上的Nodejs
-    * 对Nodejs现状的思考和看法
 * Javascript的自动化测试
     * TDD与BDD
     * Mocha、Jasmine、Chai
