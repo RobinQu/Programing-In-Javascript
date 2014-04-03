@@ -17,8 +17,11 @@
         * 高阶函数和柯里化
         * Javascript Promise
     * ECMAScript特性
-        * [ES5](Javascript_Core/ECMAScript/es5.md)
+        * [ES5特性](Javascript_Core/ECMAScript/es5.md)
         * ES6
+            * [对已有对象的API增强](Javascript_Core/ECMAScript/es6/es6_api_extension.md)
+            * [引入的数据结构](Javascript_Core/ECMAScript/es6/es6_data_types.md)
+            * 语法特性
 * 面向浏览器编程
     * DOM编程
         * 操作DOM元素
