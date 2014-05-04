@@ -21,7 +21,7 @@
         * ES6
             * [对已有对象的API增强](Javascript_Core/ECMAScript/es6/es6_api_extension.md)
             * [引入的数据结构](Javascript_Core/ECMAScript/es6/es6_data_types.md)
-            * 语法特性
+            * [语法特性](Javascript_Core/ECMAScript/es6/es6_syntax_features.md)
 * 面向浏览器编程
     * DOM编程
         * 操作DOM元素
@@ -43,6 +43,7 @@
         * Websocket
         * WebRTC
     * 文件与存储
+        * Typed Array
         * File接口
         * 本地存储
             * DOM存储

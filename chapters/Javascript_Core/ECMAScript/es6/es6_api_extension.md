@@ -114,6 +114,10 @@ ES6比较ES5新特性更多。新加入的特性大致氛围三类：
 
 将对象`o`的原型修改为`proto`。和对象的`__proto__`属性行为一致。修改单个对象的`prototype`一般是不被推荐的。
 
+### Object.assign(target, source1, source2, ...)
+
+类似underscore和lodash的`_.extend`。将多个对象的值合并到一个对象。
+
 ## Number
 
 数字和算数的API复杂而且不常用，但是却必备。
