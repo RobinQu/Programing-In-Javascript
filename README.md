@@ -1,6 +1,6 @@
 [![Programing in Javascript](https://raw.githubusercontent.com/RobinQu/Programing-In-Javascript/master/lib/template/images/logo.png)](http://pij.robinqu.me/)
 
-一本开源的Javascript编程指南!
+这是一本开源的Javascript编程指南。内容从最简单的语法基础，到复杂的框架编写、项目自动化，都有覆盖。这本开源书籍大致分为三个部分：Javacsript核心基础、浏览器编程、NodeJS环境编程。也希望大家能共同编写！
 
 阅读入口： http://pij.robinqu.me/
 
