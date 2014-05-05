@@ -89,11 +89,22 @@ var proxy = Proxy(target, handler);
 
 笔者还在理解中。目前新版的Chrome和node支持。
 
-[^1]: http://wiki.ecmascript.org/doku.php?id=harmony:typed_objects
-[^2]: http://wiki.ecmascript.org/doku.php?id=harmony:direct_proxies
-[^3]: http://people.mozilla.org/~jorendorff/es6-draft.html#sec-symbol-constructor
-[^4]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
-
 ## Prmoise
 
 原生版本的Promise API，有关Promise的内容，会在另外一篇文章内详细说明： [Javascript Promise](../../Functional_Javascript/Javascript_Promise.md)。
+
+## Proxy
+
+Proxy是Javascript元编程的一道大门。Javascript在语言层面无法去重载操作符，但是通过Proxy API，我们可以彻底的修改一个对象的各种行为。这种强大的行为已经在`node --harmony`和Firefox中支持了。
+
+待补充。可以参考：
+
+* http://www.slideshare.net/BrendanEich/metaprog-5303821
+* http://soft.vub.ac.be/~tvcutsem/proxies/
+* http://ariya.ofilabs.com/2013/07/es6-and-proxy.html
+
+
+[^1]: http://wiki.ecmascript.org/doku.php?id=harmony:typed_objects
+[^2]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy
+[^3]: http://people.mozilla.org/~jorendorff/es6-draft.html#sec-symbol-constructor
+[^4]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
