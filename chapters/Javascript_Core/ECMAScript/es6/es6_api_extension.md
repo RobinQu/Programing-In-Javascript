@@ -236,16 +236,13 @@ function trunc(x) {
 
 求x的立方根
 
-## 其他推荐参考
+## 关于ES及其他
 
-* http://wiki.ecmascript.org/doku.php?id=harmony:specification_drafts
-* http://addyosmani.com/blog/a-few-new-things-coming-to-javascript/
-* http://addyosmani.com/blog/ecmascript-6-resources-for-the-curious-javascripter/
-* http://kangax.github.io/es5-compat-table/es6/
-* https://github.com/paulmillr/es6-shim/
-* https://github.com/addyosmani/es6-tools
-* http://sankhs.com/jschannel-es6/
-* http://esdiscuss.org/topic/es6-es7-es8-and-beyond-a-proposed-roadmap
+ES标准[^14]在快速发展之中，部分讨论[^15]都已经扩展到ES8的规划之内。就像W3C的新版标准一样，他们的出现往往被开发者轻视。前段开发者以兼容性、实用性为借口选择性忽略，但是不知不觉中，这些开发者已经成为了守旧者，那些曾经被视为华而不实的Canvas、ApplicationStorage、Websocket等技术，如今已是大量在线应用的基础设施。
+
+ES6标准中部分已经被广泛应用到node应用的开发之中，也许不久的未来，nodejs的开发者所写的Javascript已经和浏览器端开发者使用的Javascript是两种不同的语言了。
+
+ES6不少API层面的特性可以通过shim[^16]进行兼容性支持。部分语法特性，通过二次编译[^17]，可以支持。所以，已经不是找理由不了解ECMAScript的时候了。
 
 
 [^1]: http://stackoverflow.com/questions/3744721/javascript-strings-outside-of-the-bmp
@@ -261,3 +258,7 @@ function trunc(x) {
 [^11]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
 [^12]: https://people.mozilla.org/~jorendorff/es6-draft.html#sec-number.issafeinteger
 [^13]: http://en.wikipedia.org/wiki/Double-precision_floating-point_format
+[^14]: * http://wiki.ecmascript.org/doku.php?id=harmony:specification_drafts
+[^15]: http://esdiscuss.org/topic/es6-es7-es8-and-beyond-a-proposed-roadmap
+[^16]: https://github.com/paulmillr/es6-shim/
+[^17]: https://github.com/addyosmani/es6-tools

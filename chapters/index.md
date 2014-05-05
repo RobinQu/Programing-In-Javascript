@@ -23,6 +23,7 @@
         * 高阶函数和柯里化
         * [Javascript Promise](Javascript_Core/Functional_Javascript/Javascript_Promise.md)
         * [Javascript Generator](Javascript_Core/Functional_Javascript/Javascript_Generator.md)
+        * [CPS变换](Javascript_Core/Functional_Javascript/Continuation_Passing_Style.md)
 
 * 面向浏览器编程
     * DOM编程

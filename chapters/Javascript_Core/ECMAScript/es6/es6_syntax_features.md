@@ -30,10 +30,11 @@ ES6包含了很多万众期待的特性支持：
 * let[^1]
 * const[^2]
 * Block-delvel declaration
+* for-of
 * yield
 
 
-对，就这么多了。前三个是为了解决变量声明、定义的问题，而第四个则影响最大。会在单独篇幅中介绍。下文只介绍前三个特性。
+对，就这么多了。前三个是为了解决变量声明、定义的问题，而最后一个则影响最大。会在单独篇幅中介绍。下文只介绍前三个特性。
 
 ## let和block-level declaration
 
@@ -53,6 +54,8 @@ function() {
 
 这是因为ES5的Javascript的不支持块级作用域，变量仅仅被限制到函数作用域内。
 
+注意在node中，你需要同时加入`--harmony`和`--use-strict`来启动，才会支持`let`。否则会报错： `SyntaxError: Illegal let declaration outside extended mode`。
+
 在ES6内，可以通过let来定义块级作用域的变量：
 
 ```
@@ -60,7 +63,7 @@ function() {
     for(let i=0,len=5;i<len;i++) {
         //body
     }
-    console.log(i,len);=> throw Reference Error
+    console.log(i,len) // throw Reference Error
 }
 ```
 最后一个，函数定义的作用域问题：
