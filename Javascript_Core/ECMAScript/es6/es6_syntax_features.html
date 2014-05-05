@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Javascript编程语言 - 一本开源的Javascript编程指南; An open-sourced Javascript Guide and Tutorial; ES6语法特性 ES6包含了很多万众期待的特性支持：  arrow functions const let default function params rest parameters call(…) array(…) class computed properties modules for…of Array comprehensions Generator comprehensions It">
-<meta name="keywords" content="Javascript, guide, open-sourced ,call,,6,,ES,,语法,,特性,,包含,,了,,很多,,万众,,期待,,的,,支持,,：,,*,,arrow,,functions,,const,,let,,default,,function,,params,,rest,,parameters,,#,,(,,.,,),,array,,class,,computed,,properties,,modules,,for,,of,,Array,,comprehensions,,Generator,,Iterators,,yield,,Template,,Strings,,block,,-,,level,,declaration,,destructing,,promoise">
+<meta name="keywords" content="Javascript, guide, open-sourced ,is,,0,,2,,5,,6,,#,,ES,,语法,,特性,,包含,,了,,很多,,万众,,期待,,的,,支持,,：,,*,,arrow,,functions,,const,,let,,default,,function,,params,,rest,,parameters,,call,,(,,.,,),,array,,class,,computed,,properties,,modules,,for,,of,,Array,,comprehensions,,Generator,,Iterators,,yield,,Template,,Strings,,block,,-,,level,,declaration,,destructing,,promoise,,里面,,众多,,都是,,让,,Javascript,,看起来,,更,,规范,,好,,东西,,，,,但是,,大部分,,都,,没有,,被,,广泛,,。,,我们,,仅,,介绍,,其中,,已经,,至少,,一种,,浏览器,,和,,`,,node,,harmony,,下,,支,,持,,在,,写,,这篇文章,,时候,,有如,,是,,较为,,[,,^,,],,Block,,delvel,,对,,就,,这么多,,前,,三个,,为了,,解决,,变量,,声明,,、,,定义,,问题,,而,,第四个,,则,,影响,,最大,,会,,单独,,篇幅,,中,,下文,,只,,var,,1,,scoped,,to,,the,,nearest,,or,,global,,if,,outside,,a,,enclosing,,any,,,,,文献,,书籍,,建议,,将,,循环,,起始,,i,,len,,等,,放置,,到,,函数,,作,,用于,,顶部,,以,,避免,,后续,,持续,,存在,,所,,造成,,迷惑,,{,,=,,;,,&lt;,,+,,/,,body,,},,console,,log,,&gt;,,这是,,因为,,不支持,,块,,级,,作用,,域,,仅仅,,限制,,域内,,内,,可以,,通过,,来,,throw,,Reference,,Error,,最后,,一个,,f,,&#x27;,,I,,am,,!,,false,,What,,should,,happen,,with,,this,,redeclaration,,?,,inside,,如上,,代码,,时代,,每个,,都会,,得出,,不同的,,结果,,有效,,很,,明确,,关键字,,常量,,&quot;,,You,,shall,,remain,,constant,,SyntaxError,,:,,Assignment,,variable,,wanna,,be,,free,,后面,,有,,一连串,,有关,,Iterator,,内容,,另外,,一片,,文章,,详细,,Functional,,_,,md,,https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let,,https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const">
 <link rel="stylesheet" type="text/css" href="/style.css" />
 
 </head>
@@ -59,6 +59,63 @@
 <li>destructing</li>
 <li>promoise</li>
 </ul>
+<p>里面众多的特性都是让Javascript看起来更规范的好东西，但是大部分都没有被广泛支持。我们仅介绍其中已经至少被一种浏览器和<code>node --harmony</code>下支持的。</p>
+<p>在写这篇文章的时候，有如下特性是较为广泛支持的：</p>
+<ul>
+<li>let<sup id="fnref1"><a href="#fn1">1</a></sup></li>
+<li>const<sup id="fnref2"><a href="#fn2">2</a></sup></li>
+<li>Block-delvel declaration</li>
+<li>yield</li>
+</ul>
+<p>对，就这么多了。前三个是为了解决变量声明、定义的问题，而第四个则影响最大。会在单独篇幅中介绍。下文只介绍前三个特性。</p>
+<h2 id="let-block-level-declaration">let和block-level declaration</h2>
+<ul>
+<li><code>var</code> is scoped to the nearest function block (or global if outside a function block)</li>
+<li><code>let</code> is scoped to the nearest enclosing block (or global if outside any block),</li>
+</ul>
+<p>很多文献、书籍都建议将for循环的起始变量<code>i</code>、<code>len</code>等放置到函数作用于的顶部声明，以避免后续变量持续存在所造成的迷惑。</p>
+<pre><code>function() {
+    for(var i=0,len=5;i&lt;len;i++) {
+        //body
+    }
+    console.log(i,len);=&gt; 5,5
+}
+</code></pre><p>这是因为ES5的Javascript的不支持块级作用域，变量仅仅被限制到函数作用域内。</p>
+<p>在ES6内，可以通过let来定义块级作用域的变量：</p>
+<pre><code>function() {
+    for(let i=0,len=5;i&lt;len;i++) {
+        //body
+    }
+    console.log(i,len);=&gt; throw Reference Error
+}
+</code></pre><p>最后一个，函数定义的作用域问题：</p>
+<pre><code>function f() { console.log(&#39;I am outside!&#39;); }
+(function () {
+  if(false) {
+    // What should happen with this redeclaration?
+    function f() { console.log(&#39;I am inside!&#39;); }
+  }
+
+  f();
+}());
+</code></pre><p>如上代码，在ES5时代，每个浏览器都会得出不同的结果。但是ES6中，函数定义只在块级作用域内有效，结果很明确。</p>
+<h2 id="const-">const关键字</h2>
+<p>const关键字定义一个块级作用域的常量变量。</p>
+<pre><code>const a = &quot;You shall remain constant!&quot;;
+
+// SyntaxError: Assignment to constant variable
+a = &quot;I wanna be free!&quot;;
+</code></pre><h2 id="yield">yield</h2>
+<p><code>yield</code>后面有一连串有关Generator和Iterator的内容，会在另外一片文章内详细介绍： <a href="../../Functional_Javascript/Javascript_Generator.html">Javascript Generator</a>。</p>
+<hr>
+<div class="footnotes">
+<ol>
+<li id="fn1"><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let</a></p>
+<a href="#fnref1" class="footnoteBackLink" title="Jump back to footnote 1 in the text.">↩</a></li>
+<li id="fn2"><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const</a></p>
+<a href="#fnref2" class="footnoteBackLink" title="Jump back to footnote 2 in the text.">↩</a></li>
+</ol>
+</div>
 
 </div>
 <footer class="misc clearfix">
@@ -72,8 +129,8 @@
   </div>
   <div class="right">
     <ul class="inline-list">
-      <li>Rev <a href="https://github.com/RobinQu/Programing-In-Javascript/tree/a8dd3df/chapters/Javascript_Core/ECMAScript/es6/es6_syntax_features.md">a8dd3df</a></li>
-      <li>2014-05-04T13:22:01.651Z</li>
+      <li>Rev <a href="https://github.com/RobinQu/Programing-In-Javascript/tree/aece89a/chapters/Javascript_Core/ECMAScript/es6/es6_syntax_features.md">aece89a</a></li>
+      <li>2014-05-05T04:01:32.682Z</li>
     </ul>
   </div>
 </footer>
