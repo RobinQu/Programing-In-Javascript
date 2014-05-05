@@ -67,9 +67,8 @@
         * URL与历史管理
         * Drag and Drop
     * 多任务
-        * 自定义EventLoop
+        * EventLoop
         * Web Worker
-        * 多线程
     * Javascript调试与性能
         * Performance Tricks
             * Javascript技巧
