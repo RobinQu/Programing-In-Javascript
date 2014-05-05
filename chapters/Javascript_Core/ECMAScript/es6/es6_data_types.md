@@ -9,6 +9,7 @@ ES6新加入的数据类型有：
 * Typed Objects[^1]
 * Proxy[^2]
 * Symbol[^3]
+* Promise[^4]
 
 这些数据结构的支持并不广泛，在写这篇文章的时候。仅有新版本的Firefox和Node v0.11.x以上版本（开启`--harmony`参数后）支持。
 
@@ -91,3 +92,8 @@ var proxy = Proxy(target, handler);
 [^1]: http://wiki.ecmascript.org/doku.php?id=harmony:typed_objects
 [^2]: http://wiki.ecmascript.org/doku.php?id=harmony:direct_proxies
 [^3]: http://people.mozilla.org/~jorendorff/es6-draft.html#sec-symbol-constructor
+[^4]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+
+## Prmoise
+
+原生版本的Promise API，有关Promise的内容，会在另外一篇文章内详细说明： [Javascript Promise](../../Functional_Javascript/Javascript_Promise.md)。

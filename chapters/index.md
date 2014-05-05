@@ -13,15 +13,17 @@
         * 模拟经典继承模型
         * 设计模式
         * Javascript AOP
-    * Javascript的函数化编程
-        * 高阶函数和柯里化
-        * Javascript Promise
     * ECMAScript特性
         * [ES5特性](Javascript_Core/ECMAScript/es5.md)
         * ES6
             * [对已有对象的API增强](Javascript_Core/ECMAScript/es6/es6_api_extension.md)
             * [引入的数据结构](Javascript_Core/ECMAScript/es6/es6_data_types.md)
             * [语法特性](Javascript_Core/ECMAScript/es6/es6_syntax_features.md)
+    * Javascript的函数化编程
+        * 高阶函数和柯里化
+        * [Javascript Promise](Javascript_Core/Functional_Javascript/Javascript_Promise.md)
+        * [Javascript Generator](Javascript_Core/Functional_Javascript/Javascript_Generator.md)
+
 * 面向浏览器编程
     * DOM编程
         * 操作DOM元素
