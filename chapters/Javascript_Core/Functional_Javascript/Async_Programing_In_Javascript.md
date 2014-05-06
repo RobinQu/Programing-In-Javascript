@@ -334,6 +334,8 @@ $("#sexyButton").on("click", function(data) {
 
 ## 结语
 
+说了这么多，异步编程这种和线程模型迥然不同的并发处理方式，随着node的流行也让更多程序员了解其与众不同的魅力。如果下次再有C或者Java程序员说，Javascript的回调太难看，请让他好好读一下这篇文章吧！
+
 
 [^1]: http://en.wikipedia.org/wiki/Reactor_pattern
 [^2]: http://strongloop.com/strongblog/node-js-is-faster-than-java/
