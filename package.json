@@ -41,6 +41,7 @@
     "karma-jasmine": "~0.2.2",
     "karma-safari-launcher": "~0.1.1",
     "karma-firefox-launcher": "~0.1.3",
-    "karma-ie-launcher": "~0.1.5"
+    "karma-ie-launcher": "~0.1.5",
+    "karma-cli": "0.0.4"
   }
 }
