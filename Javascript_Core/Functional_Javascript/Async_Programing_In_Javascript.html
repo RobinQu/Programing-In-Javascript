@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Async Programing in Javascript - Javascript编程语言</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Javascript编程语言 - 一本开源的Javascript编程指南; An open-sourced Javascript Guide and Tutorial; Async Programing in Javascript 本文从异步风格讲起，分析Javascript中异步变成的技巧、问题和解决方案。具体的，从回调造成的问题说起，并谈到了利用事件、Promise、Generator等技术来解决这些问题。 异步之殇 non-blocking无限好? 异步，是没有线程模型的Javascript的救命稻草。说得高大上一些，就是运用了Reactor设计模式1。 J">
+<meta name="keywords" content="Javascript, guide, open-sourced ,this,,0,,2,,3,,4,,5,,6,,7,,32,,1000,,1024,,#,,Async,,Programing,,in,,Javascript,,本文,,从,,异步,,风格,,讲起,,，,,分析,,中,,变成,,的,,技巧,,、,,问题,,和,,解决方案,,。,,具,,体,,回调,,造成,,说起,,并,,谈到,,了,,利用,,事件,,Promise,,Generator,,等,,技术,,来,,解决,,这些,,之,,殇,,non,,-,,blocking,,无限,,好,,?,,是,,没有,,线程,,模型,,救命稻草,,说,,得,,高大,,上,,一些,,就是,,运用,,`,,Reactor,,设计,,模式,,[,,^,,],,一切都是,,围绕,,着,,“,,”,,二,,子,,无论是,,浏览器,,环境,,还,,node,,大多数,,API,,都是,,通过,,将,,请求,,（,,或,,消息,,调用,,）,,返回,,值,,结果,,分离,,而,,都,,离不开,,(,,Callback,,),,例如,,var,,fs,,=,,require,,&quot;,,;,,.,,readFile,,_,,filename,,,,,function,,e,,data,,{,,console,,log,,callback,,},,after,,invoke,,模块,,封装,,复杂的,,IO,,其,,一个,,简单的,,告诉,,者,,看起来,,十分,,不错,,我们,,看看,,Ruby,,EventMachine,,：,,em,,files,,EM,,:,,run,,do,,File,,open,,FILE,,r,,|,,io,,read,,puts,,close,,end,,stop,,由于,,标准,,库,,里面,,全,,同步,,只,,有,,类似,,这样,,第三方,,才能,,提供,,支持,,实际,,两者,,就,,这个,,例子,,来说,,版本,,似乎,,更加,,简介,,而且,,不需要,,添加,,额外,,相比,,损耗,,更,,小,,在,,部分,,场景,,性能,,甚至,,比,,Java,,更好,,并且,,默认,,这使,,nodejs,,它,,大量,,应用,,想要,,找到,,当前,,目录,,所有,,文件,,尺寸,,readdir,,dirname,,/,,if,,return,,dirs,,forEach,,file,,stat,,stats,,isFile,,size,,非常,,任务,,便,,3层,,爆发,,初期,,诞生,,显然,,代码,,如下,,风险,,难以,,阅读,,维护,,嵌套,,多层,,之后,,作者,,自己,,不,,清楚,,函数,,层次,,潜在,,堆栈,,消耗,,远,,你想,,像,,简单,,去,,超出,,最大,,不少,,并没有,,做到,,却,,装作,,更大,,想,,遭么,,？,,前,,两条,,够,,…,,少,,程序员,,因为,,第一条,,放弃,,关,,于,,第二条,,各种,,隐性,,bug,,排除,,优化,,工作,,向,,招手,,等等,,你,,我,,一,,直,,再说,,提及,,中的,,情况,,来看,,个例,,*,,glboal,,$,,we,,have,,jquery,,the,,window,,sexyButton,,on,,click,,getJSON,,api,,topcis,,list,,topics,,map,,t,,id,,+,,title,,\,,n,,confirm,,which,,are,,you,,interested,,Select,,by,,ID,,alert,,Detail,,topic,,content,,尝试,,获取,,文章,,列表,,然后,,给予,,用户,,交互,,让,,选择,,希望,,详细,,了解,,继续,,详情,,产生,,3个,,事实上,,性质,,语言,,本身,,固有,,跟,,宿主,,无关,,所以,,漫天,,飞,,问题是,,共性,,Evented,,也,,许是,,最,,创造力,,一群,,之一,,对于,,最终,,有了,,很多,,方案,,自然,,想到,,便是,,机制,,还是,,之前,,加载,,TopicController,,new,,EventEmitter,,a,,simple,,wrap,,for,,ajax,,request,,1,,notify,,show,,bind,,DOM,,events,,queryTopic,,listenTo,,showTopic,,eventName,,listener,,helper,,method,,to,,generate,,internally,,self,,args,,Array,,prototype,,slice,,arguments,,unshift,,emit,,apply,,lisenTo,,kickoff,,可以,,看到,,现在,,这种,,写法,,B,,格,,高了,,解藕,,首先,,除了,,万能,,jQuery,,依赖,,这是,,观察者,,实现,,比如,,asyncly,,https://github.com/asyncly/EventEmitter2),,概括,,一下,,杜绝,,大部分,,匿名,,用作,,达到,,零,,明了,,每个,,状态,,步骤,,之间,,进行,,关联,,相互,,独立,,方便,,日后,,如果,,硬要,,挑剔的话,,缺点,,；,,过度,,整体,,流程,,模糊,,量,,激增,,又,,加大,,另一种,,成本,,高阶,,顺序,,并发,,递归,,执行,,编写,,传入,,runInSeries,,ops,,done,,i,,next,,call,,push,,null,,query,,detail,,很不,,错,,简洁,,清晰,,增加,,喜欢,,方式,,看,,caolan,,async,,https://github.com/caolan/async),,会,,发现,,更多,,精彩,,&gt;,,A,,promise,,represents,,eventual,,result,,of,,an,,asynchronous,,operation,,The,,primary,,way,,interacting,,with,,is,,through,,its,,then,,registers,,callbacks,,receive,,either,,’,,s,,value,,or,,reason,,why,,cannot,,be,,fulfilled,,除开,,文绉绉,,解释,,一种,,对,,抽象,,相关,,一组,,方法,,对象,,目前,,ECMAScript,,即,,原生,,Chrome,,以上,,kriskowal,,q,,https://github.com/kriskowal/q),,cujojs,,when,,https://github.com/cujojs/when),,tildeio,,rsvp,,js,,https://github.com/tildeio/rsvp.js),,其他,,厂商,,Deferred,,https://api.jquery.com/jQuery.when/),,WinJS,,http://msdn.microsoft.com/en-us/library/windows/apps/br211867.aspx),,虽然,,但是,,所,,有的,,基本,,遵循,,规律,,有限,,状态机,,完成,,否定,,rejected,,待,,pending,,结束,,settled,,一定会,,fulfill,,reject,,使用者,,分别,,处理,,成功,,失败,,可选,,fn,,fail,,支,,持,,链式,,Deffered,,resolve,,笔者,,专门,,内,,介绍,,具体,,md,,这里,,仅,,浅尝辄止,,随处,,可得,,那个,,很遗憾,,使用,,好多,,体现,,出,,强大之,,处,,把,,官方,,文档,,拿,,出来,,page,,php,,and,,resolved,,requests,,respectively,,Each,,argument,,array,,following,,structure,,statusText,,jqXHR,,Whip,,It,,test,,We,,got,,what,,came,,!,,同时,,发起,,两个,,AJAX,,这,,合并,,成,,开发者,,只用,,Q,,第三,,方库,,特性,,大为,,改观,,可以说,,为,,复杂,,开启,,新的,,大门,,也是,,有成,,本,,相当,,大的,,开销,,Geneartor,,ES,,引入,,yield,,表达式,,控制,,多变,,fiber,,https://github.com/laverdet/node-fibers),,让我们,,到了,,coroutine,,样子,,Fiber,,&#x27;,,fibers,,sleep,,ms,,current,,setTimeout,,wait,,Date,,ok,,back,,main,,但,,想象,,功能,,那么,,正常,,程序,,员,,被,,挑战,,莫名其妙,,另外,,更改,,也就是说,,还没有,,语法,,能,,不支持,,混用,,混淆,,不可,,移植,,性,,并不,,现实,,Shallow,,coroutines,,只能,,停止,,GeneratorFunction,,才,,用,,一篇,,已经,,如何,,Geneator,,suspend,,问题解决,,为了,,取舍,,兼容性,,不好,,仅有,,新版,,需要,,重,,写,,基础,,框架,,接口,,规范化,,thunkify,,约束,,可能,,新手,,迷惑,,及其,,调试,,结语,,这么多,,编程,,迥然,,不同的,,随着,,流行,,与众不同,,魅力,,下次,,再有,,C,,或者,,太,,难看,,请,,他,,好好,,读,,这篇文章,,吧,,！,,http://en.wikipedia.org/wiki/Reactor_pattern,,http://strongloop.com/strongblog/node-js-is-faster-than-java/,,en,,wikipedia,,org,,wiki,,Observer,,pattern,,http://wiki.ecmascript.org/doku.php?id=strawman:concurrency,,http://promises-aplus.github.io/promises-spec/,,http://thanpol.as/javascript/promises-a-performance-hits-you-should-be-aware-of/,,http://calculist.org/blog/2011/12/14/why-coroutines-wont-work-on-the-web/">
+<link rel="stylesheet" type="text/css" href="/style.css" />
+
+</head>
+<body>
+<header class="clearfix">
+  <div class="left back-toc">
+    <ul class="inline-list">
+      <li><a href="/">目录</a></li>
+      
+        <li class="seperator">></li>
+        <li>Javascript核心</li>
+      
+        <li class="seperator">></li>
+        <li>Functional_Javascript(Unlocalized)</li>
+      
+      
+      <li class="seperator">></li>
+      <li class="current"><strong>当前页面</strong></li>
+      
+    </ul>
+  </div>
+  <div class="right">
+    <a href="/"><img src="/images/logo.png" alt="Javascript编程语言" width="256" height="50" /></a>
+  </div>
+</header>
+<div class="primary">
+  <h1 id="async-programing-in-javascript">Async Programing in Javascript</h1>
+<p>本文从异步风格讲起，分析Javascript中异步变成的技巧、问题和解决方案。具体的，从回调造成的问题说起，并谈到了利用事件、Promise、Generator等技术来解决这些问题。</p>
+<h2 id="-">异步之殇</h2>
+<h3 id="non-blocking-">non-blocking无限好?</h3>
+<p>异步，是没有线程模型的Javascript的救命稻草。说得高大上一些，就是运用了<code>Reactor</code>设计模式<sup id="fnref1"><a href="#fn1">1</a></sup>。</p>
+<p>Javascript的一切都是围绕着“异步”二子的。无论是浏览器环境，还是node环境，大多数API都是通过“事件”来将请求（或消息、调用）和返回值（或结果）分离。而“事件”，都离不开回调(Callback)，例如，</p>
+<pre><code>var fs = require(&quot;fs&quot;);
+fs.readFile(__filename, function(e, data) {
+    console.log(&quot;2. in callback&quot;);
+});
+console.log(&quot;1. after invoke&quot;);
+</code></pre><p>fs模块封装了复杂的IO模块，其调用结果是通过一个简单的callback告诉调用者的。看起来是十分不错的，我们看看Ruby的<code>EventMachine</code>：</p>
+<pre><code>require &quot;em-files&quot;
+
+EM::run do
+  EM::File::open(__FILE__, &quot;r&quot;) do |io|
+    io.read(1024) do |data|
+      puts data
+      io.close
+    end
+    EM::stop
+  end
+end
+</code></pre><p>由于Ruby的标准库里面的API全是同步的，异步的只有类似EventMachine这样的第三方API才能提供支持。实际风格上，两者类似，就我们这个例子来说，Javascript的版本似乎更加简介，而且不需要添加额外的第三方模块。</p>
+<p>异步模式，相比线程模式，损耗更小，在部分场景性能甚至比Java更好<sup id="fnref2"><a href="#fn2">2</a></sup>。并且，<code>non-blocking</code>的API是node默认的，这使nodejs和它的异步回调大量应用。 </p>
+<p>例如，我们想要找到当前目录中所有文件的尺寸：</p>
+<pre><code>fs.readdir(__dirname, function(e, files) {//callback 1
+    if(e) {
+        return console.log(e);
+    }
+    dirs.forEach(function(file) {//callback 2
+        fs.stat(file, function(e, stats) {//callback 3
+            if(e) {
+                return console.log(e);
+            }
+            if(stats.isFile()) {
+                console.log(stats.size);
+            }
+        });
+    });
+});
+</code></pre><p>非常简单的一个任务便造成了3层回调。在node应用爆发的初期，大量的应用都是在这样的风格中诞生的。显然，这样的代码风格有如下风险：</p>
+<ol>
+<li>代码难以阅读、维护：嵌套多层回调之后，作者自己都不清楚函数层次了。</li>
+<li>潜在的调用堆栈消耗：Javascript中，远比你想像的简单去超出最大堆栈。不少第三方模块并没有做到异步调用，却装作支持回调，堆栈的风险就更大。</li>
+<li>还想更遭么？前两条就够了……</li>
+</ol>
+<p>不少程序员，因为第一条而放弃nodejs，甚至放弃Javascript。而关于第二条，各种隐性bug的排除和性能损耗的优化工作在向程序员招手。</p>
+<p>等等，你说我一直再说node，没有提及浏览器中的情况？我们来看个例子：</p>
+<pre><code>/*glboal $ */
+// we have jquery in the `window`
+$(&quot;#sexyButton&quot;).on(&quot;click&quot;, function(data) {//callback 1
+    $.getJSON(&quot;/api/topcis&quot;, function(data) {//callback 2
+        var list = data.topics.map(function(t) {
+            return t.id + &quot;. &quot; + t.title + &quot;\n&quot;;
+        });
+        var id = confirm(&quot;which topcis are you interested in? Select by ID : &quot; + list);
+        $.getJSON(&quot;/api/topics/&quot; + id, function(data) {//callback 3
+            alert(&quot;Detail topic: &quot; + data.content);
+        });
+    });
+
+});
+</code></pre><p>我们尝试获取一个文章列表，然后给予用户一些交互，让用户选择希望详细了解的一个文章，并继续获取文章详情。这个简单的例子，产生了3个回调。</p>
+<p>事实上，异步的性质是Javascript语言本身的固有风格，跟宿主环境无关。所以，回调漫天飞造成的问题是Javascript语言的共性。</p>
+<h2 id="-">解决方案</h2>
+<h3 id="evented">Evented</h3>
+<p>Javascript程序员也许是最有创造力的一群程序员之一。对于回调问题，最终有了很多解决方案。最自然想到的，便是利用事件机制。</p>
+<p>还是之前加载文章的场景：</p>
+<pre><code>var TopicController = new EventEmitter();
+
+TopicController.list = function() {//a simple wrap for ajax request
+    $.getJSON(&quot;/api/topics&quot;, this.notify(&quot;topic:list&quot;));
+    return this;
+};
+
+TopicController.show = function(id) {//a simple wrap for ajax request
+    $.getJSON(&quot;/api/topics/&quot; + id, this.notify(&quot;topic:show&quot;, id));
+    return this;
+};
+
+TopicController.bind = function() {//bind DOM events
+    $(&quot;#sexyButton&quot;).on(&quot;click&quot;, this.run.bind(this));
+    return this;
+};
+
+TopicController._queryTopic = function(data) {
+    var list = data.topics.map(function(t) {
+        return t.id + &quot;. &quot; + t.title + &quot;\n&quot;;
+    });
+    var id = confirm(&quot;which topcis are you interested in? Select by ID : &quot; + list);
+    this.show(id).listenTo(&quot;topic:show&quot;, this._showTopic);
+};
+
+TopicController._showTopic = function(data) {
+    alert(data.content);
+};
+
+TopicController.listenTo = function(eventName, listener) {//a helper method to `bind`
+    this.on(eventName, listener.bind(this));
+};
+
+TopicController.notify = function(eventName) {//generate a notify callback internally
+    var self = this, args;
+    args = Array.prototype.slice(arguments, 1);
+    return function(data) {
+        args.unshift(data);
+        args.unshift(eventName);
+        self.emit.apply(self, args);
+    };
+};
+
+TopicController.run = function() {
+    this.list().lisenTo(&quot;topic:list&quot;, this._queryTopic);
+};
+
+// kickoff
+$(function() {
+    TopicController.run();
+});
+</code></pre><p>可以看到，现在这种写法B格就高了很多。各种封装、各种解藕。首先，除了万能的jQuery，我们还依赖<code>EventEmitter</code>，这是一个观察者模式的实现<sup id="fnref3"><a href="#fn3">3</a></sup>，比如<a href="https://github.com/asyncly/EventEmitter2">asyncly/EventEmitter2</a>。简单的概括一下这种风格：</p>
+<ol>
+<li>杜绝了大部分将匿名函数用作回调的场景，达到零嵌套，代码简介明了</li>
+<li>每个状态（或步骤）之间，利用事件机制进行关联</li>
+<li>每个步骤都相互独立，方便日后维护</li>
+</ol>
+<p>如果你硬要挑剔的话，也有缺点；</p>
+<ol>
+<li>由于过度分离，整体流程模糊</li>
+<li>代码量激增，又加大了另一种维护成本</li>
+</ol>
+<h2 id="-">高阶函数</h2>
+<p>利用高阶函数，可以顺序、并发的将函数递归执行。</p>
+<p>我们可以编写一个高阶函数，让传入的函数顺序执行：</p>
+<pre><code>var runInSeries = function(ops, done) {
+    var i = 0, next;
+    next = function(e) {
+        if(e) {
+            return done(e);
+        }
+        var args = Array.prototype.slice.call(arguments, 1);
+        args.push(next);
+        ops[0].apply(null, args);
+    };
+    next();
+};
+</code></pre><p>还是我们之前的例子：</p>
+<pre><code>var list = function(next) {
+    $.getJSON(&quot;/api/topics&quot;, function(data) { next(null, data); });
+};
+
+var query = function(data, next) {
+    var list = data.topics.map(function(t) {
+        return t.id + &quot;. &quot; + t.title + &quot;\n&quot;;
+    });
+    var id = confirm(&quot;which topcis are you interested in? Select by ID : &quot; + list);
+    next(null, id);
+};
+
+var show = function(id, next) {
+    $.getJSON(&quot;/api/topics/&quot; + id, function(data) { next(null, data); });
+};
+
+$(&quot;#sexyButton&quot;).on(&quot;click&quot;, function() {
+    runInSeries([list, query, show], function(e, detail) {
+        alert(detail);
+    });
+});
+</code></pre><p>看起来还是很不错的，简洁并且清晰，最终的代码量也没有增加。如果你喜欢这种方式，去看一下<a href="https://github.com/caolan/async">caolan/async</a>会发现更多精彩。</p>
+<h2 id="promise">Promise</h2>
+<blockquote>
+<p>A promise represents the eventual result of an asynchronous operation. The primary way of interacting with a promise is through its then method, which registers callbacks to receive either a promise’s eventual value or the reason why the promise cannot be fulfilled.</p>
+</blockquote>
+<p>除开文绉绉的解释，Promise是一种对一个任务的抽象。Promise的相关API提供了一组方法和对象来实现这种抽象。</p>
+<p>Promise的实现目前有很多：</p>
+<ul>
+<li>ECMAScript Promise<sup id="fnref4"><a href="#fn4">4</a></sup><ul>
+<li>即原生的Promise对象, Chrome32+以上支持</li>
+</ul>
+</li>
+<li>Promise/A+<sup id="fnref5"><a href="#fn5">5</a></sup>标准<ul>
+<li><a href="https://github.com/kriskowal/q">kriskowal/q</a></li>
+<li><a href="https://github.com/cujojs/when">cujojs/when</a></li>
+<li><a href="https://github.com/tildeio/rsvp.js">tildeio/rsvp.js</a></li>
+</ul>
+</li>
+<li>其他厂商标准<ul>
+<li><a href="https://api.jquery.com/jQuery.when/">jQuery.Deferred</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/windows/apps/br211867.aspx">WinJS</a></li>
+</ul>
+</li>
+</ul>
+<p>虽然标准很多，但是所有的实现基本遵循如下基本规律：</p>
+<ul>
+<li>Promise对象<ul>
+<li>是一个有限状态机<ul>
+<li>完成（fulfilled）</li>
+<li>否定（rejected）</li>
+<li>等待（pending）</li>
+<li>结束（settled）</li>
+</ul>
+</li>
+<li>一定会有一个<code>then([fulfill], [reject])</code>方法，让使用者分别处理成功失败</li>
+<li>可选的<code>done([fn])</code>、<code>fail([fn])</code>方法</li>
+<li>支持链式API</li>
+</ul>
+</li>
+<li>Deffered对象<ul>
+<li>提供<code>reject</code>和<code>resolve</code>方法，来完成一个Promise</li>
+</ul>
+</li>
+</ul>
+<p>笔者会在专门的文章内介绍<a href="Javascript_Promise.html">Promise的具体机制和实现</a>。在这里仅浅尝辄止，利用基本随处可得的jQuery来解决之前的那个小场景中的异步问题：</p>
+<pre><code>$(&quot;#sexyButton&quot;).on(&quot;click&quot;, function(data) {
+    $.getJSON(&quot;/api/topcis&quot;).done(function(data) {
+        var list = data.topics.map(function(t) {
+            return t.id + &quot;. &quot; + t.title + &quot;\n&quot;;
+        });
+        var id = confirm(&quot;which topcis are you interested in? Select by ID : &quot; + list);
+        $.getJSON(&quot;/api/topics/&quot; + id).done(function(done) {
+            alert(&quot;Detail topic: &quot; + data.content);
+        });
+    });
+});
+</code></pre><p>很遗憾，使用Promise并没有让回调的问题好多少。在这个场景，Promise的并没有体现出它的强大之处。我们把jQuery官方文档中的例子拿出来看看：</p>
+<pre><code>$.when( $.ajax( &quot;/page1.php&quot; ), $.ajax( &quot;/page2.php&quot; ) ).done(function( a1, a2 ) {
+  // a1 and a2 are arguments resolved for the page1 and page2 ajax requests, respectively.
+  // Each argument is an array with the following structure: [ data, statusText, jqXHR ]
+  var data = a1[ 0 ] + a2[ 0 ]; // a1[ 0 ] = &quot;Whip&quot;, a2[ 0 ] = &quot; It&quot;
+  if ( /Whip It/.test( data ) ) {
+    alert( &quot;We got what we came for!&quot; );
+  }
+});
+</code></pre><p>这里，同时发起了两个AJAX请求，并且将这两个Promise合并成一个，开发者只用处理这最终的一个Promise。</p>
+<p>例如<code>Q.js</code>或<code>when.js</code>的第三方库，可以支持更多复杂的特性。也会让你的代码风格大为改观。可以说，Promise为处理复杂流程开启了新的大门，但是也是有成本的。这些复杂的封装，都有相当大的开销<sup id="fnref6"><a href="#fn6">6</a></sup>。</p>
+<h3 id="geneartor">Geneartor</h3>
+<p>ES6的Generator引入的<code>yield</code>表达式，让流程控制更加多变。<a href="https://github.com/laverdet/node-fibers">node-fiber</a>让我们看到了<code>coroutine</code>在Javascript中的样子。</p>
+<pre><code>var Fiber = require(&#39;fibers&#39;);
+
+function sleep(ms) {
+    var fiber = Fiber.current;
+    setTimeout(function() {
+        fiber.run();
+    }, ms);
+    Fiber.yield();
+}
+
+Fiber(function() {
+    console.log(&#39;wait... &#39; + new Date);
+    sleep(1000);
+    console.log(&#39;ok... &#39; + new Date);
+}).run();
+console.log(&#39;back in main&#39;);
+</code></pre><p>但想象一下，如果每个Javascript都有这个功能，那么一个正常Javascript程序员的各种尝试就会被挑战。你的对象会莫名其妙的被另外一个fiber中的代码更改。</p>
+<p>也就是说，还没有一种语法设计能让支持fiber和不支持fiber的Javascript代码混用并且不造成混淆。node-fiber的这种不可移植性，让coroutine在Javascript中并不那么现实<sup id="fnref7"><a href="#fn7">7</a></sup>。</p>
+<p>但是<code>yield</code>是一种Shallow coroutines，它只能停止用户代码，并且只有在<code>GeneratorFunction</code>才可以用<code>yield</code>。</p>
+<p>笔者在<a href="Javascript_Generator.html">另外一篇文章</a>中已经详细介绍了如何利用Geneator来解决异步流程的问题。</p>
+<p>利用<code>yield</code>实现的<code>suspend</code>方法，可以让我们之前的问题解决的非常简介：</p>
+<pre><code>$(&quot;#sexyButton&quot;).on(&quot;click&quot;, function(data) {
+    suspend(function *() {
+        var data = yield $.getJSON(&quot;/api/topcis&quot;);
+        var list = data.topics.map(function(t) {
+            return t.id + &quot;. &quot; + t.title + &quot;\n&quot;;
+        });
+        var id = confirm(&quot;which topcis are you interested in? Select by ID : &quot; + list);
+        var detail = yield $.getJSON(&quot;/api/topics/&quot;);
+        alert(&quot;Detail topic: &quot; + detail.content);
+    })();
+});
+</code></pre><p>为了利用<code>yield</code>，我们也是有取舍的：</p>
+<ol>
+<li>Generator的兼容性并不好，仅有新版的node和Chrome支持</li>
+<li>需要大量重写基础框架，是接口规范化(thunkify)，来支持<code>yield</code>的一些约束</li>
+<li><code>yield</code>所产生的代码风格，可能对部分新手造成迷惑</li>
+<li>多层<code>yield</code>所产生堆栈及其难以调试</li>
+</ol>
+<h2 id="-">结语</h2>
+<p>说了这么多，异步编程这种和线程模型迥然不同的并发处理方式，随着node的流行也让更多程序员了解其与众不同的魅力。如果下次再有C或者Java程序员说，Javascript的回调太难看，请让他好好读一下这篇文章吧！</p>
+<hr>
+<div class="footnotes">
+<ol>
+<li id="fn1"><p><a href="http://en.wikipedia.org/wiki/Reactor_pattern">http://en.wikipedia.org/wiki/Reactor_pattern</a></p>
+<a href="#fnref1" class="footnoteBackLink" title="Jump back to footnote 1 in the text.">↩</a></li>
+<li id="fn2"><p><a href="http://strongloop.com/strongblog/node-js-is-faster-than-java/">http://strongloop.com/strongblog/node-js-is-faster-than-java/</a></p>
+<a href="#fnref2" class="footnoteBackLink" title="Jump back to footnote 2 in the text.">↩</a></li>
+<li id="fn3"><p>en.wikipedia.org/wiki/Observer_pattern</p>
+<a href="#fnref3" class="footnoteBackLink" title="Jump back to footnote 3 in the text.">↩</a></li>
+<li id="fn4"><p><a href="http://wiki.ecmascript.org/doku.php?id=strawman:concurrency">http://wiki.ecmascript.org/doku.php?id=strawman:concurrency</a></p>
+<a href="#fnref4" class="footnoteBackLink" title="Jump back to footnote 4 in the text.">↩</a></li>
+<li id="fn5"><p><a href="http://promises-aplus.github.io/promises-spec/">http://promises-aplus.github.io/promises-spec/</a></p>
+<a href="#fnref5" class="footnoteBackLink" title="Jump back to footnote 5 in the text.">↩</a></li>
+<li id="fn6"><p><a href="http://thanpol.as/javascript/promises-a-performance-hits-you-should-be-aware-of/">http://thanpol.as/javascript/promises-a-performance-hits-you-should-be-aware-of/</a></p>
+<a href="#fnref6" class="footnoteBackLink" title="Jump back to footnote 6 in the text.">↩</a></li>
+<li id="fn7"><p><a href="http://calculist.org/blog/2011/12/14/why-coroutines-wont-work-on-the-web/">http://calculist.org/blog/2011/12/14/why-coroutines-wont-work-on-the-web/</a></p>
+<a href="#fnref7" class="footnoteBackLink" title="Jump back to footnote 7 in the text.">↩</a></li>
+</ol>
+</div>
+
+</div>
+<footer class="misc clearfix">
+  <p class="hint">建议在新版的Chrome、Safari、Firefox中阅读</p>
+  <div class="left">
+    <ul class="inline-list">
+      <li><a href="https://github.com/RobinQu/Programing-In-Javascript/">Source</a></li>
+      <li><a href="https://github.com/RobinQu/Programing-In-Javascript/blob/master/README.md">Contributors</a></li>
+      <li><a href="https://github.com/RobinQu/Programing-In-Javascript/issues">Issues</a></li>
+    </ul>
+  </div>
+  <div class="right">
+    <ul class="inline-list">
+      <li>Rev <a href="https://github.com/RobinQu/Programing-In-Javascript/tree/f18e5e3/chapters/Javascript_Core/Functional_Javascript/Async_Programing_In_Javascript.md">f18e5e3</a></li>
+      <li>2014-05-07T07:39:08.707Z</li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>
