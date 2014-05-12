@@ -9,7 +9,7 @@
         * [表达式](Javascript_Core/Javascript_Basics/Expressions.md)
         * [语句](Javascript_Core/Javascript_Basics/Statements.md)
         * [严格模式](Javascript_Core/Javascript_Basics/Strict_Mode.md)
-        * [函数](Javascript_Core/Javascript_Basics/Functions.md)
+        * [函数](Javascript_Core/Javascript_Basics/Function.md)
         * [对象](Javascript_Core/Javascript_Basics/Objects.md)
         * [数组](Javascript_Core/Javascript_Basics/Array.md)
         * 正则表达式
