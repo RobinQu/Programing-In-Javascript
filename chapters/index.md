@@ -4,10 +4,14 @@
 * Javascript核心
     * Javascript语法基础
         * [词法](Javascript_Core/Javascript_Basics/Lexical.md)
-        * [变量](Javascript_Core/Javascript_Basics/Variables.md)
-        * 表达式
         * [数据类型](Javascript_Core/Javascript_Basics/Types.md)
-        * 函数
+        * [变量](Javascript_Core/Javascript_Basics/Variables.md)
+        * [表达式](Javascript_Core/Javascript_Basics/Expressions.md)
+        * [语句](Javascript_Core/Javascript_Basics/Statements.md)
+        * [严格模式](Javascript_Core/Javascript_Basics/Strict_Mode.md)
+        * [函数](Javascript_Core/Javascript_Basics/Functions.md)
+        * [对象](Javascript_Core/Javascript_Basics/Objects.md)
+        * [数组](Javascript_Core/Javascript_Basics/Array.md)
         * 正则表达式
         * 语法规范
     * 面向对象的Javascript
