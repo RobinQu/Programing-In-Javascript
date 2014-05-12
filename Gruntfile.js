@@ -112,8 +112,8 @@ module.exports = function(grunt) {
     
     sitemap: {
       dist: {
-        siteRoot: "dist",
-        homepage: "http://pij.robinqu.me"
+        siteRoot: "dist/",
+        homepage: "http://pij.robinqu.me/"
       }
     },
     
