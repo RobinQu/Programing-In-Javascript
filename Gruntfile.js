@@ -110,6 +110,13 @@ module.exports = function(grunt) {
       }
     },
     
+    sitemap: {
+      dist: {
+        siteRoot: "dist",
+        homepage: "http://pij.robinqu.me"
+      }
+    },
+    
     copy: {
       cname: {
         src: "lib/template/CNAME",

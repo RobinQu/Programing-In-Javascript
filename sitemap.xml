@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/chapters/Browser_Scripting/DOM_Scripting/eventflow_examples/exmaple1html</loc>
+  <lastmod>2014-05-07T01:46:01.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/dist/Browser_Scripting/DOM_Scripting/EventAPIhtml</loc>
+  <lastmod>2014-05-12T04:32:54.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/dist/Browser_Scripting/Document_Loading/ScriptExecutionhtml</loc>
+  <lastmod>2014-05-12T04:32:54.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/dist/Browser_Scripting/Document_Loading/ScriptTaghtml</loc>
+  <lastmod>2014-05-12T04:32:54.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/dist/Javascript_Core/ECMAScript/es5html</loc>
+  <lastmod>2014-05-12T04:32:54.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/dist/Javascript_Core/ECMAScript/es6/es6_api_extensionhtml</loc>
+  <lastmod>2014-05-12T04:32:54.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/dist/Javascript_Core/ECMAScript/es6/es6_data_typeshtml</loc>
+  <lastmod>2014-05-12T04:32:54.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/dist/Javascript_Core/ECMAScript/es6/es6_syntax_featureshtml</loc>
+  <lastmod>2014-05-12T04:32:54.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/dist/Javascript_Core/Functional_Javascript/Async_Programing_In_Javascripthtml</loc>
+  <lastmod>2014-05-12T04:32:54.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/dist/Javascript_Core/Functional_Javascript/Continuation_Passing_Stylehtml</loc>
+  <lastmod>2014-05-12T04:32:54.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/dist/Javascript_Core/Functional_Javascript/Javascript_Generatorhtml</loc>
+  <lastmod>2014-05-12T04:32:54.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/dist/Javascript_Core/Functional_Javascript/Javascript_Promisehtml</loc>
+  <lastmod>2014-05-12T04:32:54.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/dist/Javascript_Core/Javascript_Basics/Arrayhtml</loc>
+  <lastmod>2014-05-12T04:32:54.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/dist/Javascript_Core/Javascript_Basics/Expressionshtml</loc>
+  <lastmod>2014-05-12T04:32:54.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/dist/Javascript_Core/Javascript_Basics/Functionhtml</loc>
+  <lastmod>2014-05-12T04:32:54.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/dist/Javascript_Core/Javascript_Basics/Lexicalhtml</loc>
+  <lastmod>2014-05-12T04:32:54.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/dist/Javascript_Core/Javascript_Basics/Objectshtml</loc>
+  <lastmod>2014-05-12T04:32:54.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/dist/Javascript_Core/Javascript_Basics/Statementshtml</loc>
+  <lastmod>2014-05-12T04:32:54.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/dist/Javascript_Core/Javascript_Basics/Strict_Modehtml</loc>
+  <lastmod>2014-05-12T04:32:54.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/dist/Javascript_Core/Javascript_Basics/Typeshtml</loc>
+  <lastmod>2014-05-12T04:32:54.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/dist/Javascript_Core/Javascript_Basics/Variableshtml</loc>
+  <lastmod>2014-05-12T04:32:54.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/dist/indexhtml</loc>
+  <lastmod>2014-05-12T04:32:54.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/lib/template/templatehtml</loc>
+  <lastmod>2014-05-12T04:31:57.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/cheerio/benchmark/documents/jqueryhtml</loc>
+  <lastmod>2013-12-30T21:51:08.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/cheerio/node_modules/CSSselect/test/nwmatcher/testhtml</loc>
+  <lastmod>2013-12-12T14:07:55.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/cheerio/node_modules/CSSselect/test/qwery/indexhtml</loc>
+  <lastmod>2013-12-12T14:07:55.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/cheerio/node_modules/CSSselect/test/sizzle/data/indexhtml</loc>
+  <lastmod>2013-12-12T14:07:55.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/cheerio/node_modules/CSSselect/test/tools/docs/W3C_Selectorshtml</loc>
+  <lastmod>2013-12-12T14:07:55.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/cheerio/node_modules/htmlparser2/test/Documents/Attributeshtml</loc>
+  <lastmod>2013-12-10T12:16:38.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/cheerio/node_modules/htmlparser2/test/Documents/Basichtml</loc>
+  <lastmod>2013-12-10T12:16:38.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/grunt-contrib-connect/node_modules/connect/lib/public/directoryhtml</loc>
+  <lastmod>2014-03-05T16:06:25.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/grunt-contrib-connect/node_modules/connect/lib/public/errorhtml</loc>
+  <lastmod>2014-03-05T16:06:25.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/grunt-contrib-connect/node_modules/portscanner/node_modules/async/test/testhtml</loc>
+  <lastmod>2011-11-01T23:04:58.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/grunt-markdown/tasks/templatehtml</loc>
+  <lastmod>2014-03-27T11:19:25.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/grunt-markdown/test/data/titletesthtml</loc>
+  <lastmod>2014-03-27T11:19:25.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/grunt-sass/node_modules/node-sass/node_modules/mocha/lib/reporters/templates/scripthtml</loc>
+  <lastmod>2014-03-18T09:50:35.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/grunt-sass/node_modules/node-sass/node_modules/mocha/lib/reporters/templates/stylehtml</loc>
+  <lastmod>2014-03-18T09:50:35.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/grunt-sass/node_modules/node-sass/node_modules/mocha/lib/templatehtml</loc>
+  <lastmod>2014-03-18T09:50:35.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/grunt-sass/node_modules/node-sass/node_modules/sinon/test/server-clockhtml</loc>
+  <lastmod>2014-01-23T22:18:17.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/grunt-sass/node_modules/node-sass/node_modules/sinon/test/sinon-disthtml</loc>
+  <lastmod>2013-11-16T22:33:49.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/grunt-sass/node_modules/node-sass/node_modules/sinon/test/sinonhtml</loc>
+  <lastmod>2014-01-23T22:18:17.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/grunt-sass/node_modules/node-sass/node_modules/sinon/test/timershtml</loc>
+  <lastmod>2014-01-23T22:18:17.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/grunt/node_modules/colors/examplehtml</loc>
+  <lastmod>2013-07-26T05:36:07.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/grunt/node_modules/js-yaml/node_modules/argparse/node_modules/underscorestring/test/test.html</loc>
+  <lastmod>2013-07-10T09:41:16.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/grunt/node_modules/js-yaml/node_modules/argparse/node_modules/underscorestring/test/test_standalone.html</loc>
+  <lastmod>2013-07-10T09:41:16.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/grunt/node_modules/js-yaml/node_modules/argparse/node_modules/underscorestring/test/test_underscore/</loc>
+  <lastmod>2013-07-11T08:39:45.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/grunt/node_modules/js-yaml/node_modules/argparse/node_modules/underscore/indexhtml</loc>
+  <lastmod>2013-01-30T02:13:48.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/grunt/node_modules/underscorestring/test/test.html</loc>
+  <lastmod>2013-07-10T09:41:16.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/grunt/node_modules/underscorestring/test/test_standalone.html</loc>
+  <lastmod>2013-07-10T09:41:16.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/grunt/node_modules/underscorestring/test/test_underscore/temp_tests.html</loc>
+  <lastmod>2013-07-10T10:31:52.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/grunt/node_modules/underscorestring/test/test_underscore/test.html</loc>
+  <lastmod>2013-07-10T10:31:52.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/jasmine-node/node_modules/jasmine-reporters/test/console_reporterhtml</loc>
+  <lastmod>2014-04-19T03:07:22.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/jasmine-node/node_modules/jasmine-reporters/test/junit_xml_reporterhtml</loc>
+  <lastmod>2014-04-19T03:07:22.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/jasmine-node/node_modules/jasmine-reporters/test/nunit_xml_reporterhtml</loc>
+  <lastmod>2014-04-19T03:07:22.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/jasmine-node/node_modules/jasmine-reporters/test/tap_reporterhtml</loc>
+  <lastmod>2014-02-28T01:19:24.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/jasmine-node/node_modules/jasmine-reporters/test/teamcity_reporterhtml</loc>
+  <lastmod>2014-02-28T00:51:07.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/jasmine-node/node_modules/jasmine-reporters/test/terminal_reporterhtml</loc>
+  <lastmod>2014-03-23T07:23:24.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/karma-safari-launcher/safarihtml</loc>
+  <lastmod>2013-07-21T00:12:51.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/karma/integration-tests/coverage-coffee/coverage/Firefox 190.0 (Linux)/</loc>
+  <lastmod>2014-04-27T06:35:49.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/karma/integration-tests/coverage-coffee/coverage/Firefox 190.0 (Linux)/plus.coffee.html</loc>
+  <lastmod>2014-04-27T06:35:49.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/karma/integration-tests/coverage-jasmine/coverage/Firefox 190.0 (Linux)/</loc>
+  <lastmod>2014-04-27T06:36:05.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/karma/integration-tests/coverage-jasmine/coverage/Firefox 190.0 (Linux)/lib/</loc>
+  <lastmod>2014-04-27T06:36:05.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/karma/integration-tests/coverage-jasmine/coverage/Firefox 190.0 (Linux)/lib/minus.js.html</loc>
+  <lastmod>2014-04-27T06:36:05.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/karma/integration-tests/coverage-jasmine/coverage/Firefox 190.0 (Linux)/lib/plus.js.html</loc>
+  <lastmod>2014-04-27T06:36:05.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/karma/integration-tests/coverage-mocha-requirejs/coverage/Firefox 190.0 (Linux)/dependency.js.html</loc>
+  <lastmod>2014-04-27T06:36:22.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/karma/integration-tests/coverage-mocha-requirejs/coverage/Firefox 190.0 (Linux)/</loc>
+  <lastmod>2014-04-27T06:36:22.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/karma/integration-tests/coverage-qunit/coverage/Firefox 190.0 (Linux)/</loc>
+  <lastmod>2014-04-27T06:36:38.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/karma/integration-tests/coverage-qunit/coverage/Firefox 190.0 (Linux)/lib/</loc>
+  <lastmod>2014-04-27T06:36:38.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/karma/integration-tests/coverage-qunit/coverage/Firefox 190.0 (Linux)/lib/minus.js.html</loc>
+  <lastmod>2014-04-27T06:36:38.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/karma/integration-tests/coverage-qunit/coverage/Firefox 190.0 (Linux)/lib/plus.js.html</loc>
+  <lastmod>2014-04-27T06:36:38.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/karma/integration-tests/html2js/templatehtml</loc>
+  <lastmod>2014-04-27T06:35:18.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/karma/node_modules/colors/examplehtml</loc>
+  <lastmod>2013-07-26T05:36:07.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/karma/node_modules/connect/lib/public/directoryhtml</loc>
+  <lastmod>2013-12-11T07:46:12.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/karma/node_modules/connect/lib/public/errorhtml</loc>
+  <lastmod>2013-12-11T07:46:12.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/karma/node_modules/http-proxy/node_modules/pkginfo/docs/pkginfohtml</loc>
+  <lastmod>2013-01-18T06:57:26.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/karma/node_modules/log4js/node_modules/async/test/testhtml</loc>
+  <lastmod>2011-11-01T23:04:58.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/karma/node_modules/socketio/node_modules/policyfile/doc/</loc>
+  <lastmod>2011-07-23T20:36:51.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/karma/node_modules/socketio/node_modules/socket.io-client/lib/vendor/web-socket-js/sample.html</loc>
+  <lastmod>2013-06-06T15:11:27.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/karma/node_modules/socketio/node_modules/socket.io-client/node_modules/active-x-obfuscator/node_modules/zeparser/benchmark.html</loc>
+  <lastmod>2011-12-16T16:47:55.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/karma/node_modules/socketio/node_modules/socket.io-client/node_modules/active-x-obfuscator/node_modules/zeparser/test-parser.html</loc>
+  <lastmod>2011-12-16T16:47:55.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/karma/node_modules/socketio/node_modules/socket.io-client/node_modules/active-x-obfuscator/node_modules/zeparser/test-tokenizer.html</loc>
+  <lastmod>2011-12-16T16:47:55.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/karma/node_modules/socketio/node_modules/socket.io-client/node_modules/uglify-js/README.html</loc>
+  <lastmod>2011-12-09T12:59:08.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/karma/node_modules/socketio/node_modules/socket.io-client/node_modules/ws/examples/fileapi/public/</loc>
+  <lastmod>2013-07-02T11:04:19.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/karma/node_modules/socketio/node_modules/socket.io-client/node_modules/ws/examples/serverstats-express_3/public/</loc>
+  <lastmod>2013-07-02T11:04:19.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/karma/node_modules/socketio/node_modules/socket.io-client/node_modules/ws/examples/serverstats/public/</loc>
+  <lastmod>2013-07-02T11:04:19.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/karma/static/clienthtml</loc>
+  <lastmod>2014-04-27T06:34:01.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/karma/static/contexthtml</loc>
+  <lastmod>2014-04-27T06:34:01.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://github.com/RobinQu/Programing-In-Javascript/node_modules/karma/static/debughtml</loc>
+  <lastmod>2014-04-27T06:40:37.000Z</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.5</priority>
+</url>
+</urlset>
