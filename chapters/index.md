@@ -3,7 +3,9 @@
 * 引言
 * Javascript核心
     * Javascript语法基础
-        * 变量、表达式
+        * [词法](Javascript_Core/Javascript_Basics/Lexical.md)
+        * [变量](Javascript_Core/Javascript_Basics/Variables.md)
+        * 表达式
         * [数据类型](Javascript_Core/Javascript_Basics/Types.md)
         * 函数
         * 正则表达式
