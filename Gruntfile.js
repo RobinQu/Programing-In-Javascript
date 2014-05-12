@@ -144,7 +144,7 @@ module.exports = function(grunt) {
   
   grunt.registerTask("default", "build");
   
-  grunt.registerTask("build", ["revision", "clean:build", "copy:cname", "copy:graphic", "copy:cssimages", "sass:build", "committers", "markdown:all"]);
+  grunt.registerTask("build", ["revision", "clean:build", "copy:cname", "copy:graphic", "copy:cssimages", "sass:build", "committers", "markdown:all", "sitemap:dist"]);
   
   grunt.registerTask("preview", ["build", "connect:preview:keepalive"]);
   
