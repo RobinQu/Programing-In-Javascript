@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Javascript Objects - Javascript编程语言</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Javascript编程语言 - 一本开源的Javascript编程指南; An open-sourced Javascript Guide and Tutorial; Javascript Objects 创建对象  对象直接量  var  o = {     foo : &quot;bar&quot; }  构造函数   var o = new Object();    原型继承  var p = Object.create(o); 类继承 Javascript对象拥有自有属性和继承属性。  在查询对象o的属性x时，先查找o中的属性x，如果没找到，则查找o的原型对象中的x属性，直">
+<meta name="keywords" content="Javascript, guide, open-sourced ">
+<link rel="stylesheet" type="text/css" href="/style.css" />
+
+</head>
+<body>
+<header class="clearfix">
+  <div class="left back-toc">
+    <ul class="inline-list">
+      <li><a href="/">目录</a></li>
+      
+        <li class="seperator">></li>
+        <li>Javascript核心</li>
+      
+        <li class="seperator">></li>
+        <li>Javascript语法基础</li>
+      
+      
+      <li class="seperator">></li>
+      <li class="current"><strong>当前页面</strong></li>
+      
+    </ul>
+  </div>
+  <div class="right">
+    <a href="/"><img src="/images/logo.png" alt="Javascript编程语言" width="256" height="50" /></a>
+  </div>
+</header>
+<div class="primary">
+  <h1 id="javascript-objects">Javascript Objects</h1>
+<h2 id="-">创建对象</h2>
+<ul>
+<li>对象直接量</li>
+</ul>
+<pre><code>var  o = {
+    foo : &quot;bar&quot;
+}
+</code></pre><ul>
+<li><p>构造函数</p>
+<p>  var o = new Object();</p>
+</li>
+</ul>
+<ul>
+<li>原型继承</li>
+</ul>
+<pre><code>var p = Object.create(o);
+</code></pre><h2 id="-">类继承</h2>
+<p>Javascript对象拥有自有属性和继承属性。</p>
+<ul>
+<li><p>在查询对象o的属性x时，先查找o中的属性x，如果没找到，则查找o的原型对象中的x属性，直到查找到x或者一个原型是null的对象为止</p>
+</li>
+<li><p>在给对象o的x属性赋值时，如果o中已经有一个自有属性x，则改变x的值，若o中不存在属性x，则为o创建一个x属性并赋值</p>
+</li>
+<li><p>也就是说，只有在查询时原型链才会起作用。</p>
+</li>
+</ul>
+<pre><code>var O = {
+    x : 1
+};
+
+function P() {
+    this.y = 2;
+}
+
+P.prototype = O;
+
+var t = new P();
+console.log(t);
+console.log(&#39;x&#39; in t);//true
+console.log(t.hasOwnProperty(&#39;x&#39;));//false
+</code></pre><p>可以使用in 或者 hasOwnProperty 来判断对象中是否存在属性。</p>
+<h2 id="-">对象属性</h2>
+<ul>
+<li>遍历对象属性</li>
+</ul>
+<p>可以使用 <code>for..in</code> 来遍历对象的属性</p>
+<p>使用<code>for..in</code>时会遍历到原型链上的属性。遍历顺序是以广度优先遍历</p>
+<p>所以使用hasOwnProperty便可以判断是否是对象自有的属性。</p>
+<ul>
+<li>对象属性的特性</li>
+</ul>
+<p>使用Object.getOwnPropertyDescriptor()获取对象特定属性的描述符</p>
+<p><em>可写性(writable)</em> 表示对象属性是否可写</p>
+<p>例如</p>
+<pre><code>var o = {
+    foo    : &#39;bar&#39;
+}
+
+Object.defineProperty(o, &quot;foo&quot;, { writable : false });
+
+o.foo = &#39;world&#39;;
+console.log(o.foo);//仍然输出bar
+</code></pre><p><em>可枚举性(enumerable)</em> 表示对象属性是否可枚举</p>
+<p>例如<br>Array中的length等属性的 enumerable是false，所以，</p>
+<pre><code>for (p in Array) {
+    console.log(p);
+}
+</code></pre><p>什么也不输出</p>
+<p><em>可配置性(configurable)</em> 表示可否修改属性的可配置性和可枚举性</p>
+<p>可以用Object.defineProperties来定义这些配置属性。</p>
+<pre><code>Object.defineProperty(o, &quot;foo&quot;, { writable : false });
+</code></pre><p><em>Get 表示获取对象属性的方法</em><br><em>Set 表示设置对象属性的方法</em></p>
+<p>示例</p>
+<pre><code>var book = {
+    _year: 2004,
+    edition: 1
+};
+Object.defineProperty(book, &quot;year&quot;, {
+    get: function () {
+        console.log(&#39;get year&#39;);
+        return this._year;
+    },
+    set: function (newValue) {
+        console.log(&#39;set year&#39;);
+        if (newValue &gt; 2004) {
+            this._year = newValue;
+            this.edition += newValue - 2004;
+        }
+    }
+});
+book.year = 2005;//控制台输出‘set year’
+console.log(book.year);//控制台输出‘get year’和year的值
+</code></pre><h2 id="-">对象方法</h2>
+<ul>
+<li><p><code>toString</code> 将对象转换成字符串，默认的转换会是[object Object]之类的东西，所以需要转成json格式的话可以用<code>JSON.stringify</code></p>
+</li>
+<li><p><code>valueOf</code> 需要将对象转换成其他类型的时候要用到。同样的，默认转换没什么值得说的。</p>
+</li>
+</ul>
+<h2 id="-">可执行对象</h2>
+<p>通过如下方法可以创建一个可执行对象</p>
+<pre><code>function bar(o) {
+    var f = function() { return &quot;Hello World!&quot;; }
+    o.__proto__ = f.__proto__;
+    f.__proto__ = o;
+    return f;
+}
+
+var o = { x: 5 };
+var foo = bar(o);
+
+console.log(foo());
+console.log(foo.x);
+console.log(typeof foo);//function
+</code></pre><p>既可以当作对象来使用（有原型链），也可以当作函数来直接调用</p>
+
+</div>
+<footer class="misc clearfix">
+  <p class="hint">建议在新版的Chrome、Safari、Firefox中阅读</p>
+  <div class="left">
+    <ul class="inline-list">
+      <li><a href="https://github.com/RobinQu/Programing-In-Javascript/">Source</a></li>
+      <li><a href="https://github.com/RobinQu/Programing-In-Javascript/blob/master/README.md">Contributors</a></li>
+      <li><a href="https://github.com/RobinQu/Programing-In-Javascript/issues">Issues</a></li>
+    </ul>
+  </div>
+  <div class="right">
+    <ul class="inline-list">
+      <li>Rev <a href="https://github.com/RobinQu/Programing-In-Javascript/tree/3a65aa7/chapters/Javascript_Core/Javascript_Basics/Objects.md">3a65aa7</a></li>
+      <li>2014-05-12T04:11:08.235Z</li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>

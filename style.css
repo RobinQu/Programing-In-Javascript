@@ -365,3 +365,6 @@ header {
 footer {
   border-top: 1px solid black;
   margin: 2rem 0; }
+
+ul, li {
+  margin: 0px; }

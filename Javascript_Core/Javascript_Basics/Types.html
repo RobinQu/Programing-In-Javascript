@@ -5,8 +5,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="Javascript编程语言 - 一本开源的Javascript编程指南; An open-sourced Javascript Guide and Tutorial; Javascript数据类型 Javascript没有强制对象类型检测，但不意味着没有数据类型。有两类：  原始类型 对象类型  这两类对象在使用、参数传递、返回值上都有细微差别。 字面量  NullLiteral BooleanLiteral NumbericLiteral StringLiteral RegularExpressionLiteral ObjectLiteral  原始数据类型 ">
-<meta name="keywords" content="Javascript, guide, open-sourced ,量,,2,,Javascript,,数据类型,,没有,,强制,,对象,,类型,,检测,,，,,但,,不,,意味着,,。,,有,,两,,类,,：,,*,,原始,,这,,对,,象,,在,,使用,,、,,参数,,传递,,返回,,值,,上,,都,,细微,,差别,,字面,,#,,NullLiteral,,BooleanLiteral,,NumbericLiteral,,StringLiteral,,RegularExpressionLiteral,,ObjectLiteral,,undefined,,null,,Boolean,,value,,Number,,NaN,,Inifinity,,String,,object,,Object,,Function,,RegExp,,Error,,SyntaxError,,ReferenceError,,TypeError,,.,,隐式,,转换,,=,,&quot;,,!,,References,,http://webreflection.blogspot.com/2010/10/javascript-coercion-demystified.html,,http://www.yaldex.com/javascript_tutorial_2/LiB0022.html,,http://stackoverflow.com/questions/13266616/primitive-value-vs-reference-value,,http://dailyjs.com/2012/05/07/js101-object/,,http://javascriptweblog.wordpress.com/2010/09/27/the-secret-life-of-javascript-primitives/">
+<meta name="description" content="Javascript编程语言 - 一本开源的Javascript编程指南; An open-sourced Javascript Guide and Tutorial; Javascript数据类型 计算机程序的运行需要对值进行造作。在编程语言中，能够表示并操作的值的类型称做数据类型。 JavaScript的数据类型分为两类： 原始类型和对象类型。JavaScript中的原始类型包括数字，字符串和布尔值。 1 &quot;hello world&quot; true JavaScript中有两个特殊的原始值： null和undefined。 null undefined JavaSc">
+<meta name="keywords" content="Javascript, guide, open-sourced ">
 <link rel="stylesheet" type="text/css" href="/style.css" />
 
 </head>
@@ -34,34 +34,174 @@
 </header>
 <div class="primary">
   <h1 id="javascript-">Javascript数据类型</h1>
-<p>Javascript没有强制对象类型检测，但不意味着没有数据类型。有两类：</p>
+<p>计算机程序的运行需要对值进行造作。在编程语言中，能够表示并操作的值的类型称做数据类型。</p>
+<p>JavaScript的数据类型分为两类： 原始类型和对象类型。JavaScript中的原始类型包括数字，字符串和布尔值。</p>
+<pre><code>1
+&quot;hello world&quot;
+true
+</code></pre><p>JavaScript中有两个特殊的原始值： null和undefined。</p>
+<pre><code>null
+undefined
+</code></pre><p>JavaScript除了上述的就是对象了，对象是属性的集合，每个属性都由 键值对组成。</p>
+<pre><code>var i = {x: 1, y: 2}
+</code></pre><p>通常对象是无序，JavaScript定义了一种特殊对象数组，他是有序的集合。</p>
+<pre><code>var a[10];
+</code></pre><p>JavaScript还定义了另一种特殊的对象-函数。函数是具有与它相关联的可执行代码的对象。通过调用函数来运行执行的代码，并返回结果。</p>
+<pre><code>function a(){
+  console.log(&quot;hello world&quot;);
+}
+</code></pre><h2 id="-">数字</h2>
 <ul>
-<li>原始类型</li>
-<li>对象类型</li>
-</ul>
-<p>这两类对象在使用、参数传递、返回值上都有细微差别。</p>
-<h2 id="-">字面量</h2>
+<li>不区分整数值和浮点数， JavaScript中所有数字均用64位浮点数值标识（IEEE 754）。</li>
+<li>就像java程序员所熟悉的double类型</li>
+<li>取值范围在 ±1.7976931348623157 × 10 308 到 ±5 × 10 −324 之间</li>
+<li><p>文字:</p>
 <ul>
-<li>NullLiteral</li>
-<li>BooleanLiteral</li>
-<li>NumbericLiteral</li>
-<li>StringLiteral</li>
-<li>RegularExpressionLiteral</li>
-<li>ObjectLiteral</li>
-</ul>
-<h2 id="-">原始数据类型</h2>
-<ul>
-<li>undefined</li>
-<li>null</li>
-<li>Boolean value</li>
-<li>Number value<ul>
-<li>NaN</li>
-<li>Inifinity</li>
+<li>整数<ul>
+<li>十六进制 0x</li>
+<li>八进制 0</li>
 </ul>
 </li>
-<li>String value</li>
+<li>浮点表示</li>
+<li>Math类<ul>
+<li>方法<ul>
+<li>pow // 求幂</li>
+<li><strong>round</strong> //四舍五入</li>
+<li><strong>ceil</strong> //向上取整</li>
+<li><strong>floor</strong> //向下取整</li>
+<li><strong>abs</strong> //求绝对值</li>
+<li><strong>max</strong> //最大值</li>
+<li><strong>min</strong>  //最最小值</li>
+<li>sqrt</li>
+<li>log</li>
+<li>exp</li>
+<li>acos</li>
+<li>asin</li>
+<li>atan</li>
+<li>atan2</li>
+<li><strong>random</strong></li>
+<li>sin</li>
+<li>cos</li>
 </ul>
-<h2 id="-">对象数据类型</h2>
+</li>
+<li>常量<ul>
+<li>PI</li>
+<li>E</li>
+<li>LN2</li>
+<li>LN10</li>
+<li>LOG2E</li>
+<li>LOG10E</li>
+<li>PI</li>
+<li>SQRT1_2</li>
+<li>SQRT2    </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>无限值<ul>
+<li>正无穷<ul>
+<li>Infinity //rw </li>
+<li>Number.POSITIVE_INFINITY // r</li>
+<li>1/0</li>
+<li>Number.MAX_VALUE + 1</li>
+</ul>
+</li>
+<li>负无穷<ul>
+<li>Number.NEGATIVE_INFINITY //rw</li>
+<li>-Intifinty //r</li>
+<li>-1/0</li>
+<li>-Number.MAX_VALUE - 1</li>
+</ul>
+</li>
+<li>NaN<ul>
+<li>不与任何值相等 包括它自己.</li>
+<li>NaN //rw</li>
+<li>Number.NaN //r</li>
+<li>0/0 //计算结果为NaN</li>
+</ul>
+</li>
+<li>Zero<ul>
+<li>Number.MIN_VALUE/2</li>
+<li>-Number.MIN_VALUE/2</li>
+<li>-1/Infinity</li>
+<li>-0</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Rounding-error</p>
+<pre><code>      var x = .3 - .2 
+      var y = .2 - .1
+      x == y
+      x == .1 // =&gt; false .3 -.2 不等于 ./
+      y == .1 // =&gt; true .2 - .1 等于 .1
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<h2 id="-">布尔值</h2>
+<p>布尔值指代真或假，这个类型只有两个值， 保留字true和false</p>
+<p>通常比较语句的结果是布尔值 例如：</p>
+<pre><code>a==4
+</code></pre><p>这段代码检测a是否等于4</p>
+<p>任何JavaScript的值都可以转换为布尔值。下面这些值会被转换为false</p>
+<pre><code>undefined
+null
+0
+-0    
+NaN
+&quot;&quot; // the empty string
+</code></pre><p>所有其他的值，包括所有对象都会转换成true</p>
+<h2 id="null-undefined">null和undefined</h2>
+<p>null表示一个特殊值，常用来描述空值。 对null执行typerof，结果返回object, 也就是null被认为是一种特殊的对象值，含义是非对象。</p>
+<p>JavaScript使用undefined标识变量没有初始化。例如函数没有返回值，则返回undefined。undefined是预定义的全局变量（与null不一样，它不是关键字）。</p>
+<h2 id="-">日期与时间</h2>
+<p>JavaScript语言核心包括Date()构造函数， 用来创建表示日期和时间的对象。这些日期对象的方法为日期计算通过了简单的API:</p>
+<pre><code>var then = new Date(2011, 0, 1); // 2011年1月1日
+var later = new Date(2011, 0, 1, 17, 10, 30) //同一天，当地时间5：10:30pm,
+var now = new Date(); //当前日期和时间
+var elapsed = now - then; //日期减法： 计算时间间隔的毫秒数
+later.getFullYear() // =&gt; 2011
+later.getMonth() // =&gt; 0 从0开始计数的月份
+later.getDate() // =&gt; 1 从1开始计数的天数
+later.getDay() // =&gt; 5 得到星期几， 0代表星期日， 5代表星期一
+later.getHours() // =&gt; 当地时间17   5pm
+later.getUTHours() // 使用UTC表示小时的时间，基于时区
+</code></pre><h2 id="-">文本</h2>
+<p>字符串是一组由16位值组成的不可变的有序序列，每个字符通常来自于Unicode字符集。</p>
+<pre><code>var i = &quot;abcdefg&quot;;  
+</code></pre><p>在JavaScript字符串中，反斜线\有着特殊的用途，反斜线符号后加一个字符，就不再表示它们的字面含义了，不如\n就是一个转义字符，它表示一个换行符。</p>
+<pre><code>&#39;You\&#39;re right, it can\&#39;t be a quote&#39;
+</code></pre><p>JavaScript的内置功能之一就是字符串连接：</p>
+<pre><code>msg = &quot;Hello, &quot; + &quot;world&quot;;
+</code></pre><p>字符串的length属性可以查看字符串的长度：</p>
+<pre><code>s.length
+</code></pre><p>除了length属性， 字符串还提供许多可以调用的方法：</p>
+<pre><code>var s = &quot;hello, world&quot; //定义一个字符串
+s.charAt(0)      // =&gt; &quot;h&quot; 第一个字符
+s.charAt(s.length-1) // =&gt; &quot;d&quot; 最后一个字符
+s.substring(1, 4) // =&gt; &quot;ell&quot; 第2-4个字符
+s.slice(1,4) // =&gt; &quot;ell&quot; 同上
+s.slice(-3)  // =&gt; &quot;rld&quot;: 最后三个字符
+s.indexOf(&quot;l&quot;) // =&gt; 2 字符l首次出现的位置
+s.lastIndexOf(&quot;l&quot;) // =&gt; 10: 字符l最后一次出现的位置
+s.indexOf(&quot;l&quot;, 3) // =&gt; 在位置3及之后首次出现字符l的位置
+s.split(&quot;,&quot;) // =&gt; [&quot;hello&quot;, &quot;world&quot;]分割成子串
+s.replace(&quot;h&quot;, &quot;H&quot;) // =&gt; &quot;Hello, world&quot;: 全文字符替换
+s.toUpperCase() // =&gt; &quot;HELLO WORLD&quot;
+</code></pre><h2 id="-">全局对象</h2>
+<p>全局对象在JavaScript中有着重要的用途： 全局对象的属性是全局定义的符号， JavaScript程序可以直接使用，当解释器启动时，它将创建一个新的全局对象，并给它一组定义的初始属性：</p>
+<ul>
+<li>全局属性，比如undefined, Infinity</li>
+<li>全局函数，比如parseInt()</li>
+<li>构造函数，比如Data(),</li>
+<li>全局对象，比如Math和JSON</li>
+</ul>
+<h2 id="-">包装对象</h2>
+<p>看这样一个例子：</p>
+<pre><code>var s = &quot;hello world!&quot;;
+var word = s.substring(s.indexOf(&quot; &quot;)+1, s.length);
+</code></pre><p>字符串既然不是对象，为什么它会有属性呢？只要引用了字符串s的属性，JavaScript就会将字符串值通过调用new String(s)的方式转换成对象，<br>同字符串一样，数字和布尔值也有相应的方法。其他类似的包装类：</p>
 <ul>
 <li>Number object</li>
 <li>String object</li>
@@ -76,7 +216,95 @@
 </li>
 <li>…</li>
 </ul>
-<h2 id="-">隐式转换</h2>
+<h3 id="-">不可变的原始值和可变的原始对象引用</h3>
+<p>原始值是不可改变的，原始值的比较是值比较， 对象的比较并非值比较：即使两个对象包含同样的属性以及相同的值，他们也不是相等的。我们通常将对象称为引用类型，对象的值都是引用，对象的比较也是引用的比较，当且仅当他们引用同一个基独享，他们才相等；</p>
+<h2 id="-">类型转换</h2>
+<p>当期望使用一个布尔值的时候，可以提供任意类型值，JavaScript将根据需要自行转换类型。类型转换可以分为隐式转换和显式转换，所谓隐式转换即程序在运行时进行的自动转换，显式转换则是人为的对类型进行强制转换。</p>
+<h3 id="-">显式转换</h3>
+<p>通过手动进行类型转换，Javascript提供了以下转型函数：</p>
+<ul>
+<li><p>转换为数值类型：Number(mix)、parseInt(string,radix)、parseFloat(string)</p>
+</li>
+<li><p>转换为字符串类型：toString(radix)、String(mix)</p>
+</li>
+<li><p>转换为布尔类型：Boolean(mix)</p>
+</li>
+</ul>
+<p>Number(mix)函数，可以将任意类型的参数mix转换为数值类型。其规则为：</p>
+<ul>
+<li><p>如果是布尔值，true和false分别被转换为1和0 </p>
+<pre><code>  Number(true); //=&gt; 1 
+</code></pre></li>
+<li><p>如果是数字值，返回本身。</p>
+<pre><code>  Number(5); //=&gt; 5
+</code></pre></li>
+<li><p>如果是null，返回0.</p>
+<pre><code>  Number(null); //=&gt;0
+</code></pre></li>
+<li><p>如果是undefined，返回NaN。</p>
+<pre><code>  Number(undefined); //=&gt; NaN
+</code></pre></li>
+</ul>
+<p>如果是字符串，遵循以下规则：</p>
+<ul>
+<li><p>如果字符串中只包含数字，则将其转换为十进制（忽略前导0）</p>
+<pre><code>  Number(&quot;00001&quot;); //=&gt; 1
+</code></pre></li>
+<li><p>如果字符串中包含有效的浮点格式，将其转换为浮点数值（忽略前导0）</p>
+<pre><code>  Number(&quot;1.234&quot;); //=&gt; 1.234
+</code></pre></li>
+<li><p>如果是空字符串，将其转换为0</p>
+<pre><code>  Number(&quot;&quot;); //=&gt; 0
+</code></pre></li>
+<li><p>如果字符串中包含非以上格式，则将其转换为NaN</p>
+</li>
+<li>如果是对象，则调用对象的valueOf()方法，然后依据前面的规则转换返回的值。如果转换的结果是NaN，则调用对象的toString() 方法，再次依照前面的规则转换返回的字符串值。</li>
+</ul>
+<p>下表列出了对象的valueOf()的返回值：</p>
+<pre><code>对象    返回值
+Array    数组的元素被转换为字符串，这些字符串由逗号分隔，连接在一起。其操作 与 Array.toString 和 Array.join 方法相同。
+Boolean    Boolean 值。
+Date    存储的时间是从 1970 年 1 月 1 日午夜开始计的毫秒数 UTC。
+Function    函数本身。
+Number    数字值。
+Object    对象本身。这是默认情况。
+String    字符串值。
+</code></pre><p>parseInt(string, radix)函数，将字符串转换为整数类型的数值。它也有一定的规则：</p>
+<ul>
+<li>忽略字符串前面的空格，直至找到第一个非空字符</li>
+<li>如果第一个字符不是数字符号或者负号，返回NaN</li>
+<li>如果第一个字符是数字，则继续解析直至字符串解析完毕或者遇到一个非数字符号为止</li>
+<li>如果上步解析的结果以0开头，则将其当作八进制来解析；如果以0x开头，则将其当作十六进制来解析</li>
+<li><p>如果指定radix参数，则以radix为基数进行解析</p>
+<pre><code>  parseInt(&quot;12&quot;, 10); // =&gt; 12
+  parseInt(&quot;12&quot;, 16); // =&gt; 18
+  parseInt(&quot;1E&quot;, 10); // =&gt; 1
+  parseInt(&quot;E&quot;, 10); // =&gt; NaN
+</code></pre></li>
+</ul>
+<p>parseFloat(string)函数，将字符串转换为浮点数类型的数值。<br>它的规则与parseInt基本相同，但也有点区别：字符串中第一个小数点符号是有效的，另外parseFloat会忽略所有前导0，如果字符串包 含一个可解析为整数的数，则返回整数值而不是浮点数值。</p>
+<pre><code>parseFloat(&quot;1.222.2&quot;) // =&gt; 1.222
+parseFloat(&quot;1.0&quot;) // =&gt; 1
+</code></pre><p>toString(radix)方法。除undefined和null之外的所有类型的值都具有toString()方法，其 作用是返回对象的字符串表示。</p>
+<pre><code>对象    操作
+Array    将 Array 的元素转换为字符串。结果字符串由逗号分隔，且连接起来。
+Boolean    如果 Boolean 值是 true，则返回 “true”。否则，返 回 “false”。
+Date    返回日期的文字表示法。
+Error    返回一个包含相关错误信息的字符串。
+Function    返回如下格式的字符串，其中 functionname 是被调 用 toString 方法函数的名称： 
+function functionname( ) { [native code] }
+Number    返回数字的文字表示。
+String    返回 String 对象的值。
+默认    返回 “[object objectname]”，其中 objectname 是 对象类型的名称。
+</code></pre><p>String(mix)函数，将任何类型的值转换为字符串，其规则为：</p>
+<ul>
+<li>如果有toString()方法，则调用该方法（不传递radix参数）并返回结果</li>
+<li>如果是null，返回”null”</li>
+<li>如果是undefined，返回”undefined”</li>
+</ul>
+<p>Boolean(mix)函数，将任何类型的值转换为布尔值。<br>以下值会被转换为false：false、””、0、NaN、null、undefined，其余任何值都会被转换为true。</p>
+<h3 id="-">隐式转换</h3>
+<p>考虑一下情况：</p>
 <ul>
 <li>null == undefined</li>
 <li>undefined == null</li>
@@ -84,6 +312,73 @@
 <li>“2” == 2</li>
 <li>NaN != NaN</li>
 </ul>
+<p>在某些情况下，即使我们不提供显示转换，Javascript也会进行自动类型转换，主要情况有：</p>
+<h3 id="-isnan-mix-">用于检测是否为非数值的函数：isNaN(mix)</h3>
+<p>isNaN()函数，经测试发现，该函数会尝试将参数值用Number()进行转换，如果结果为“非数值”则返回true，否则返回false。</p>
+<h3 id="-">递增递减操作符（包括前置和后置）、一元正负符号操作符</h3>
+<p>这些操作符适用于任何数据类型的值，针对不同类型的值，该操作符遵循以下规则（经过对比发现，其规则与Number()规则基本相同）：</p>
+<ul>
+<li>如果是包含有效数字字符的字符串，先将其转换为数字值（转换规则同Number()），在执行加减1的操作，字符串变量变为数值变量。</li>
+<li>如果是不包含有效数字字符的字符串，将变量的值设置为NaN，字符串变量变成数值变量。</li>
+<li>如果是布尔值false，先将其转换为0再执行加减1的操作，布尔值变量编程数值变量。</li>
+<li>如果是布尔值true，先将其转换为1再执行加减1的操作，布尔值变量变成数值变量。</li>
+<li>如果是浮点数值，执行加减1的操作。</li>
+<li>如果是对象，先调用对象的valueOf()方法，然后对该返回值应用前面的规则。如果结果是NaN，则调用toString()方法后再应用前 面的规则。对象变量变成数值变量。</li>
+</ul>
+<h3 id="-">加法运算操作符</h3>
+<p>加号运算操作符在Javascript也用于字符串连接符，所以加号操作符的规则分两种情况：</p>
+<h4 id="-">如果两个操作值都是数值，其规则为：</h4>
+<ul>
+<li>如果一个操作数为NaN，则结果为NaN</li>
+<li>如果是Infinity+Infinity，结果是Infinity</li>
+<li>如果是-Infinity+(-Infinity)，结果是-Infinity</li>
+<li>如果是Infinity+(-Infinity)，结果是NaN</li>
+<li>如果是+0+(+0)，结果为+0</li>
+<li>如果是(-0)+(-0)，结果为-0</li>
+<li>如果是(+0)+(-0)，结果为+0</li>
+</ul>
+<h4 id="-">如果有一个操作值为字符串，则：</h4>
+<ul>
+<li>如果两个操作值都是字符串，则将它们拼接起来</li>
+<li>如果只有一个操作值为字符串，则将另外操作值转换为字符串，然后拼接起来</li>
+<li>如果一个操作数是对象、数值或者布尔值，则调用toString()方法取得字符串值，然后再应用前面的字符串规则。对于undefined和 null，分别调用String()显式转换为字符串。</li>
+</ul>
+<p>可以看出，加法运算中，如果有一个操作值为字符串类型，则将另一个操作值转换为字符串，最后连接起来。</p>
+<h3 id="-">乘除、减号运算符、取模运算符</h3>
+<p>这些操作符针对的是运算，所以他们具有共同性：如果操作值之一不是数值，则被隐式调用Number()函数进行转换。具体每一种运算的详细规则请参 考ECMAScript中的定义。</p>
+<h3 id="-">逻辑操作符（!、&amp;&amp;、||）</h3>
+<p>逻辑非（！）操作符首先通过Boolean()函数将它的操作值转换为布尔值，然后求反。<br>逻辑与（&amp;&amp;）操作符，如果一个操作值不是布尔值时，遵循以下规则进行转换：</p>
+<ul>
+<li>如果第一个操作数经Boolean()转换后为true，则返回第二个操作值，否则返回第一个值（不是Boolean()转换后的值）</li>
+<li>如果有一个操作值为null，返回null</li>
+<li>如果有一个操作值为NaN，返回NaN</li>
+<li>如果有一个操作值为undefined，返回undefined</li>
+</ul>
+<p>逻辑或（||）操作符，如果一个操作值不是布尔值，遵循以下规则：</p>
+<ul>
+<li>如果第一个操作值经Boolean()转换后为false，则返回第二个操作值，否则返回第一个操作值（不是Boolean()转换后的值）</li>
+<li>对于undefined、null和NaN的处理规则与逻辑与（&amp;&amp;）相同</li>
+</ul>
+<h3 id="-">关系操作符（&lt;, &gt;, &lt;=, &gt;=）</h3>
+<p>与上述操作符一样，关系操作符的操作值也可以是任意类型的，所以使用非数值类型参与比较时也需要系统进行隐式类型转换：</p>
+<ul>
+<li>如果两个操作值都是数值，则进行数值比较</li>
+<li>如果两个操作值都是字符串，则比较字符串对应的字符编码值</li>
+<li>如果只有一个操作值是数值，则将另一个操作值转换为数值，进行数值比较</li>
+<li>如果一个操作数是对象，则调用valueOf()方法（如果对象没有valueOf()方法则调用toString()方法），得到的结果按照前 面的规则执行比较</li>
+<li>如果一个操作值是布尔值，则将其转换为数值，再进行比较</li>
+</ul>
+<p>注：NaN是非常特殊的值，它不和任何类型的值相等，包括它自己，同时它与任何类型的值比较大小时都返回false。</p>
+<h3 id="-">相等操作符（==）</h3>
+<p>相等操作符会对操作值进行隐式转换后进行比较：</p>
+<ul>
+<li>如果一个操作值为布尔值，则在比较之前先将其转换为数值</li>
+<li>如果一个操作值为字符串，另一个操作值为数值，则通过Number()函数将字符串转换为数值</li>
+<li>如果一个操作值是对象，另一个不是，则调用对象的valueOf()方法，得到的结果按照前面的规则进行比较<br>null与undefined是相等的</li>
+<li>如果一个操作值为NaN，则相等比较返回false</li>
+<li>如果两个操作值都是对象，则比较它们是不是指向同一个对象</li>
+</ul>
+<p>需要注意的是一个值转换为另一个值并不代表两个值相等。</p>
 <h2 id="references">References</h2>
 <ul>
 <li><a href="http://webreflection.blogspot.com/2010/10/javascript-coercion-demystified.html">http://webreflection.blogspot.com/2010/10/javascript-coercion-demystified.html</a></li>
@@ -105,8 +400,8 @@
   </div>
   <div class="right">
     <ul class="inline-list">
-      <li>Rev <a href="https://github.com/RobinQu/Programing-In-Javascript/tree/f18e5e3/chapters/Javascript_Core/Javascript_Basics/Types.md">f18e5e3</a></li>
-      <li>2014-05-07T07:39:08.707Z</li>
+      <li>Rev <a href="https://github.com/RobinQu/Programing-In-Javascript/tree/3a65aa7/chapters/Javascript_Core/Javascript_Basics/Types.md">3a65aa7</a></li>
+      <li>2014-05-12T04:11:08.235Z</li>
     </ul>
   </div>
 </footer>

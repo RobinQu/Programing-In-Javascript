@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>数组 - Javascript编程语言</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Javascript编程语言 - 一本开源的Javascript编程指南; An open-sourced Javascript Guide and Tutorial; 数组 创建数组  数组字面量 var a = [1, 2, 3]; 使用构造函数 var a  = new Array();  数组本质上是object(type of [ ] == ‘object’); 所以要判断是不是数组，需要通过判断constructor。 [].constructor//Array 数组长度 使用length属性获取元素的个数。数组的length属性是可写的。当lengt">
+<meta name="keywords" content="Javascript, guide, open-sourced ">
+<link rel="stylesheet" type="text/css" href="/style.css" />
+
+</head>
+<body>
+<header class="clearfix">
+  <div class="left back-toc">
+    <ul class="inline-list">
+      <li><a href="/">目录</a></li>
+      
+        <li class="seperator">></li>
+        <li>Javascript核心</li>
+      
+        <li class="seperator">></li>
+        <li>Javascript语法基础</li>
+      
+      
+      <li class="seperator">></li>
+      <li class="current"><strong>当前页面</strong></li>
+      
+    </ul>
+  </div>
+  <div class="right">
+    <a href="/"><img src="/images/logo.png" alt="Javascript编程语言" width="256" height="50" /></a>
+  </div>
+</header>
+<div class="primary">
+  <h1 id="-">数组</h1>
+<h2 id="-">创建数组</h2>
+<ul>
+<li>数组字面量 var a = [1, 2, 3];</li>
+<li>使用构造函数 var a  = new Array();</li>
+</ul>
+<p>数组本质上是object(type of [ ] == ‘object’);</p>
+<p>所以要判断是不是数组，需要通过判断constructor。</p>
+<p><code>[].constructor//Array</code></p>
+<h2 id="-">数组长度</h2>
+<p>使用length属性获取元素的个数。<br>数组的length属性是可写的。当length属性小于元素个数时，数组中索引值大于length属性的元素会被删掉。</p>
+<h2 id="-">数组元素的添加和删除</h2>
+<ul>
+<li><code>push</code> 从数组尾部添加</li>
+<li><code>unshift</code> 从数组头部添加</li>
+<li><code>pop</code> 从尾部弹出</li>
+<li><code>shift</code> 从头部弹出</li>
+</ul>
+<h2 id="-">数组方法</h2>
+<ul>
+<li><code>join</code> 将数组中所有元素转换成字符串并连接在一起</li>
+<li><code>reverse</code> 将数组中成员颠倒排序</li>
+<li><code>sort</code> 将数组元素排序，可以指定一个排序函数</li>
+<li><code>contact</code> 将数组连接起来</li>
+<li><code>slice</code> 返回指定数组的一个片段或子数组</li>
+<li><code>splice</code> 从数组中插入或删除元素</li>
+</ul>
+<pre><code>var a = [1, 2, 3, 4];
+var b = a.splice(1,2);//a = 1,4,b = 2,3
+</code></pre><h2 id="ecmascript-5-">ECMAScript 5中的数组新方法</h2>
+<ul>
+<li><code>forEach</code> 从头到尾遍历数组，为每个元素调用制定的函数</li>
+<li><code>map</code> 把数组的每个元素传给指定的函数，并返回一个数组。</li>
+</ul>
+<pre><code>var a = [1, 2, 3];
+var b = a.map(function(x) {
+    return x*x;
+});    //b = [1,4,9]
+</code></pre><ul>
+<li><code>filter</code> 把数组的每个元素传给指定的函数，通过函数返回的布尔值决定是否在返回数组中添加该元素</li>
+</ul>
+<pre><code> var a = [1, 2, 3];
+ var b = a.filter(function(x){
+    return x % 2 !== 0;
+});//b = [1, 3]
+</code></pre><ul>
+<li><code>every</code> 把数组的每个元素传给指定的函数，如果全部调用返回true则every函数返回true</li>
+<li><code>some</code> 把数组的每个元素传给指定的函数，如果有调用返回true则every函数返回true</li>
+<li><code>reduce</code> 用指定的函数对数组进行组合，生成单个值</li>
+</ul>
+<pre><code>var a = [1, 2, 3];
+var b = a.reduce(function(x, y){
+    return x + y;
+}, 0); //b = 6;
+</code></pre><ul>
+<li><code>indexOf/lastIndexOf</code>在整个数组中搜索制定的元素</li>
+</ul>
+<h2 id="-">类数组对象</h2>
+<p>通过为对象增加length自增的特性或者其他特性，可以生成一个‘类数组对象’，可以通过length进行遍历。例如函数的Arguments对象就是这样</p>
+
+</div>
+<footer class="misc clearfix">
+  <p class="hint">建议在新版的Chrome、Safari、Firefox中阅读</p>
+  <div class="left">
+    <ul class="inline-list">
+      <li><a href="https://github.com/RobinQu/Programing-In-Javascript/">Source</a></li>
+      <li><a href="https://github.com/RobinQu/Programing-In-Javascript/blob/master/README.md">Contributors</a></li>
+      <li><a href="https://github.com/RobinQu/Programing-In-Javascript/issues">Issues</a></li>
+    </ul>
+  </div>
+  <div class="right">
+    <ul class="inline-list">
+      <li>Rev <a href="https://github.com/RobinQu/Programing-In-Javascript/tree/3a65aa7/chapters/Javascript_Core/Javascript_Basics/Array.md">3a65aa7</a></li>
+      <li>2014-05-12T04:11:08.235Z</li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>
