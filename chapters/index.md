@@ -28,7 +28,9 @@
     * Javascript的函数化编程
         * 高阶函数和柯里化
         * [Javascript异步编程](Javascript_Core/Functional_Javascript/Async_Programing_In_Javascript.md)
-        * [Javascript Promise](Javascript_Core/Functional_Javascript/Javascript_Promise.md)
+        * Javascript Promise
+            * [Promise A+ Spec](Javascript_Core/Functional_Javascript/Javascript_Promise/PromiseAPlus_Spec.md)
+            * [Async with Promise](Javascript_Core/Functional_Javascript/Javascript_Promise/Async_with_Promise.md)
         * [Javascript Generator](Javascript_Core/Functional_Javascript/Javascript_Generator.md)
         * [CPS变换](Javascript_Core/Functional_Javascript/Continuation_Passing_Style.md)
 
