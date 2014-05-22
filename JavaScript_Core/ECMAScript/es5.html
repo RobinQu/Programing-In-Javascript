@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ES5特性 - Javascript编程语言</title>
+<meta charset="UTF-8">
+<meta name="baidu-site-verification" content="LPyqUhB1p3" />
+<meta name="viewport" content="width=device-width">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Javascript编程语言 - 一本开源的Javascript编程指南; An open-sourced Javascript Guide and Tutorial; ES5特性 本文将简单列举ES5的核心特性。ES5多半是扩展原生对象的功能，让Object、Array、Function更加强大。其他的特性包括strict mode和一下期待已久的工具方法（例如JSON.parse等）。 ES5的大部分特性1都在主流浏览器（IE9+）中支持了。而且大部分特性，都可以通过JavaScript垫片(pollyfill)在运行时环境实现2。 Object 所有对象操作">
+<meta name="keywords" content="Javascript, guide, open-sourced ">
+<link rel="stylesheet" type="text/css" href="/style.css" />
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-313435-11', 'robinqu.me');
+  ga('send', 'pageview');
+
+</script>
+</head>
+<body>
+<header class="clearfix">
+  <div class="left back-toc">
+    <ul class="inline-list">
+      <li><a href="/">目录</a></li>
+      
+        <li class="seperator">></li>
+        <li>JavaScript核心</li>
+      
+        <li class="seperator">></li>
+        <li>ECMAScript特性</li>
+      
+      
+      <li class="seperator">></li>
+      <li class="current"><strong>当前页面</strong></li>
+      
+      <li>(<a href="https://github.com/RobinQu/Programing-In-Javascript/edit/master/chapters/JavaScript_Core/ECMAScript/es5.md">编辑</a>)</li>
+    </ul>
+  </div>
+  <div class="right">
+    <a href="/"><img src="/images/logo.png" alt="Javascript编程语言" width="256" height="50" /></a>
+  </div>
+</header>
+<div class="primary">
+  <h1 id="es5-">ES5特性</h1>
+<p>本文将简单列举ES5的核心特性。ES5多半是扩展原生对象的功能，让<code>Object</code>、<code>Array</code>、<code>Function</code>更加强大。其他的特性包括<code>strict mode</code>和一下期待已久的工具方法（例如<code>JSON.parse</code>等）。</p>
+<p>ES5的大部分特性<sup id="fnref1"><a href="#fn1">1</a></sup>都在主流浏览器（IE9+）中支持了。而且大部分特性，都可以通过JavaScript垫片(pollyfill)在运行时环境实现<sup id="fnref2"><a href="#fn2">2</a></sup>。</p>
+<h2 id="object">Object</h2>
+<p>所有对象操作中，如果<code>o</code>不是<code>Object</code>类型，将会抛出<code>TypeError</code>异常。</p>
+<h3 id="object-getprototypeof-o-3-">Object.getPrototypeOf(o)<sup id="fnref3"><a href="#fn3">3</a></sup></h3>
+<p>获取给丁对象的<code>prototype</code>对象。等价于以前的<code>o.__proto__</code>。</p>
+<h3 id="object-getownpropertydescriptor-o-p-4-">Object.getOwnPropertyDescriptor(o,p)<sup id="fnref4"><a href="#fn4">4</a></sup></h3>
+<p>获取对象描述。和<code>Object.defineProperty</code>的相关方法。</p>
+<h3 id="object-getownpropertynames-o-5-">Object.getOwnPropertyNames(o)<sup id="fnref5"><a href="#fn5">5</a></sup></h3>
+<p>获取自有属性名列表。结果列表将不包含原型链上的属性。</p>
+<h3 id="object-create-o-p-6-">Object.create(o,p)<sup id="fnref6"><a href="#fn6">6</a></sup></h3>
+<p>以给丁对象<code>o</code>为<code>prototype</code>创建新的对象并返回。如果对象描述<code>p</code>存在，就使用其定义刚创建的对象（类似调用<code>Object.defineProperties(obj,p)</code>）。</p>
+<h3 id="object-defineproperty-o-p-attrs-7-">Object.defineProperty(o,p,attrs)<sup id="fnref7"><a href="#fn7">7</a></sup></h3>
+<p>根据规则<code>attrs</code>定义对象<code>o</code>上，属性名为<code>p</code>的属性</p>
+<h3 id="object-defineproperties-o-props-8-">Object.defineProperties(o,props)<sup id="fnref8"><a href="#fn8">8</a></sup></h3>
+<p>根据对象描述<code>props</code>来定义对象<code>o</code>，通常<code>props</code>包含多个属性的定义。</p>
+<h3 id="object-seal-o-9-">Object.seal(o)<sup id="fnref9"><a href="#fn9">9</a></sup></h3>
+<p>一个对象在默认状态下，</p>
+<ol>
+<li>extensible: 可以添加新的属性</li>
+<li>configurable: 可以修改已有属性的特性</li>
+</ol>
+<p><code>Object.seal</code>会改变这两个特性，既不能扩展新属性，也不能修改已有属性的特性。</p>
+<h3 id="object-freeze-o-10-">Object.freeze(o)<sup id="fnref10"><a href="#fn10">10</a></sup></h3>
+<p>将对象的每个自有自有属性(own property)做如下操作：</p>
+<ul>
+<li>属性的<code>writable</code>特性置为<code>false</code></li>
+<li>属性的<code>configurable</code>特性置为<code>false</code></li>
+</ul>
+<p>同时，该对象将不可扩展。可见，该方法比<code>Object.seal</code>更加严格的限制了对一个对象的未来改动。</p>
+<h3 id="object-preventextensions-o-11-">Object.preventExtensions(o)<sup id="fnref11"><a href="#fn11">11</a></sup></h3>
+<p>将对象置为不可扩展。</p>
+<h3 id="object-issealed-o-12-">Object.isSealed(o)<sup id="fnref12"><a href="#fn12">12</a></sup></h3>
+<p>判断一个对象是否<code>sealed</code>：</p>
+<ul>
+<li>对象的每个自有属性：如果属性的<code>configurable</code>特性为<code>true</code>，则返回<code>false</code></li>
+<li>如果对象为<code>extensible</code>的，那么返回<code>false</code></li>
+<li>不满足以上两个条件，则返回<code>true</code></li>
+</ul>
+<h3 id="object-isfrozen-o-13-">Object.isFrozen(o)<sup id="fnref13"><a href="#fn13">13</a></sup></h3>
+<ul>
+<li>对每个自有属性，如果该属性的<code>configurable</code>或<code>writable</code>特性为<code>true</code>，则返回<code>false</code></li>
+<li>如果对象为<code>extensible</code>的，那么返回<code>false</code></li>
+<li>不满足以上两个条件，则返回<code>true</code></li>
+</ul>
+<h3 id="object-isextensible-o-14-">Object.isExtensible(o)<sup id="fnref14"><a href="#fn14">14</a></sup></h3>
+<p>判对一个对象是否可扩展。</p>
+<h3 id="object-keys-o-15-">Object.keys(o)<sup id="fnref15"><a href="#fn15">15</a></sup></h3>
+<p>返回对象<code>o</code>的所有可枚举(<code>enumerable</code>)属性的名称。</p>
+<h3 id="object-prototype-isprototypeof-v-16-">Object.prototype.isPrototypeOf(v)<sup id="fnref16"><a href="#fn16">16</a></sup></h3>
+<p>检查对象是否是位于给定对象<code>v</code>的原型链上。</p>
+<h3 id="object-prototype-propertyisenumerable-p-">Object.prototype.propertyIsEnumerable(p)</h3>
+<p>检查一个对象上的属性<code>p</code>是否可枚举。</p>
+<h2 id="array">Array</h2>
+<h3 id="array-isarray-a-">Array.isArray(a)</h3>
+<p>判断<code>a</code>是否为为真正的<code>Array</code>。</p>
+<h3 id="array-prototype-indexof-e-i-17-">Array.prototype.indexOf(e,i)<sup id="fnref17"><a href="#fn17">17</a></sup></h3>
+<p>使用“严格等”来判断元素<code>e</code>在数组中的索引号。一个可选的搜索起点<code>i</code>。</p>
+<h3 id="array-prototype-lastindexof-e-i-18-">Array.prototype.lastIndexOf(e,i)<sup id="fnref18"><a href="#fn18">18</a></sup></h3>
+<p>获取元素<code>e</code>在数组中最后出现的位置。起始位置<code>i</code>为可选。</p>
+<h3 id="array-prototype-every-t-c-">Array.prototype.every(t,c)</h3>
+<p>测试数组中的每个元素都满足测试<code>t</code>。之后介绍的所有数组遍历方法，都支持一个可选的上下文对象<code>c</code>，可以灵活设置回调函数的执行上下文。传递给数组的测试函数、遍历函数通常有如下签名：</p>
+<pre><code>function(item, index, array) {}
+</code></pre><h3 id="array-prototype-some-t-c-">Array.prototype.some(t,c)</h3>
+<p>测试数组中是否有元素满足测试<code>t</code>。</p>
+<h3 id="array-prototype-foreach-f-c-">Array.prototype.forEach(f,c)</h3>
+<p>使用函数<code>f</code>遍历每个数组的元素。</p>
+<h3 id="array-prototype-map-f-c-">Array.prototype.map(f,c)</h3>
+<p>使用函数<code>f</code>修改每个数组的每个元素。按顺序收集<code>f</code>的每个返回值，并返回这个新组成的数组。</p>
+<h3 id="array-prototype-filter-f-c-">Array.prototype.filter(f,c)</h3>
+<p>收集通过函数测试<code>f</code>的书组元素。</p>
+<h3 id="array-prototype-reduce-r-v-19-">Array.prototype.reduce(r,v)<sup id="fnref19"><a href="#fn19">19</a></sup></h3>
+<p>从左向右，使用函数<code>r</code>聚集数组的每个元素。可以可选的制定一个初始值<code>v</code>。</p>
+<h3 id="array-prototype-reduceright-r-v-20-">Array.prototype.reduceRight(r,v)<sup id="fnref20"><a href="#fn20">20</a></sup></h3>
+<p><code>Array.prototype.reduce</code>的从右向左的版本。</p>
+<h2 id="string">String</h2>
+<h3 id="string-prototpye-trim">String.prototpye.trim</h3>
+<p>去掉字符串两头的空白符和换行符。</p>
+<h3 id="-">字符订阅</h3>
+<pre><code>//property access on strings
+&quot;abc&quot;[2] === &quot;b&quot;
+</code></pre><h2 id="function">Function</h2>
+<h3 id="function-prototype-bind-thistarget-arg1-argn-21-">Function.prototype.bind(thisTarget, arg1,…argn)<sup id="fnref21"><a href="#fn21">21</a></sup></h3>
+<p>为了指定当前函数的上下文对象和运行参数，该函数创建一个新的函数，保留给定的<code>this</code>对象和运行参数。</p>
+<h2 id="json">JSON</h2>
+<h3 id="json-parse-text-">JSON.parse(text)</h3>
+<p>根据rfc4627<sup id="fnref22"><a href="#fn22">22</a></sup>标准解析JSON文本。</p>
+<h3 id="json-stringify-obj-">JSON.stringify(obj)</h3>
+<p>将指定的对象<code>obj</code>序列化为JSON文本。</p>
+<h2 id="date">Date</h2>
+<h3 id="date-now">Date.now</h3>
+<p>获取当前时间距<code>1970.1.1 00:00:00</code>的毫秒数。</p>
+<h3 id="date-prototype-toisostring">Date.prototype.toISOString</h3>
+<p>根据ISO8601<sup id="fnref23"><a href="#fn23">23</a></sup>生成时间字符串。</p>
+<pre><code>(new Date).toISOString()
+&#39;2014-04-02T08:31:53.049Z&#39;
+</code></pre><h2 id="-">其他特性</h2>
+<ul>
+<li>放开了关键字不允许作为属性名的限制<sup id="fnref24"><a href="#fn24">24</a></sup></li>
+<li>getter和setter函数<sup id="fnref25"><a href="#fn25">25</a></sup></li>
+</ul>
+<hr>
+<div class="footnotes">
+<ol>
+<li id="fn1"><p><a href="http://kangax.github.io/es5-compat-table/">http://kangax.github.io/es5-compat-table/</a></p>
+<a href="#fnref1" class="footnoteBackLink" title="Jump back to footnote 1 in the text.">↩</a></li>
+<li id="fn2"><p><a href="https://github.com/es-shims/es5-shim">https://github.com/es-shims/es5-shim</a></p>
+<a href="#fnref2" class="footnoteBackLink" title="Jump back to footnote 2 in the text.">↩</a></li>
+<li id="fn3"><p><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/GetPrototypeOf">https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/GetPrototypeOf</a></p>
+<a href="#fnref3" class="footnoteBackLink" title="Jump back to footnote 3 in the text.">↩</a></li>
+<li id="fn4"><p><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor">https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor</a></p>
+<a href="#fnref4" class="footnoteBackLink" title="Jump back to footnote 4 in the text.">↩</a></li>
+<li id="fn5"><p><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/getOwnPropertyNames">https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/getOwnPropertyNames</a></p>
+<a href="#fnref5" class="footnoteBackLink" title="Jump back to footnote 5 in the text.">↩</a></li>
+<li id="fn6"><p><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/create">https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/create</a></p>
+<a href="#fnref6" class="footnoteBackLink" title="Jump back to footnote 6 in the text.">↩</a></li>
+<li id="fn7"><p><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/defineProperty">https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/defineProperty</a></p>
+<a href="#fnref7" class="footnoteBackLink" title="Jump back to footnote 7 in the text.">↩</a></li>
+<li id="fn8"><p><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/defineProperties">https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/defineProperties</a></p>
+<a href="#fnref8" class="footnoteBackLink" title="Jump back to footnote 8 in the text.">↩</a></li>
+<li id="fn9"><p><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/seal">https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/seal</a></p>
+<a href="#fnref9" class="footnoteBackLink" title="Jump back to footnote 9 in the text.">↩</a></li>
+<li id="fn10"><p><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/freeze">https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/freeze</a></p>
+<a href="#fnref10" class="footnoteBackLink" title="Jump back to footnote 10 in the text.">↩</a></li>
+<li id="fn11"><p><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/preventExtensions">https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/preventExtensions</a></p>
+<a href="#fnref11" class="footnoteBackLink" title="Jump back to footnote 11 in the text.">↩</a></li>
+<li id="fn12"><p><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/isSealed">https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/isSealed</a></p>
+<a href="#fnref12" class="footnoteBackLink" title="Jump back to footnote 12 in the text.">↩</a></li>
+<li id="fn13"><p><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/isFrozen">https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/isFrozen</a></p>
+<a href="#fnref13" class="footnoteBackLink" title="Jump back to footnote 13 in the text.">↩</a></li>
+<li id="fn14"><p><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/isExtensible">https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/isExtensible</a></p>
+<a href="#fnref14" class="footnoteBackLink" title="Jump back to footnote 14 in the text.">↩</a></li>
+<li id="fn15"><p><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/keys">https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/keys</a></p>
+<a href="#fnref15" class="footnoteBackLink" title="Jump back to footnote 15 in the text.">↩</a></li>
+<li id="fn16"><p><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/isPrototypeOf">https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/isPrototypeOf</a></p>
+<a href="#fnref16" class="footnoteBackLink" title="Jump back to footnote 16 in the text.">↩</a></li>
+<li id="fn17"><p><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/indexOf">https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/indexOf</a></p>
+<a href="#fnref17" class="footnoteBackLink" title="Jump back to footnote 17 in the text.">↩</a></li>
+<li id="fn18"><p><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/lastIndexOf">https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/lastIndexOf</a></p>
+<a href="#fnref18" class="footnoteBackLink" title="Jump back to footnote 18 in the text.">↩</a></li>
+<li id="fn19"><p><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/reduce">https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/reduce</a></p>
+<a href="#fnref19" class="footnoteBackLink" title="Jump back to footnote 19 in the text.">↩</a></li>
+<li id="fn20"><p><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/reduceRight">https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/reduceRight</a></p>
+<a href="#fnref20" class="footnoteBackLink" title="Jump back to footnote 20 in the text.">↩</a></li>
+<li id="fn21"><p><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function/bind">https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function/bind</a></p>
+<a href="#fnref21" class="footnoteBackLink" title="Jump back to footnote 21 in the text.">↩</a></li>
+<li id="fn22"><p><a href="http://www.ietf.org/rfc/rfc4627.txt">http://www.ietf.org/rfc/rfc4627.txt</a></p>
+<a href="#fnref22" class="footnoteBackLink" title="Jump back to footnote 22 in the text.">↩</a></li>
+<li id="fn23"><p><a href="http://en.wikipedia.org/wiki/ISO_8601">http://en.wikipedia.org/wiki/ISO_8601</a></p>
+<a href="#fnref23" class="footnoteBackLink" title="Jump back to footnote 23 in the text.">↩</a></li>
+<li id="fn24"><p><a href="http://stackoverflow.com/questions/8099270/use-of-reserved-words-in-javascript">http://stackoverflow.com/questions/8099270/use-of-reserved-words-in-javascript</a></p>
+<a href="#fnref24" class="footnoteBackLink" title="Jump back to footnote 24 in the text.">↩</a></li>
+<li id="fn25"><p><a href="http://ejohn.org/blog/javascript-getters-and-setters/">http://ejohn.org/blog/javascript-getters-and-setters/</a></p>
+<a href="#fnref25" class="footnoteBackLink" title="Jump back to footnote 25 in the text.">↩</a></li>
+</ol>
+</div>
+
+</div>
+<footer class="misc clearfix">
+  <p class="hint">建议在新版的Chrome、Safari、Firefox中阅读</p>
+  <div class="left">
+    <ul class="inline-list">
+      <li><a href="https://github.com/RobinQu/Programing-In-Javascript/">Source</a></li>
+      <li><a href="https://github.com/RobinQu/Programing-In-Javascript/blob/master/README.md">Contributors</a></li>
+      <li><a href="https://github.com/RobinQu/Programing-In-Javascript/issues">Issues</a></li>
+    </ul>
+  </div>
+  <div class="right">
+    <ul class="inline-list">
+      <li>Rev <a href="https://github.com/RobinQu/Programing-In-Javascript/tree/f295f8e/chapters/JavaScript_Core/ECMAScript/es5.md">f295f8e</a></li>
+      <li>2014-05-22T02:11:03.469Z</li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>

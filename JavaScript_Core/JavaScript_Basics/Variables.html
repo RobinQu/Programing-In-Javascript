@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>变量的声明 - Javascript编程语言</title>
+<meta charset="UTF-8">
+<meta name="baidu-site-verification" content="LPyqUhB1p3" />
+<meta name="viewport" content="width=device-width">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Javascript编程语言 - 一本开源的Javascript编程指南; An open-sourced Javascript Guide and Tutorial; 变量的声明 在使用一个变量之前应该先声明： var i; var sum; 也可以将声明和赋值写在一起： var message = &quot;hello&quot;; 重复声明一个变量是合法而且无害的，但是如果试图读取一个没有声明的变量值，JavaScript会报错。在非严格的模式下，如果给一个未声明的变量赋值，JavaScript会给全局对象创建一个同名属性，好像声明了一个全局变量，这样做可能会带来很多bug.">
+<meta name="keywords" content="Javascript, guide, open-sourced ">
+<link rel="stylesheet" type="text/css" href="/style.css" />
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-313435-11', 'robinqu.me');
+  ga('send', 'pageview');
+
+</script>
+</head>
+<body>
+<header class="clearfix">
+  <div class="left back-toc">
+    <ul class="inline-list">
+      <li><a href="/">目录</a></li>
+      
+        <li class="seperator">></li>
+        <li>JavaScript核心</li>
+      
+        <li class="seperator">></li>
+        <li>JavaScript语法基础</li>
+      
+      
+      <li class="seperator">></li>
+      <li class="current"><strong>当前页面</strong></li>
+      
+      <li>(<a href="https://github.com/RobinQu/Programing-In-Javascript/edit/master/chapters/JavaScript_Core/JavaScript_Basics/Variables.md">编辑</a>)</li>
+    </ul>
+  </div>
+  <div class="right">
+    <a href="/"><img src="/images/logo.png" alt="Javascript编程语言" width="256" height="50" /></a>
+  </div>
+</header>
+<div class="primary">
+  <h1 id="-">变量的声明</h1>
+<p>在使用一个变量之前应该先声明：</p>
+<pre><code>var i;
+var sum;
+</code></pre><p>也可以将声明和赋值写在一起：</p>
+<pre><code>var message = &quot;hello&quot;;
+</code></pre><p>重复声明一个变量是合法而且无害的，但是如果试图读取一个没有声明的变量值，JavaScript会报错。在非严格的模式下，如果给一个未声明的变量赋值，JavaScript会给全局对象创建一个同名属性，好像声明了一个全局变量，这样做可能会带来很多bug.</p>
+<h1 id="-">变量的作用域</h1>
+<p>一个变量的作用域是程序源代码中定义这个变量的区域。全局变量拥有全局作用域，函数内的变量，只有在函数体能才有定义。在函数体内，局部变量的优先级高于同名的全局变量。</p>
+
+</div>
+<footer class="misc clearfix">
+  <p class="hint">建议在新版的Chrome、Safari、Firefox中阅读</p>
+  <div class="left">
+    <ul class="inline-list">
+      <li><a href="https://github.com/RobinQu/Programing-In-Javascript/">Source</a></li>
+      <li><a href="https://github.com/RobinQu/Programing-In-Javascript/blob/master/README.md">Contributors</a></li>
+      <li><a href="https://github.com/RobinQu/Programing-In-Javascript/issues">Issues</a></li>
+    </ul>
+  </div>
+  <div class="right">
+    <ul class="inline-list">
+      <li>Rev <a href="https://github.com/RobinQu/Programing-In-Javascript/tree/f295f8e/chapters/JavaScript_Core/JavaScript_Basics/Variables.md">f295f8e</a></li>
+      <li>2014-05-22T02:11:03.469Z</li>
+    </ul>
+  </div>
+</footer>
+</body>
+</html>
