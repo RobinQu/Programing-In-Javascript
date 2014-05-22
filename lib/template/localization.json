@@ -7,5 +7,6 @@
   "JavaScript_Core": "JavaScript核心",
   "JavaScript_Basics": "JavaScript语法基础",
   "ECMAScript": "ECMAScript特性",
-  "es6": "ECMAScript6"
+  "es6": "ECMAScript6",
+  "Functional_JavaScript": "Javascript的函数式编程"
 }
