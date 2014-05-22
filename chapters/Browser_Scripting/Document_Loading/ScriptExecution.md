@@ -71,7 +71,7 @@ setTimeout("alert('haha')", 0);
 
 ### 其他Hack
 
-利用MessageChannel等新特性可以触发一些函数的执行[^5]。也许Javascript的其他的角落也有不少其他执行脚本的入口吧。
+利用MessageChannel等新特性可以触发一些函数的执行[^5]。也许JavaScript的其他的角落也有不少其他执行脚本的入口吧。
 
 
 [^1]: http://www.w3.org/html/wg/drafts/html/master/scripting-1.html#the-script-element

@@ -23,7 +23,7 @@ ES6包含了很多万众期待的特性支持：
 * promoise
 
 
-里面众多的特性都是让Javascript看起来更规范的好东西，但是大部分都没有被广泛支持。我们仅介绍其中已经至少被一种浏览器和`node --harmony`下支持的。
+里面众多的特性都是让JavaScript看起来更规范的好东西，但是大部分都没有被广泛支持。我们仅介绍其中已经至少被一种浏览器和`node --harmony`下支持的。
 
 在写这篇文章的时候，有如下特性是较为广泛支持的：
 
@@ -52,7 +52,7 @@ function() {
 }
 ```
 
-这是因为ES5的Javascript的不支持块级作用域，变量仅仅被限制到函数作用域内。
+这是因为ES5的JavaScript的不支持块级作用域，变量仅仅被限制到函数作用域内。
 
 注意在node中，你需要同时加入`--harmony`和`--use-strict`来启动，才会支持`let`。否则会报错： `SyntaxError: Illegal let declaration outside extended mode`。
 
@@ -96,7 +96,7 @@ a = "I wanna be free!";
 
 ## yield
 
-`yield`后面有一连串有关Generator和Iterator的内容，会在另外一片文章内详细介绍： [Javascript Generator](../../Functional_Javascript/Javascript_Generator.md)。
+`yield`后面有一连串有关Generator和Iterator的内容，会在另外一片文章内详细介绍： [JavaScript Generator](../../Functional_JavaScript/JavaScript_Generator.md)。
 
 
 [^1]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let

@@ -1,4 +1,4 @@
-# Javascript Promise A+ 规范
+# JavaScript Promise A+ 规范
 
 > 本文是由第三方作者根据[英文原版](http://promises-aplus.github.io/promises-spec/)编著的[译文](http://hussion.me/2013/10/19/promises-a/)。详细版权信息见本文结尾的版权申明。
 
@@ -6,7 +6,7 @@
 
 * promise是拥有`then`方法，其行为符合此规范的对象或者函数数。
 * thenable是定义`then`方法的对象或者函数。
-* value是任何合法的Javascript值(包括`undefined`, 一个`thenable`, 一个`promise`)
+* value是任何合法的JavaScript值(包括`undefined`, 一个`thenable`, 一个`promise`)
 * exception是一个值，通过`throw`语句抛出。
 * reason是一个值，表明`promise`被`reject`的原因。
 

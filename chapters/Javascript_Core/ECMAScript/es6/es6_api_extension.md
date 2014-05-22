@@ -159,7 +159,7 @@ Number.isFinite(2e64);      // true
 
 ### Math.imul(v)
 
-以32位正数的乘法方式来计算给定参数。该方法的一种可能的Javascript实现：
+以32位正数的乘法方式来计算给定参数。该方法的一种可能的JavaScript实现：
 
 ```
 function imul(a, b) {
@@ -240,7 +240,7 @@ function trunc(x) {
 
 ES标准[^14]在快速发展之中，部分讨论[^15]都已经扩展到ES8的规划之内。就像W3C的新版标准一样，他们的出现往往被开发者轻视。前段开发者以兼容性、实用性为借口选择性忽略，但是不知不觉中，这些开发者已经成为了守旧者，那些曾经被视为华而不实的Canvas、ApplicationStorage、Websocket等技术，如今已是大量在线应用的基础设施。
 
-ES6标准中部分已经被广泛应用到node应用的开发之中，也许不久的未来，nodejs的开发者所写的Javascript已经和浏览器端开发者使用的Javascript是两种不同的语言了。
+ES6标准中部分已经被广泛应用到node应用的开发之中，也许不久的未来，nodejs的开发者所写的JavaScript已经和浏览器端开发者使用的JavaScript是两种不同的语言了。
 
 ES6不少API层面的特性可以通过shim[^16]进行兼容性支持。部分语法特性，通过二次编译[^17]，可以支持。所以，已经不是找理由不了解ECMAScript的时候了。
 

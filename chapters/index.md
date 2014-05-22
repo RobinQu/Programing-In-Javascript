@@ -1,38 +1,38 @@
 # 目录
 
 * 引言
-* Javascript核心
-    * Javascript语法基础
-        * [词法](Javascript_Core/Javascript_Basics/Lexical.md)
-        * [数据类型](Javascript_Core/Javascript_Basics/Types.md)
-        * [变量](Javascript_Core/Javascript_Basics/Variables.md)
-        * [表达式](Javascript_Core/Javascript_Basics/Expressions.md)
-        * [语句](Javascript_Core/Javascript_Basics/Statements.md)
-        * [严格模式](Javascript_Core/Javascript_Basics/Strict_Mode.md)
-        * [函数](Javascript_Core/Javascript_Basics/Function.md)
-        * [对象](Javascript_Core/Javascript_Basics/Objects.md)
-        * [数组](Javascript_Core/Javascript_Basics/Array.md)
+* JavaScript核心
+    * JavaScript语法基础
+        * [词法](JavaScript_Core/JavaScript_Basics/Lexical.md)
+        * [数据类型](JavaScript_Core/JavaScript_Basics/Types.md)
+        * [变量](JavaScript_Core/JavaScript_Basics/Variables.md)
+        * [表达式](JavaScript_Core/JavaScript_Basics/Expressions.md)
+        * [语句](JavaScript_Core/JavaScript_Basics/Statements.md)
+        * [严格模式](JavaScript_Core/JavaScript_Basics/Strict_Mode.md)
+        * [函数](JavaScript_Core/JavaScript_Basics/Function.md)
+        * [对象](JavaScript_Core/JavaScript_Basics/Objects.md)
+        * [数组](JavaScript_Core/JavaScript_Basics/Array.md)
         * 正则表达式
         * 语法规范
-    * 面向对象的Javascript
+    * 面向对象的JavaScript
         * 基于对象和原型
         * 模拟经典继承模型
         * 设计模式
-        * Javascript AOP
+        * JavaScript AOP
     * ECMAScript特性
-        * [ES5特性](Javascript_Core/ECMAScript/es5.md)
+        * [ES5特性](JavaScript_Core/ECMAScript/es5.md)
         * ES6
-            * [对已有对象的API增强](Javascript_Core/ECMAScript/es6/es6_api_extension.md)
-            * [引入的数据结构](Javascript_Core/ECMAScript/es6/es6_data_types.md)
-            * [语法特性](Javascript_Core/ECMAScript/es6/es6_syntax_features.md)
-    * Javascript的函数化编程
+            * [对已有对象的API增强](JavaScript_Core/ECMAScript/es6/es6_api_extension.md)
+            * [引入的数据结构](JavaScript_Core/ECMAScript/es6/es6_data_types.md)
+            * [语法特性](JavaScript_Core/ECMAScript/es6/es6_syntax_features.md)
+    * JavaScript的函数化编程
         * 高阶函数和柯里化
-        * [Javascript异步编程](Javascript_Core/Functional_Javascript/Async_Programing_In_Javascript.md)
-        * Javascript Promise
-            * [Promise A+ Spec](Javascript_Core/Functional_Javascript/Javascript_Promise/PromiseAPlus_Spec.md)
-            * [Async with Promise](Javascript_Core/Functional_Javascript/Javascript_Promise/Async_with_Promise.md)
-        * [Javascript Generator](Javascript_Core/Functional_Javascript/Javascript_Generator.md)
-        * [CPS变换](Javascript_Core/Functional_Javascript/Continuation_Passing_Style.md)
+        * [JavaScript异步编程](JavaScript_Core/Functional_JavaScript/Async_Programing_In_JavaScript.md)
+        * JavaScript Promise
+            * [Promise A+ Spec](JavaScript_Core/Functional_JavaScript/JavaScript_Promise/PromiseAPlus_Spec.md)
+            * [Async with Promise](JavaScript_Core/Functional_JavaScript/JavaScript_Promise/Async_with_Promise.md)
+        * [JavaScript Generator](JavaScript_Core/Functional_JavaScript/JavaScript_Generator.md)
+        * [CPS变换](JavaScript_Core/Functional_JavaScript/Continuation_Passing_Style.md)
 
 * 面向浏览器编程
     * DOM编程
@@ -79,9 +79,9 @@
     * 多任务
         * EventLoop
         * Web Worker
-    * Javascript调试与性能
+    * JavaScript调试与性能
         * Performance Tricks
-            * Javascript技巧
+            * JavaScript技巧
             * Array Buffer
             * base64
         * 开发者工具和性能监测
@@ -90,7 +90,7 @@
             * Filddler
             * mimtproxy
         * benchmark.js和perfjs.com
-    * Javascript工程
+    * JavaScript工程
         * 自动化工具
             * 从shell脚本开始
             * Grunt
@@ -128,7 +128,7 @@
         * pm2与监控
         * 使用Docker进行部署
     * 云上的Nodejs
-* Javascript的自动化测试
+* JavaScript的自动化测试
     * TDD与BDD
     * Mocha、Jasmine、Chai
     * Webdrive与Selenium

@@ -83,7 +83,7 @@ Weak开头的Set和Map不对key持有引用，不影响GC。因此，他们没�
 var proxy = Proxy(target, handler);
 ```
 
-将`target`的函数调用转向到`handler`之上。目前除了Firefox支持，没有其他任何Javascript引擎支持。
+将`target`的函数调用转向到`handler`之上。目前除了Firefox支持，没有其他任何JavaScript引擎支持。
 
 ## Symbol
 
@@ -91,11 +91,11 @@ var proxy = Proxy(target, handler);
 
 ## Prmoise
 
-原生版本的Promise API，有关Promise的内容，会在另外一篇文章内详细说明： [Javascript Promise](../../Functional_Javascript/Javascript_Promise.md)。
+原生版本的Promise API，有关Promise的内容，会在另外一篇文章内详细说明： [JavaScript Promise](../../Functional_JavaScript/JavaScript_Promise.md)。
 
 ## Proxy
 
-Proxy是Javascript元编程的一道大门。Javascript在语言层面无法去重载操作符，但是通过Proxy API，我们可以彻底的修改一个对象的各种行为。这种强大的行为已经在`node --harmony`和Firefox中支持了。
+Proxy是JavaScript元编程的一道大门。JavaScript在语言层面无法去重载操作符，但是通过Proxy API，我们可以彻底的修改一个对象的各种行为。这种强大的行为已经在`node --harmony`和Firefox中支持了。
 
 待补充。可以参考：
 

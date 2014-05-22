@@ -1,9 +1,9 @@
-# Javascript Generator
+# JavaScript Generator
 
 
-ES6中的Generator的引入，极大程度上改变了Javascript程序员对迭代器的看法，并为解决callback hell[^1]提供了新方法。
+ES6中的Generator的引入，极大程度上改变了JavaScript程序员对迭代器的看法，并为解决callback hell[^1]提供了新方法。
 
-Generator是一个与语言无关的特性，理论上它应该存在于所有Javascript引擎内，但是目前真正完整实现的，只有在`node --harmony` 下。所以后文所有的解释，都以node环境举例，需要的启动参数为`node --harmony --use_strict`。
+Generator是一个与语言无关的特性，理论上它应该存在于所有JavaScript引擎内，但是目前真正完整实现的，只有在`node --harmony` 下。所以后文所有的解释，都以node环境举例，需要的启动参数为`node --harmony --use_strict`。
 
 V8中所实现的Generator和标准之中说的又有区别，这个可以参考一下MDC的相关文档[^2]。而且，V8在写作这篇文章时，并没有实现Iterator。
 
@@ -50,7 +50,7 @@ for(let value of argumentsIterator) {
 
 可惜，目前版本的node不支持`for-of`。
 
-说到这里，大多数有经验的Javascript程序员会表示不屑，因为这些都可以通过自己编写一个函数来实现。我们再来看一个例子：
+说到这里，大多数有经验的JavaScript程序员会表示不屑，因为这些都可以通过自己编写一个函数来实现。我们再来看一个例子：
 
 ```
 function* fibonacci() {
@@ -309,7 +309,7 @@ suspend(function*() {
 
 ## yield的转换
 
-`yield`的本质是一个语法糖，底层的实现方式便是CPS变换[^6]。也就是说`yield`是可以用循环和递归重新实现的，根本用不着一定在V8层面实现。但笔者认为，纯Javascript实现的"yield"会造成大量的堆栈消耗，在性能上毫无优势可言。从性能上考虑，V8可以优化`yield`的编译，实现更高性能的转换。
+`yield`的本质是一个语法糖，底层的实现方式便是CPS变换[^6]。也就是说`yield`是可以用循环和递归重新实现的，根本用不着一定在V8层面实现。但笔者认为，纯JavaScript实现的"yield"会造成大量的堆栈消耗，在性能上毫无优势可言。从性能上考虑，V8可以优化`yield`的编译，实现更高性能的转换。
 
 关于CPS变换的细节，会在[之后的文章](../Continuation_Passing_Style.md)中详细解说。
 

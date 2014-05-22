@@ -4,7 +4,8 @@
   "DOM_Scripting": "DOM编程",
   "BOM_Scripting": "BOM编程",
   "index": "目录",
-  "Javascript_Core": "Javascript核心",
-  "Javascript_Basics": "Javascript语法基础",
-  "ECMAScript": "ECMAScript特性"
+  "JavaScript_Core": "JavaScript核心",
+  "JavaScript_Basics": "JavaScript语法基础",
+  "ECMAScript": "ECMAScript特性",
+  "es6": "ECMAScript6"
 }

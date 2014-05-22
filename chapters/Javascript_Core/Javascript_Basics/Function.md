@@ -1,6 +1,6 @@
 # 函数
 
-Javascript中，要记住函数是first-class citizen。
+JavaScript中，要记住函数是first-class citizen。
 
 ## 定义
 
@@ -66,7 +66,7 @@ call和apply的不同之处，在于call传递的参数是作为arguments依次�
 
 当传入参数少于函数声明的参数时，留空的参数的值是`undefined`。
 
-Javascript允许传入参数的个数大于声明时制定的参数个数。可以用`arguments`来访问这些参数
+JavaScript允许传入参数的个数大于声明时制定的参数个数。可以用`arguments`来访问这些参数
 
 
 	function f(){
@@ -138,7 +138,7 @@ javascript中的函数可以作为值来传递
 
 ## 闭包
 
-Javascript函数对象的内部状态不仅包含着函数的代码逻辑，还引用当前的作用域链。函数对象通过作用域链相互关联起来，函数体内部变量包含在函数作用域内，这就叫闭包。
+JavaScript函数对象的内部状态不仅包含着函数的代码逻辑，还引用当前的作用域链。函数对象通过作用域链相互关联起来，函数体内部变量包含在函数作用域内，这就叫闭包。
 
 例如
 

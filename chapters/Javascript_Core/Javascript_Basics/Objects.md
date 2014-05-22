@@ -1,4 +1,4 @@
-# Javascript Objects
+# JavaScript Objects
 
 ## 创建对象
 
@@ -24,7 +24,7 @@
 ## 类继承
 
 
-Javascript对象拥有自有属性和继承属性。
+JavaScript对象拥有自有属性和继承属性。
 
  * 在查询对象o的属性x时，先查找o中的属性x，如果没找到，则查找o的原型对象中的x属性，直到查找到x或者一个原型是null的对象为止
 

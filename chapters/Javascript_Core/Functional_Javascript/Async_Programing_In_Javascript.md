@@ -1,14 +1,14 @@
-# Async Programing in Javascript
+# Async Programing in JavaScript
 
-本文从异步风格讲起，分析Javascript中异步变成的技巧、问题和解决方案。具体的，从回调造成的问题说起，并谈到了利用事件、Promise、Generator等技术来解决这些问题。
+本文从异步风格讲起，分析JavaScript中异步变成的技巧、问题和解决方案。具体的，从回调造成的问题说起，并谈到了利用事件、Promise、Generator等技术来解决这些问题。
 
 ## 异步之殇
 
 ### non-blocking无限好?
 
-异步，是没有线程模型的Javascript的救命稻草。说得高大上一些，就是运用了`Reactor`设计模式[^1]。
+异步，是没有线程模型的JavaScript的救命稻草。说得高大上一些，就是运用了`Reactor`设计模式[^1]。
 
-Javascript的一切都是围绕着“异步”二子的。无论是浏览器环境，还是node环境，大多数API都是通过“事件”来将请求（或消息、调用）和返回值（或结果）分离。而“事件”，都离不开回调(Callback)，例如，
+JavaScript的一切都是围绕着“异步”二子的。无论是浏览器环境，还是node环境，大多数API都是通过“事件”来将请求（或消息、调用）和返回值（或结果）分离。而“事件”，都离不开回调(Callback)，例如，
 
 ```
 var fs = require("fs");
@@ -35,7 +35,7 @@ EM::run do
 end
 ```
 
-由于Ruby的标准库里面的API全是同步的，异步的只有类似EventMachine这样的第三方API才能提供支持。实际风格上，两者类似，就我们这个例子来说，Javascript的版本似乎更加简介，而且不需要添加额外的第三方模块。
+由于Ruby的标准库里面的API全是同步的，异步的只有类似EventMachine这样的第三方API才能提供支持。实际风格上，两者类似，就我们这个例子来说，JavaScript的版本似乎更加简介，而且不需要添加额外的第三方模块。
 
 异步模式，相比线程模式，损耗更小，在部分场景性能甚至比Java更好[^2]。并且，`non-blocking`的API是node默认的，这使nodejs和它的异步回调大量应用。 
 
@@ -62,10 +62,10 @@ fs.readdir(__dirname, function(e, files) {//callback 1
 非常简单的一个任务便造成了3层回调。在node应用爆发的初期，大量的应用都是在这样的风格中诞生的。显然，这样的代码风格有如下风险：
 
 1. 代码难以阅读、维护：嵌套多层回调之后，作者自己都不清楚函数层次了。
-2. 潜在的调用堆栈消耗：Javascript中，远比你想像的简单去超出最大堆栈。不少第三方模块并没有做到异步调用，却装作支持回调，堆栈的风险就更大。
+2. 潜在的调用堆栈消耗：JavaScript中，远比你想像的简单去超出最大堆栈。不少第三方模块并没有做到异步调用，却装作支持回调，堆栈的风险就更大。
 3. 还想更遭么？前两条就够了……
 
-不少程序员，因为第一条而放弃nodejs，甚至放弃Javascript。而关于第二条，各种隐性bug的排除和性能损耗的优化工作在向程序员招手。
+不少程序员，因为第一条而放弃nodejs，甚至放弃JavaScript。而关于第二条，各种隐性bug的排除和性能损耗的优化工作在向程序员招手。
 
 等等，你说我一直再说node，没有提及浏览器中的情况？我们来看个例子：
 
@@ -88,13 +88,13 @@ $("#sexyButton").on("click", function(data) {//callback 1
 
 我们尝试获取一个文章列表，然后给予用户一些交互，让用户选择希望详细了解的一个文章，并继续获取文章详情。这个简单的例子，产生了3个回调。
 
-事实上，异步的性质是Javascript语言本身的固有风格，跟宿主环境无关。所以，回调漫天飞造成的问题是Javascript语言的共性。
+事实上，异步的性质是JavaScript语言本身的固有风格，跟宿主环境无关。所以，回调漫天飞造成的问题是JavaScript语言的共性。
 
 ## 解决方案
 
 ### Evented
 
-Javascript程序员也许是最有创造力的一群程序员之一。对于回调问题，最终有了很多解决方案。最自然想到的，便是利用事件机制。
+JavaScript程序员也许是最有创造力的一群程序员之一。对于回调问题，最终有了很多解决方案。最自然想到的，便是利用事件机制。
 
 还是之前加载文章的场景：
 
@@ -245,7 +245,7 @@ Promise的实现目前有很多：
 * Deffered对象
 	* 提供`reject`和`resolve`方法，来完成一个Promise
 
-笔者会在专门的文章内介绍[Promise的具体机制和实现](Javascript_Promise.md)。在这里仅浅尝辄止，利用基本随处可得的jQuery来解决之前的那个小场景中的异步问题：
+笔者会在专门的文章内介绍[Promise的具体机制和实现](JavaScript_Promise.md)。在这里仅浅尝辄止，利用基本随处可得的jQuery来解决之前的那个小场景中的异步问题：
 
 ```
 $("#sexyButton").on("click", function(data) {
@@ -280,7 +280,7 @@ $.when( $.ajax( "/page1.php" ), $.ajax( "/page2.php" ) ).done(function( a1, a2 )
 
 ### Geneartor
 
-ES6的Generator引入的`yield`表达式，让流程控制更加多变。[node-fiber](https://github.com/laverdet/node-fibers)让我们看到了`coroutine`在Javascript中的样子。
+ES6的Generator引入的`yield`表达式，让流程控制更加多变。[node-fiber](https://github.com/laverdet/node-fibers)让我们看到了`coroutine`在JavaScript中的样子。
 
 ```
 var Fiber = require('fibers');
@@ -301,13 +301,13 @@ Fiber(function() {
 console.log('back in main');
 ```
 
-但想象一下，如果每个Javascript都有这个功能，那么一个正常Javascript程序员的各种尝试就会被挑战。你的对象会莫名其妙的被另外一个fiber中的代码更改。
+但想象一下，如果每个JavaScript都有这个功能，那么一个正常JavaScript程序员的各种尝试就会被挑战。你的对象会莫名其妙的被另外一个fiber中的代码更改。
 
-也就是说，还没有一种语法设计能让支持fiber和不支持fiber的Javascript代码混用并且不造成混淆。node-fiber的这种不可移植性，让coroutine在Javascript中并不那么现实[^7]。
+也就是说，还没有一种语法设计能让支持fiber和不支持fiber的JavaScript代码混用并且不造成混淆。node-fiber的这种不可移植性，让coroutine在JavaScript中并不那么现实[^7]。
 
 但是`yield`是一种Shallow coroutines，它只能停止用户代码，并且只有在`GeneratorFunction`才可以用`yield`。
 
-笔者在[另外一篇文章](Javascript_Generator.md)中已经详细介绍了如何利用Geneator来解决异步流程的问题。
+笔者在[另外一篇文章](JavaScript_Generator.md)中已经详细介绍了如何利用Geneator来解决异步流程的问题。
 
 利用`yield`实现的`suspend`方法，可以让我们之前的问题解决的非常简介：
 
@@ -334,7 +334,7 @@ $("#sexyButton").on("click", function(data) {
 
 ## 结语
 
-说了这么多，异步编程这种和线程模型迥然不同的并发处理方式，随着node的流行也让更多程序员了解其与众不同的魅力。如果下次再有C或者Java程序员说，Javascript的回调太难看，请让他好好读一下这篇文章吧！
+说了这么多，异步编程这种和线程模型迥然不同的并发处理方式，随着node的流行也让更多程序员了解其与众不同的魅力。如果下次再有C或者Java程序员说，JavaScript的回调太难看，请让他好好读一下这篇文章吧！
 
 
 [^1]: http://en.wikipedia.org/wiki/Reactor_pattern

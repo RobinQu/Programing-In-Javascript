@@ -1,4 +1,4 @@
-# Javascript语句
+# JavaScript语句
 
 语句就是JavaScript的整句或者命令。JavaScript的语句是以；结束的。
 
