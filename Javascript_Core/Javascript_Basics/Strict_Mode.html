@@ -6,7 +6,7 @@
 <meta name="baidu-site-verification" content="LPyqUhB1p3" />
 <meta name="viewport" content="width=device-width">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="Javascript编程语言 - 一本开源的Javascript编程指南; An open-sourced Javascript Guide and Tutorial; Strict Mode 概述 除了正常运行模式，ECMAscript 5添加了第二种运行模式：”严格模式”（strict mode）。顾名思义，这种模式使得Javascript在更严格的条件下运行。 设立”严格模式”的目的，主要有以下几个：  消除Javascript语法的一些不合理、不严谨之处，减少一些怪异行为; 消除代码运行的一些不安全之处，保证代码运行的安全； 提高编译器效率，增加运行速度；">
+<meta name="description" content="Javascript编程语言 - 一本开源的Javascript编程指南; An open-sourced Javascript Guide and Tutorial; Strict Mode 概述 除了正常运行模式，ECMAscript 5添加了第二种运行模式：”严格模式”（strict mode）。顾名思义，这种模式使得JavaScript在更严格的条件下运行。 设立”严格模式”的目的，主要有以下几个：  消除JavaScript语法的一些不合理、不严谨之处，减少一些怪异行为; 消除代码运行的一些不安全之处，保证代码运行的安全； 提高编译器效率，增加运行速度；">
 <meta name="keywords" content="Javascript, guide, open-sourced ">
 <link rel="stylesheet" type="text/css" href="/style.css" />
 <script>
@@ -27,16 +27,16 @@
       <li><a href="/">目录</a></li>
       
         <li class="seperator">></li>
-        <li>Javascript核心</li>
+        <li>JavaScript核心</li>
       
         <li class="seperator">></li>
-        <li>Javascript语法基础</li>
+        <li>JavaScript语法基础</li>
       
       
       <li class="seperator">></li>
       <li class="current"><strong>当前页面</strong></li>
       
-      <li>(<a href="https://github.com/RobinQu/Programing-In-Javascript/edit/master/chapters/Javascript_Core/Javascript_Basics/Strict_Mode.md">编辑</a>)</li>
+      <li>(<a href="https://github.com/RobinQu/Programing-In-Javascript/edit/master/chapters/JavaScript_Core/JavaScript_Basics/Strict_Mode.md">编辑</a>)</li>
     </ul>
   </div>
   <div class="right">
@@ -46,16 +46,16 @@
 <div class="primary">
   <h1 id="strict-mode">Strict Mode</h1>
 <h2 id="-">概述</h2>
-<p>除了正常运行模式，ECMAscript 5添加了第二种运行模式：”严格模式”（strict mode）。顾名思义，这种模式使得Javascript在更严格的条件下运行。</p>
+<p>除了正常运行模式，ECMAscript 5添加了第二种运行模式：”严格模式”（strict mode）。顾名思义，这种模式使得JavaScript在更严格的条件下运行。</p>
 <p>设立”严格模式”的目的，主要有以下几个：</p>
 <ul>
-<li>消除Javascript语法的一些不合理、不严谨之处，减少一些怪异行为;</li>
+<li>消除JavaScript语法的一些不合理、不严谨之处，减少一些怪异行为;</li>
 <li>消除代码运行的一些不安全之处，保证代码运行的安全；</li>
 <li>提高编译器效率，增加运行速度；</li>
-<li>为未来新版本的Javascript做好铺垫。</li>
+<li>为未来新版本的JavaScript做好铺垫。</li>
 </ul>
-<p>“严格模式”体现了Javascript更合理、更安全、更严谨的发展方向，包括IE 10在内的主流浏览器，都已经支持它，许多大项目已经开始全面拥抱它。</p>
-<p>另一方面，同样的代码，在”严格模式”中，可能会有不一样的运行结果；一些在”正常模式”下可以运行的语句，在”严格模式”下将不能运行。掌握这些内容，有助于更细致深入地理解Javascript，让你变成一个更好的程序员。</p>
+<p>“严格模式”体现了JavaScript更合理、更安全、更严谨的发展方向，包括IE 10在内的主流浏览器，都已经支持它，许多大项目已经开始全面拥抱它。</p>
+<p>另一方面，同样的代码，在”严格模式”中，可能会有不一样的运行结果；一些在”正常模式”下可以运行的语句，在”严格模式”下将不能运行。掌握这些内容，有助于更细致深入地理解JavaScript，让你变成一个更好的程序员。</p>
 <p>本文将对”严格模式”做详细介绍。</p>
 <h2 id="-">进入标志</h2>
 <p>进入”严格模式”的标志，是下面这行语句：</p>
@@ -73,7 +73,7 @@
 　　&lt;script&gt; 
 　　　　console.log(&quot;这是正常模式。&quot;); 
 　　&lt;/script&gt;
-</code></pre><p>上面的代码表示，一个网页中依次有两段Javascript代码。前一个script标签是严格模式，后一个不是。</p>
+</code></pre><p>上面的代码表示，一个网页中依次有两段JavaScript代码。前一个script标签是严格模式，后一个不是。</p>
 <h3 id="-">针对单个函数</h3>
 <p>将”use strict”放在函数体的第一行，则整个函数以”严格模式”运行。</p>
 <pre><code>function strict(){ 
@@ -94,7 +94,7 @@
 
 　　 })();
 </code></pre><h2 id="-">语法和行为改变</h2>
-<p>严格模式对Javascript的语法和行为，都做了一些改变。</p>
+<p>严格模式对JavaScript的语法和行为，都做了一些改变。</p>
 <h3 id="-">全局变量显式声明</h3>
 <p>在正常模式中，如果一个变量没有声明就赋值，默认是全局变量。严格模式禁止这种用法，全局变量必须显式声明。</p>
 <pre><code>&quot;use strict&quot;;
@@ -102,7 +102,7 @@
 　　v = 1; // 报错，v未声明
 </code></pre><p>因此，严格模式下，变量都必须先用var命令声明，然后再使用。</p>
 <h3 id="-">静态绑定</h3>
-<p>Javascript语言的一个特点，就是允许”动态绑定”，即某些属性和方法到底属于哪一个对象，不是在编译时确定的，而是在运行时（runtime）确定的。</p>
+<p>JavaScript语言的一个特点，就是允许”动态绑定”，即某些属性和方法到底属于哪一个对象，不是在编译时确定的，而是在运行时（runtime）确定的。</p>
 <p>严格模式对动态绑定做了一些限制。某些情况下，只允许静态绑定。也就是说，属性和方法到底归属哪个对象，在编译阶段就确定。这样做有利于编译效率的提高，也使得代码更容易阅读，更少出现意外。</p>
 <p>具体来说，涉及以下几个方面。</p>
 <h4 id="-1-with-">（1）禁止使用with语句</h4>
@@ -115,7 +115,7 @@
 　　　　v = 2; 
 　　}
 </code></pre><h4 id="-eval-">创设eval作用域</h4>
-<p>正常模式下，Javascript语言有两种变量作用域（scope）：全局作用域和函数作用域。严格模式创设了第三种作用域：eval作用域。</p>
+<p>正常模式下，JavaScript语言有两种变量作用域（scope）：全局作用域和函数作用域。严格模式创设了第三种作用域：eval作用域。</p>
 <p>正常模式下，eval语句的作用域，取决于它处于全局作用域，还是处于函数作用域。严格模式下，eval语句本身就是一个作用域，不再能够生成全局变量了，它所生成的变量只能用于eval内部。</p>
 <pre><code>&quot;use strict&quot;;
 
@@ -271,7 +271,7 @@
 
 　　f(); // 报错
 </code></pre><h3 id="-">函数必须声明在顶层</h3>
-<p>将来Javascript的新版本会引入”块级作用域”。为了与新版本接轨，严格模式只允许在全局作用域或函数作用域的顶层声明函数。也就是说，不允许在非函数的代码块内声明函数。</p>
+<p>将来JavaScript的新版本会引入”块级作用域”。为了与新版本接轨，严格模式只允许在全局作用域或函数作用域的顶层声明函数。也就是说，不允许在非函数的代码块内声明函数。</p>
 <pre><code>&quot;use strict&quot;;
 
 　　if (true) {
@@ -282,7 +282,7 @@
 　　　　function f2() { } // 语法错误
 　　}
 </code></pre><h3 id="-">保留字</h3>
-<p>为了向将来Javascript的新版本过渡，严格模式新增了一些保留字：implements, interface, let, package, private, protected, public, static, yield。</p>
+<p>为了向将来JavaScript的新版本过渡，严格模式新增了一些保留字：implements, interface, let, package, private, protected, public, static, yield。</p>
 <p>使用这些词作为变量名将会报错。</p>
 <pre><code>function package(protected) { // 语法错误
 　　　　&quot;use strict&quot;;
@@ -302,8 +302,8 @@
   </div>
   <div class="right">
     <ul class="inline-list">
-      <li>Rev <a href="https://github.com/RobinQu/Programing-In-Javascript/tree/acbb2ab/chapters/Javascript_Core/Javascript_Basics/Strict_Mode.md">acbb2ab</a></li>
-      <li>2014-05-14T02:39:07.821Z</li>
+      <li>Rev <a href="https://github.com/RobinQu/Programing-In-Javascript/tree/921e8bb/chapters/JavaScript_Core/JavaScript_Basics/Strict_Mode.md">921e8bb</a></li>
+      <li>2014-05-22T01:51:05.188Z</li>
     </ul>
   </div>
 </footer>

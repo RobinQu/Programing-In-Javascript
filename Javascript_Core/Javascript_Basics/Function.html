@@ -6,7 +6,7 @@
 <meta name="baidu-site-verification" content="LPyqUhB1p3" />
 <meta name="viewport" content="width=device-width">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="Javascript编程语言 - 一本开源的Javascript编程指南; An open-sourced Javascript Guide and Tutorial; 函数 Javascript中，要记住函数是first-class citizen。 定义  函数声明语句       function plus(x ,y) {      }  函数定义表达式      var plus = function (x, y) {      } 函数调用  作为函数调用      function a(){};     a();  作为方法调用   a={};   a">
+<meta name="description" content="Javascript编程语言 - 一本开源的Javascript编程指南; An open-sourced Javascript Guide and Tutorial; 函数 JavaScript中，要记住函数是first-class citizen。 定义  函数声明语句       function plus(x ,y) {      }  函数定义表达式      var plus = function (x, y) {      } 函数调用  作为函数调用      function a(){};     a();  作为方法调用   a={};   a">
 <meta name="keywords" content="Javascript, guide, open-sourced ">
 <link rel="stylesheet" type="text/css" href="/style.css" />
 <script>
@@ -27,16 +27,16 @@
       <li><a href="/">目录</a></li>
       
         <li class="seperator">></li>
-        <li>Javascript核心</li>
+        <li>JavaScript核心</li>
       
         <li class="seperator">></li>
-        <li>Javascript语法基础</li>
+        <li>JavaScript语法基础</li>
       
       
       <li class="seperator">></li>
       <li class="current"><strong>当前页面</strong></li>
       
-      <li>(<a href="https://github.com/RobinQu/Programing-In-Javascript/edit/master/chapters/Javascript_Core/Javascript_Basics/Function.md">编辑</a>)</li>
+      <li>(<a href="https://github.com/RobinQu/Programing-In-Javascript/edit/master/chapters/JavaScript_Core/JavaScript_Basics/Function.md">编辑</a>)</li>
     </ul>
   </div>
   <div class="right">
@@ -45,7 +45,7 @@
 </header>
 <div class="primary">
   <h1 id="-">函数</h1>
-<p>Javascript中，要记住函数是first-class citizen。</p>
+<p>JavaScript中，要记住函数是first-class citizen。</p>
 <h2 id="-">定义</h2>
 <ul>
 <li>函数声明语句 </li>
@@ -93,7 +93,7 @@ fn.call(o);//此时fn的this指向o
 <p><code>fn.call(o, 1, 2, 3);</code><br>而apply传递的参数是以一个数组的方式传入的，例如<br><code>fn.apply(o, [1, 2, 3]);</code></p>
 <h2 id="-">参数</h2>
 <p>当传入参数少于函数声明的参数时，留空的参数的值是<code>undefined</code>。</p>
-<p>Javascript允许传入参数的个数大于声明时制定的参数个数。可以用<code>arguments</code>来访问这些参数</p>
+<p>JavaScript允许传入参数的个数大于声明时制定的参数个数。可以用<code>arguments</code>来访问这些参数</p>
 <pre><code>function f(){
     var i;
     for( i = 0; i &lt; arguments.length ; i++) {
@@ -140,7 +140,7 @@ s(4);
 
 }());
 </code></pre><h2 id="-">闭包</h2>
-<p>Javascript函数对象的内部状态不仅包含着函数的代码逻辑，还引用当前的作用域链。函数对象通过作用域链相互关联起来，函数体内部变量包含在函数作用域内，这就叫闭包。</p>
+<p>JavaScript函数对象的内部状态不仅包含着函数的代码逻辑，还引用当前的作用域链。函数对象通过作用域链相互关联起来，函数体内部变量包含在函数作用域内，这就叫闭包。</p>
 <p>例如</p>
 <pre><code>var scope = &#39;global scope&#39;;
 function checkscope() {
@@ -258,8 +258,8 @@ console.log(add1(2));
   </div>
   <div class="right">
     <ul class="inline-list">
-      <li>Rev <a href="https://github.com/RobinQu/Programing-In-Javascript/tree/acbb2ab/chapters/Javascript_Core/Javascript_Basics/Function.md">acbb2ab</a></li>
-      <li>2014-05-14T02:39:07.821Z</li>
+      <li>Rev <a href="https://github.com/RobinQu/Programing-In-Javascript/tree/921e8bb/chapters/JavaScript_Core/JavaScript_Basics/Function.md">921e8bb</a></li>
+      <li>2014-05-22T01:51:05.188Z</li>
     </ul>
   </div>
 </footer>
