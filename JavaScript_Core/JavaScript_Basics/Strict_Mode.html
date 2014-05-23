@@ -6,7 +6,7 @@
 <meta name="baidu-site-verification" content="LPyqUhB1p3" />
 <meta name="viewport" content="width=device-width">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="JavaScript编程语言 - 一本开源的JavaScript编程指南; An open-sourced Javascript Guide and Tutorial; Strict Mode和Extended Mode  本文上一个版本盗用了别人的文章，经读者指出后我就删掉了。由于起草的时间在去年，我也不太清楚当初是怎么把别人的文章复制进来的。本文除了介绍所谓的Strict Mode之外，还会介绍其他关联内容。  JavaScript并不是一个完美的语言。事实上，第一个版本的Brendan Eich1花费十天的时间创造的，你不能对它期望太多。之后，JavaScr">
+<meta name="description" content="JavaScript编程语言 - 一本开源的JavaScript编程指南; An open-sourced Javascript Guide and Tutorial; Strict Mode和Extended Mode  本文上一个版本盗用了别人的文章，经读者指出后我就删掉了。由于起草的时间在去年，我也不太清楚当初是怎么把别人的文章复制进来的。本文除了介绍所谓的Strict Mode之外，还会介绍其他关联内容。  JavaScript并不是一个完美的语言。事实上，第一个版本是Brendan Eich1花费十天的时间创造的，你不能对它期望太多。之后，JavaScr">
 <meta name="keywords" content="Javascript, guide, open-sourced ">
 <link rel="stylesheet" type="text/css" href="/style.css" />
 <script>
@@ -48,7 +48,7 @@
 <blockquote>
 <p>本文上一个版本盗用了别人的文章，经读者指出后我就删掉了。由于起草的时间在去年，我也不太清楚当初是怎么把别人的文章复制进来的。本文除了介绍所谓的Strict Mode之外，还会介绍其他关联内容。</p>
 </blockquote>
-<p>JavaScript并不是一个完美的语言。事实上，第一个版本的Brendan Eich<sup id="fnref1"><a href="#fn1">1</a></sup>花费十天的时间创造的，你不能对它期望太多。之后，JavaScript在浏览器大战中，成为各方角逐的主要战场。各大厂商各显神通，其副作用是各种奇奇怪怪的行为和各式不一的API。在之后，W3C和其他社区团体花费了大量的精力来通过标准化来“净化”所有Web开发相关的技术标准。</p>
+<p>JavaScript并不是一个完美的语言。事实上，第一个版本是Brendan Eich<sup id="fnref1"><a href="#fn1">1</a></sup>花费十天的时间创造的，你不能对它期望太多。之后，JavaScript在浏览器大战中，成为各方角逐的主要战场。各大厂商各显神通，其副作用是各种奇奇怪怪的行为和各式不一的API。在之后，W3C和其他社区团体花费了大量的精力来通过标准化来“净化”所有Web开发相关的技术标准。</p>
 <p>但尴尬的是，浏览器厂商并不是那么完全的实现了W3C和ECMAScript的各种标准。最后，经验丰富的Javascript程序员，通过约束自身对Javascript的使用方法，来达到让Javascript更高的可拥度。可能大部分人都读过《JavaScript语言精粹》<sup id="fnref2"><a href="#fn2">2</a></sup>这本书，其讲述的就是如何在JavaScript语言中，取其精华，然后去其糟粕。</p>
 <p>而JavaScript的严格模式，则是另一种紧箍咒，它的约束力来自运行时本身，而不是用户的主观行为。也就是说，有很多模棱两可，或是错误却被允许的操作，被彻底禁止了。目前支持严格模式的支持范围<sup id="fnref3"><a href="#fn3">3</a></sup>从IE10起跳，其他常青浏览器也都是支持的。</p>
 <iframe src="http://caniuse.com/use-strict/embed/" seamless="" width="100%"></iframe>
@@ -85,7 +85,7 @@ function mySuckingMethod {
 <pre><code> ```
  &quot;use strict&quot;;
  var o = {};
- Object.defineProperty(o, &quot;hello&quot;, {value:&quot;world&quot;, wrtiable:false});
+ Object.defineProperty(o, &quot;hello&quot;, {value:&quot;world&quot;, writable:false});
  o.hello = &quot;bad boy&quot;;//throw
  ```
 </code></pre><p> 其他类似的还有：</p>
@@ -165,8 +165,7 @@ var evalHello = eval(&quot;&#39;use strict&#39;; var hello = &quot;girl&quot;; h
 // hello === &quot;world&quot;
 // evalHello === &quot;girl&quot;
 </code></pre><h3 id="-arguments-"><code>arguments</code>不再追踪实际参数值变化</h3>
-<pre><code>function f(hello)
-{
+<pre><code>function f(hello) {
   &quot;use strict&quot;;
   hello = &quot;girl&quot;;
   return [hello, arguments[0]];
@@ -188,8 +187,7 @@ function fun() { return this; }
 // fun.bind(true)() === true
 </code></pre><h3 id="-">调用堆栈不可被追踪</h3>
 <p>以往，我们可以通过函数的<code>caller</code>和<code>arguments</code>来投影整个调用堆栈。但是，在严格模式中我们做不到。</p>
-<pre><code>function restricted()
-{
+<pre><code>function restricted() {
   &quot;use strict&quot;;
   restricted.caller;    // throws a TypeError
   restricted.arguments; // throws a TypeError
@@ -199,16 +197,14 @@ function fun() { return this; }
 <pre><code>implements, interface, let, package, private, protected, public, static, yield
 </code></pre><h4 id="-function-">仅允许在开头使用function语句</h4>
 <p>很多开发者喜欢如下代码风格，这在严格模式中会报错。</p>
-<pre><code>function foo()
-{
+<pre><code>function foo() {
   &quot;use strict&quot;;
   return g;
   function g() { }//throw SyntaxError
 }
 </code></pre><p>这个改变的原因是，JavaScript的<code>Hoisting</code>特性会让很多人迷惑：</p>
 <pre><code>function g() { }
-function foo()
-{
+function foo() {
     if (true)
     function g() { }
     return g;
@@ -221,7 +217,7 @@ function foo()
 <li>Extended Mode</li>
 </ul>
 <p>这个模式是备受争议的。这个模式的产生，也体会出制作一个标准的困难之处——你总要考虑新标准对老标准的兼容，尤其是Web技术。</p>
-<p>有稍微了解ES6的同学都应该清楚，<code>module</code>、<code>class</code>这些东西已经完全颠覆了传统JavaScript的很多尝试。但也有不少东西，开发者是可以接受，并立马去尝试的。于是乎，关于如何让代码部分进入<code>extended mode</code>也就成了最初讨论的重点<sup id="fnref7"><a href="#fn7">7</a></sup>。</p>
+<p>有稍微了解ES6的同学都应该清楚，<code>module</code>、<code>class</code>这些东西已经完全颠覆了传统JavaScript的很多常识。但也有不少东西，开发者是可以接受，并立马去尝试的。于是乎，关于如何让代码部分进入<code>extended mode</code>也就成了最初讨论的重点<sup id="fnref7"><a href="#fn7">7</a></sup>。</p>
 <p>实际表现上，node的0.11.x的版本，有些特性，仅仅使用<code>--harmony</code>并不能完全使用，还需加上<code>--use_strict</code>。在这里，已经可以看出V8团队有多纠结了<sup id="fnref8"><a href="#fn8">8</a></sup>。他们也没有想清楚，该如何进入<code>extended mode</code>，索性，也叫<code>strict</code>吧。</p>
 <p>目前仅在<code>extended mode</code>下可用的ES6特性：</p>
 <ul>
@@ -263,8 +259,8 @@ function foo()
   </div>
   <div class="right">
     <ul class="inline-list">
-      <li>Rev <a href="https://github.com/RobinQu/Programing-In-Javascript/tree/b71c736/chapters/JavaScript_Core/JavaScript_Basics/Strict_Mode.md">b71c736</a></li>
-      <li>2014-05-23T03:50:00.645Z</li>
+      <li>Rev <a href="https://github.com/RobinQu/Programing-In-Javascript/tree/355d64c/chapters/JavaScript_Core/JavaScript_Basics/Strict_Mode.md">355d64c</a></li>
+      <li>2014-05-23T08:24:56.854Z</li>
     </ul>
   </div>
 </footer>

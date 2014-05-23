@@ -67,7 +67,7 @@ EM::run do
     EM::stop
   end
 end
-</code></pre><p>由于Ruby的标准库里面的API全是同步的，异步的只有类似EventMachine这样的第三方API才能提供支持。实际风格上，两者类似，就我们这个例子来说，JavaScript的版本似乎更加简介，而且不需要添加额外的第三方模块。</p>
+</code></pre><p>由于Ruby的标准库里面的API全是同步的，异步的只有类似EventMachine这样的第三方API才能提供支持。实际风格上，两者类似，就我们这个例子来说，JavaScript的版本似乎更加简洁，而且不需要添加额外的第三方模块。</p>
 <p>异步模式，相比线程模式，损耗更小，在部分场景性能甚至比Java更好<sup id="fnref2"><a href="#fn2">2</a></sup>。并且，<code>non-blocking</code>的API是node默认的，这使nodejs和它的异步回调大量应用。 </p>
 <p>例如，我们想要找到当前目录中所有文件的尺寸：</p>
 <pre><code>fs.readdir(__dirname, function(e, files) {//callback 1
@@ -354,8 +354,8 @@ console.log(&#39;back in main&#39;);
   </div>
   <div class="right">
     <ul class="inline-list">
-      <li>Rev <a href="https://github.com/RobinQu/Programing-In-Javascript/tree/b71c736/chapters/JavaScript_Core/Functional_JavaScript/Async_Programing_In_JavaScript.md">b71c736</a></li>
-      <li>2014-05-23T03:50:00.645Z</li>
+      <li>Rev <a href="https://github.com/RobinQu/Programing-In-Javascript/tree/355d64c/chapters/JavaScript_Core/Functional_JavaScript/Async_Programing_In_JavaScript.md">355d64c</a></li>
+      <li>2014-05-23T08:24:56.854Z</li>
     </ul>
   </div>
 </footer>
