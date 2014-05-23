@@ -1,311 +1,254 @@
-# Strict Mode
+# Strict Mode和Extended Mode
 
-## 概述
-除了正常运行模式，ECMAscript 5添加了第二种运行模式：”严格模式”（strict mode）。顾名思义，这种模式使得JavaScript在更严格的条件下运行。
+> 本文上一个版本盗用了别人的文章，经读者指出后我就删掉了。由于起草的时间在去年，我也不太清楚当初是怎么把别人的文章复制进来的。本文除了介绍所谓的Strict Mode之外，还会介绍其他关联内容。
 
-设立”严格模式”的目的，主要有以下几个：
+JavaScript并不是一个完美的语言。事实上，第一个版本的Brendan Eich[^1]花费十天的时间创造的，你不能对它期望太多。之后，JavaScript在浏览器大战中，成为各方角逐的主要战场。各大厂商各显神通，其副作用是各种奇奇怪怪的行为和各式不一的API。在之后，W3C和其他社区团体花费了大量的精力来通过标准化来“净化”所有Web开发相关的技术标准。
 
-- 消除JavaScript语法的一些不合理、不严谨之处，减少一些怪异行为;
-- 消除代码运行的一些不安全之处，保证代码运行的安全；
-- 提高编译器效率，增加运行速度；
-- 为未来新版本的JavaScript做好铺垫。
+但尴尬的是，浏览器厂商并不是那么完全的实现了W3C和ECMAScript的各种标准。最后，经验丰富的Javascript程序员，通过约束自身对Javascript的使用方法，来达到让Javascript更高的可拥度。可能大部分人都读过《JavaScript语言精粹》[^2]这本书，其讲述的就是如何在JavaScript语言中，取其精华，然后去其糟粕。
 
-“严格模式”体现了JavaScript更合理、更安全、更严谨的发展方向，包括IE 10在内的主流浏览器，都已经支持它，许多大项目已经开始全面拥抱它。
+而JavaScript的严格模式，则是另一种紧箍咒，它的约束力来自运行时本身，而不是用户的主观行为。也就是说，有很多模棱两可，或是错误却被允许的操作，被彻底禁止了。目前支持严格模式的支持范围[^3]从IE10起跳，其他常青浏览器也都是支持的。
 
-另一方面，同样的代码，在”严格模式”中，可能会有不一样的运行结果；一些在”正常模式”下可以运行的语句，在”严格模式”下将不能运行。掌握这些内容，有助于更细致深入地理解JavaScript，让你变成一个更好的程序员。
+<iframe src="http://caniuse.com/use-strict/embed/" seamless width="100%"></iframe>
 
-本文将对”严格模式”做详细介绍。
+## 如何开启
 
-## 进入标志
+开启全局模式只需在所有语句之前放置`"use strict"`字符串常量。
 
-进入”严格模式”的标志，是下面这行语句：
+全局开启严格模式：
 
+```
+"use strict"
+var v = "Hello world";
+```
+
+但注意，这样会导致整个脚本内的代码都在严格模式中执行。假如之前有些代码并没有考虑严格模式，这可能让你的整个应用程序突然失效。
+
+我们更为推荐的是，在某个函数内开启严格模式：
+
+```
+function mySuperMethod() {
     "use strict";
+    var v = "Hello world";
+}
 
-老版本的浏览器会把它当作一行普通字符串，加以忽略。
+function mySuckingMethod {
+    //not in strict mode
+}
+```
 
-## 如何调用
-“严格模式”有两种调用方法，适用于不同的场合。
+## 严格模式的具体行为
 
-### 针对整个脚本文件
+大家有需要记住一堆语言特性了。但是，还好这些内容是把“歪”的掰“直”了。有少数代码例子来自于MDC[^4]。
 
-将”use strict”放在脚本文件的第一行，则整个脚本都将以”严格模式”运行。如果这行语句不在第一行，则无效，整个脚本以”正常模式”运行。如果不同模式的代码文件合并成一个文件，这一点需要特别注意。
+### 抛出`ReferenceError`
 
-       <script> 
-    　　　　"use strict"; 
-    　　　　console.log("这是严格模式。"); 
-    　　</script>
-     
-    　　<script> 
-    　　　　console.log("这是正常模式。"); 
-    　　</script>
-上面的代码表示，一个网页中依次有两段JavaScript代码。前一个script标签是严格模式，后一个不是。
+1. 试图隐式创建全局变量
 
-### 针对单个函数
+        ```
+        "use strict"
+        hello = "world"//throw
+        ```
 
-将”use strict”放在函数体的第一行，则整个函数以”严格模式”运行。
+### 抛出`TypeError`
 
-    function strict(){ 
-    　　　　"use strict"; 
-    　　　　return "这是严格模式。"; 
-    　　}
-     
-    　　function notStrict() { 
-    　　　　return "这是正常模式。"; 
-    　　}
-### 脚本文件的变通写法
+1. 试图修改已经被定义为不可写的属性
 
-因为第一种调用方法不利于文件合并，所以更好的做法是，借用第二种方法，将整个脚本文件放在一个立即执行的匿名函数之中。
+        ```
+        "use strict";
+        var o = {};
+        Object.defineProperty(o, "hello", {value:"world", wrtiable:false});
+        o.hello = "bad boy";//throw
+        ```
 
-    (function (){ 
-     
-    　　　　"use strict";
-     
-    　　　　 some code here 
-     
-    　　 })();
-
-## 语法和行为改变
-
-严格模式对JavaScript的语法和行为，都做了一些改变。
-
-### 全局变量显式声明
-在正常模式中，如果一个变量没有声明就赋值，默认是全局变量。严格模式禁止这种用法，全局变量必须显式声明。
-
-    "use strict";
-     
-    　　v = 1; // 报错，v未声明
-     
-因此，严格模式下，变量都必须先用var命令声明，然后再使用。
-
-### 静态绑定
-
-JavaScript语言的一个特点，就是允许”动态绑定”，即某些属性和方法到底属于哪一个对象，不是在编译时确定的，而是在运行时（runtime）确定的。
-
-严格模式对动态绑定做了一些限制。某些情况下，只允许静态绑定。也就是说，属性和方法到底归属哪个对象，在编译阶段就确定。这样做有利于编译效率的提高，也使得代码更容易阅读，更少出现意外。
-
-具体来说，涉及以下几个方面。
-
-#### （1）禁止使用with语句
-因为with语句无法在编译时就确定，属性到底归属哪个对象。
-
-    "use strict";
-     
-    　　var v = 1;
-     
-    　　with (o){ // 语法错误 
-    　　　　v = 2; 
-    　　}
-
-#### 创设eval作用域
-正常模式下，JavaScript语言有两种变量作用域（scope）：全局作用域和函数作用域。严格模式创设了第三种作用域：eval作用域。
-
-正常模式下，eval语句的作用域，取决于它处于全局作用域，还是处于函数作用域。严格模式下，eval语句本身就是一个作用域，不再能够生成全局变量了，它所生成的变量只能用于eval内部。
-
-    "use strict";
-     
-    　　var x = 2;
-     
-    　　console.info(eval("var x = 5; x")); // 5
-     
-    　　console.info(x); // 2
-### 增强的安全措施
-
-#### 禁止this关键字指向全局对象
-
-    function f(){ 
-    　　　　return !this; 
-    　　} 
-    　　// 返回false，因为"this"指向全局对象，"!this"就是false
-     
-    　　function f(){ 
-    　　　　"use strict"; 
-    　　　　return !this; 
-    　　} 
-    　　// 返回true，因为严格模式下，this的值为undefined，所以"!this"为true。
-因此，使用构造函数时，如果忘了加new，this不再指向全局对象，而是报错。
-
-    function f(){
-     
-    　　　　"use strict";
-     
-    　　　　this.a = 1;
-     
-    　　};
-     
-    　　f();// 报错，this未定义
-#### 禁止在函数内部遍历调用栈
-
-    function f1(){
-     
-    　　　　"use strict";
-     
-    　　　　f1.caller; // 报错
-     
-    　　　　f1.arguments; // 报错
-     
-    　　}
-     
-    　　f1();
-### 禁止删除变量
-严格模式下无法删除变量。只有configurable设置为true的对象属性，才能被删除。
-
-    "use strict";
-     
-    　　var x;
-     
-    　　delete x; // 语法错误
-     
-    　　var o = Object.create(null, 'x', { 
-    　　　　　　value: 1, 
-    　　　　　　configurable: true 
-    　　});
-     
-    　　delete o.x; // 删除成功
-
-### 显式报错
-
-正常模式下，对一个对象的只读属性进行赋值，不会报错，只会默默地失败。严格模式下，将报错。
-
-    "use strict"; 
-     
-    　　var o = {};
-     
-    　　Object.defineProperty(o, "v", { value: 1, writable: false });
-     
-    　　o.v = 2; // 报错
-严格模式下，对一个使用getter方法读取的属性进行赋值，会报错。
-
-    "use strict"; 
-     
-    　　var o = { 
-     
-    　　　　get v() { return 1; }
-     
-    　　};
-     
-    　　o.v = 2; // 报错
-严格模式下，对禁止扩展的对象添加新属性，会报错。
-
-    "use strict";
-     
-    　　var o = {};
-     
-    　　Object.preventExtensions(o);
-     
-    　　o.v = 1; // 报错
-严格模式下，删除一个不可删除的属性，会报错。
-
-    "use strict";
-     
-    　　delete Object.prototype; // 报错
-
-### 重名错误
-
-严格模式新增了一些语法错误。
-
-#### 对象不能有重名的属性
-正常模式下，如果对象有多个重名属性，最后赋值的那个属性会覆盖前面的值。严格模式下，这属于语法错误。
-
-    "use strict";
-     
-    　　var o = { 
-    　　　　p: 1, 
-    　　　　p: 2 
-    　　}; // 语法错误
-
-#### 函数不能有重名的参数
-正常模式下，如果函数有多个重名的参数，可以用arguments[i]读取。严格模式下，这属于语法错误。
-
-    "use strict";
-     
-    　　function f(a, a, b) { // 语法错误
-     
-    　　　　return ;
-     
-    　　}
-
-
-### 禁止八进制表示法
-正常模式下，整数的第一位如果是0，表示这是八进制数，比如0100等于十进制的64。严格模式禁止这种表示法，整数第一位为0，将报错。
-
-    "use strict";
-     
-    　　var n = 0100; // 语法错误
-
-### arguments 对象的限制
-
-arguments是函数的参数对象，严格模式对它的使用做了限制。
-
-#### 不允许对arguments赋值
-    "use strict";
-     
-    　　arguments++; // 语法错误
-     
-    　　var obj = { set p(arguments) { } }; // 语法错误
-     
-    　　try { } catch (arguments) { } // 语法错误
-     
-    　　function arguments() { } // 语法错误
-     
-    　　var f = new Function("arguments", "'use strict'; return 17;"); // 语法错误
-
-#### arguments不再追踪参数的变化
-    function f(a) {
-     
-    　　　　a = 2;
-     
-    　　　　return [a, arguments[0]];
-     
-    　　}
-     
-    　　f(1); // 正常模式为[2,2]
-     
-    　　function f(a) {
-     
-    　　　　"use strict";
-     
-    　　　　a = 2;
-     
-    　　　　return [a, arguments[0]];
-     
-    　　}
-     
-    　　f(1); // 严格模式为[2,1]
-
-#### 禁止使用arguments.callee
-这意味着，你无法在匿名函数内部调用自身了。
-
-    "use strict";
-     
-    　　var f = function() { return arguments.callee; };
-     
-    　　f(); // 报错
-
-### 函数必须声明在顶层
-
-将来JavaScript的新版本会引入”块级作用域”。为了与新版本接轨，严格模式只允许在全局作用域或函数作用域的顶层声明函数。也就是说，不允许在非函数的代码块内声明函数。
-
-    "use strict";
+    其他类似的还有：
     
-    　　if (true) {
-    　　　　function f() { } // 语法错误
-    　　}
-    
-    　　for (var i = 0; i<10; i++) {
-    　　　　function f2() { } // 语法错误
-    　　}
+    * 给只读属性赋值
+    * 给不可扩展的对象新建属性        
+        
+2. 试图删除不可删除的属性
 
-### 保留字
+        ```
+        "use strict";
+        delete Object.prototype; //throw
+        ```
+3. `arguments.callee`不能被返回、删除、修改；
 
-为了向将来JavaScript的新版本过渡，严格模式新增了一些保留字：implements, interface, let, package, private, protected, public, static, yield。
-
-使用这些词作为变量名将会报错。
-
-    function package(protected) { // 语法错误
-    　　　　"use strict";
-    　　　　var implements; // 语法错误 
-    }
+        ```
+        "use strict";
+        var fun = function() { 
+            return arugments.callee;//throw
+        };
+        ```
 
 
-此外，ECMAscript第五版本身还规定了另一些保留字：class, enum, export, extends, import, super。它们也是不能使用的。
+### 抛出`SyntaxError`
+
+1. 重复定义属性名
+
+        ```
+        "use strict";
+        var o = {hello: 1, hello: 2};//throw
+        ```
+
+2. 禁用八进制字面量
+
+
+        ```
+        "use strict";
+        var hello = 015;//throw
+        ```
+
+3. 不允许重复参数名
+
+        ```
+        function myMethod(a, b, b) {//throw
+            "use strict";
+        }
+        ```
+
+4. 不能使用`with`
+
+        ```
+        "use strict";
+        var obj = {};
+        with (obj) {};//throw
+        ```
+        
+5. 不允许对`eval`或`arguments`赋值
+
+        ```
+        var fun = function(){
+            "use strict";
+            eval=16
+        }();
+        ```
+
+6. 不可将`eval`或`arguments`作为参数名、变量名
+
+        ```
+        var fun = function(){
+            "use strict"; 
+            var obj = { 
+                set p(arguments) {} 
+            };
+        }();
+        ```
+
+
+### `eval`被限制在临时的本地作用域
+
+eval不再有权限直接修改其所在作用于，而只能影响自身创建的作用域。
+
+```
+var hello = "world";
+var evalHello = eval("'use strict'; var hello = "girl"; hello");
+// hello === "world"
+// evalHello === "girl"
+```
+
+### `arguments`不再追踪实际参数值变化
+
+```
+function f(hello)
+{
+  "use strict";
+  hello = "girl";
+  return [hello, arguments[0]];
+}
+var pair = f("world");
+// pair[0] === "girl"
+// pair[1] === "world";
+```
+
+### 函数的动态绑定后的`this`不做任何修改
+
+* 即使指定`null`或`undefined`，引擎也不会重新指定全局对象作为`this`
+* 指定基础数据类型时，也不会用包装类进行转换
+
+
+```
+"use strict";
+function fun() { return this; }
+// fun() === undefined
+// fun.call(2) === 2
+// fun.apply(null) === null
+// fun.call(undefined) === undefined
+// fun.bind(true)() === true
+```
+
+### 调用堆栈不可被追踪
+
+以往，我们可以通过函数的`caller`和`arguments`来投影整个调用堆栈。但是，在严格模式中我们做不到。
+
+```
+function restricted()
+{
+  "use strict";
+  restricted.caller;    // throws a TypeError
+  restricted.arguments; // throws a TypeError
+}
+```
+
+### ECMAScript6的相关特性
+
+#### 更多保留字
+
+```
+implements, interface, let, package, private, protected, public, static, yield
+```
+
+#### 仅允许在开头使用function语句
+
+很多开发者喜欢如下代码风格，这在严格模式中会报错。
+
+```
+function foo()
+{
+  "use strict";
+  return g;
+  function g() { }//throw SyntaxError
+}
+```
+
+这个改变的原因是，JavaScript的`Hoisting`特性会让很多人迷惑：
+
+```
+function g() { }
+function foo()
+{
+    if (true)
+    function g() { }
+    return g;
+}
+```
+
+## Extended Mode
+
+ES6 Draft中引入了一个新的概念[^5]，叫`Extend Mode`，然后又被撤销了[^6]。但不幸的是，V8中已经支持了这个新模式。所以，作为事实标准，目前依赖V8的所有Javascript运行环境都有如下三个模式：
+
+* Classic Mode，或者Non-strict mode
+* Strict Mode
+* Extended Mode
+
+这个模式是备受争议的。这个模式的产生，也体会出制作一个标准的困难之处——你总要考虑新标准对老标准的兼容，尤其是Web技术。
+
+有稍微了解ES6的同学都应该清楚，`module`、`class`这些东西已经完全颠覆了传统JavaScript的很多尝试。但也有不少东西，开发者是可以接受，并立马去尝试的。于是乎，关于如何让代码部分进入`extended mode`也就成了最初讨论的重点[^7]。
+
+实际表现上，node的0.11.x的版本，有些特性，仅仅使用`--harmony`并不能完全使用，还需加上`--use_strict`。在这里，已经可以看出V8团队有多纠结了[^8]。他们也没有想清楚，该如何进入`extended mode`，索性，也叫`strict`吧。
+
+目前仅在`extended mode`下可用的ES6特性：
+
+* let
+* blockl-level function declaration
+
+关于ES6的特性，请参考本书的相关章节。
+
+
+[^1]: http://en.wikipedia.org/wiki/Brendan_Eich
+[^2]: http://book.douban.com/subject/3590768/
+[^3]: http://caniuse.com/#feat=use-strict
+[^4]: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Strict_mode
+[^5]: http://wiki.ecmascript.org/doku.php?id=harmony:specification_drafts
+[^6]: http://wiki.ecmascript.org/lib/exe/fetch.php?id=harmony%3Aspecification_drafts&cache=cache&media=harmony:working_draft_ecma-262_edition_6_11-7-11.pdf
+[^7]: https://lists.webkit.org/pipermail/webkit-dev/2011-December/018903.html
+[^8]: https://code.google.com/p/v8/source/detail?r=10062

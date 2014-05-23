@@ -8,7 +8,7 @@
         * [变量](JavaScript_Core/JavaScript_Basics/Variables.md)
         * [表达式](JavaScript_Core/JavaScript_Basics/Expressions.md)
         * [语句](JavaScript_Core/JavaScript_Basics/Statements.md)
-        * [严格模式](JavaScript_Core/JavaScript_Basics/Strict_Mode.md)
+        * [严格模式和其他](JavaScript_Core/JavaScript_Basics/Strict_Mode.md)
         * [函数](JavaScript_Core/JavaScript_Basics/Function.md)
         * [对象](JavaScript_Core/JavaScript_Basics/Objects.md)
         * [数组](JavaScript_Core/JavaScript_Basics/Array.md)
