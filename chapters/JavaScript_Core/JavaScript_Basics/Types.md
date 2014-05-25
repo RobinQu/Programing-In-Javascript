@@ -133,7 +133,7 @@ JavaScript语言核心包括Date()构造函数， 用来创建表示日期和时
     later.getFullYear() // => 2011
     later.getMonth() // => 0 从0开始计数的月份
     later.getDate() // => 1 从1开始计数的天数
-    later.getDay() // => 5 得到星期几， 0代表星期日， 5代表星期一
+    later.getDay() // => 5 得到星期几， 0代表星期日， 5代表星期五
     later.getHours() // => 当地时间17   5pm
     later.getUTHours() // 使用UTC表示小时的时间，基于时区
 
