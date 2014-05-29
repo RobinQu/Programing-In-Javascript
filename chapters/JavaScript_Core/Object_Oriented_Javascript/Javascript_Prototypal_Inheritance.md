@@ -8,7 +8,7 @@
 * 构造函数, Constructor
 * 继承, Inheritance
 * 实例, Instance
-* 实力化, Instantiation
+* 实例化, Instantiation
 * 方法, Method
 * 多态, Polymorphism
 * 接口, Interface
@@ -145,7 +145,7 @@ superFoo.bar(); // => "haha, haha"
 
 ```
 Object.prototype.__proto__ === null
-``` 
+```
 也就是Object构造函数上，`prototype`这个对象的构造函数上已经没有`prototype`了。
 
 我们来看之前`Foo`和`SuperFoo`的例子，我们抽象出成员查找的流程如下:
@@ -166,7 +166,7 @@ superFoo本身 => SuperFoo.prototype => Foo.prototype => Object.prototype
 * `Foo.prototype`:
     *  查找到这一次层，纯粹是因为我们制定了`SuperFoo.prototype`的值，回想上一条
 * `Object.prototype`
-    * 这是该原型链的最后一环，因为`Object.prototype`这个对象的原型是`null`，我们无法继续查找 
+    * 这是该原型链的最后一环，因为`Object.prototype`这个对象的原型是`null`，我们无法继续查找
     * 这是JavaScript中所有对象的祖先，上面定义了一个简单对象上存在的属性和方法，例如`toString`
 
 那么，当在`SuperFoo`上添加`bar`方法呢？这时，JavaScript引擎会在`SuperFoo.prototype`的本地添加`bar`这个方法。当你再次查找`bar`方法时，按照我们之前说明的流程，会优先找到这个新添加的方法，而不会找到再原型链更后面的`Foo.prototype.bar`。
@@ -326,12 +326,12 @@ XObject.extend = function(props) {
   if(props) {
     merge(Class.prototype, props);
   }
-  
+
   // copy `extend`
   // should not use code like this; will throw at ES6
   // Class.extend = arguments.callee;
   Class.extend = XObject.extend;
-  
+
   return Class;
 };
 
@@ -361,7 +361,7 @@ console.log(superFoo.bar()); // => "super bar"
 * `XObject.extend`可以接受一个包含属性和方法的对象来定义子类
 * `XObject`的所有子类，都没有定义构造函数逻辑的机会！真是难以接受的：
     * 我们偏好一个类上的`init`方法来初始化对象，而将构造函数本身最简化
-        * 绕开工厂方法的实现过程中，参数传递如何传递到构造函数的问题
+    * 这个`init`方法绕开了工厂方法的实现过程中，参数传递如何传递到构造函数的问题
     * 可以支持更多新的特性，例如`super`属性、`mixin`特性等
 
 ## 总结，然后呢？
@@ -372,7 +372,9 @@ console.log(superFoo.bar()); // => "super bar"
 * Angular中的函数依赖注入
 * ...
 
-但是，这些框架中对象系统的出发点都在本文所阐述的内容之中。如果作为教学，John Resig在2008年的一篇博客中[^3]，总结了一个现代JavaScript框架中的对象系统的雏形。我创建了[docco代码注解](/docco/john_resig_extend.html)来立即这段代码，本文也会结束在这段代码的注解。
+但是，这些框架中对象系统的出发点都在本文所阐述的内容之中。作为教学，John Resig在2008年的一篇博客中[^3]总结了一个现代JavaScript框架中的对象系统的雏形。
+
+我创建了[docco代码注解](/docco/john_resig_extend.html)来立即这段代码，本文也会结束在这段代码的注解。强力推荐大家去阅读该注解文档。
 
 还有一些更高级的话题和技巧，会在另外一篇文章中给出。
 
