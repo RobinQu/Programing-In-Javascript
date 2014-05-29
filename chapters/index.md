@@ -15,9 +15,9 @@
         * 正则表达式
         * 语法规范
     * 面向对象的JavaScript
-        * 基于对象和原型
-        * 模拟经典继承模型
-        * 设计模式
+        * [基于原型的继承](JavaScript_Core/Object_Oriented_Javascript/Javascript_Prototypal_Inheritance.md)
+        * JavaScript面向对象的一些高级话题
+        * 设计模式与反模式
         * JavaScript AOP
     * ECMAScript特性
         * [ES5特性](JavaScript_Core/ECMAScript/es5.md)
