@@ -139,6 +139,15 @@ module.exports = function(grunt) {
           expand: true
         }]
       }
+    },
+    
+    docco: {
+      all: {
+        src: ["docco/**/*.js"],
+        options: {
+          output: "./dist/docco"
+        }
+      }
     }
   });
   

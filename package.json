@@ -43,6 +43,7 @@
     "karma-firefox-launcher": "~0.1.3",
     "karma-ie-launcher": "~0.1.5",
     "karma-cli": "0.0.4",
-    "grunt-sitemap": "^1.1.0"
+    "grunt-sitemap": "^1.1.0",
+    "grunt-docco": "^0.3.3"
   }
 }

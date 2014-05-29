@@ -209,6 +209,7 @@ Object.create({bar:"bar"});
 
 * 我们可以创建没有原型的对象: `Object.create(null)`
 * 我们可以配置创建的对象，参阅`Object.create`的文档[^2]
+* 我们不必去运行一遍父类构造函数，这样可以避免不需要的副作用
 
 #### 函数的序列化、解义
 
@@ -369,14 +370,9 @@ console.log(superFoo.bar()); // => "super bar"
 * Angular中的函数依赖注入
 * ...
 
-但是，这些框架中对象系统的出发点都在本文所阐述的内容之中。如果作为教学，John Resig在2008年的一篇博客中[^3]，总结了一个现代JavaScript框架中的对象系统的雏形。
+但是，这些框架中对象系统的出发点都在本文所阐述的内容之中。如果作为教学，John Resig在2008年的一篇博客中[^3]，总结了一个现代JavaScript框架中的对象系统的雏形。我创建了[docco代码注解](/docco/john_resig_extend.html)来立即这段代码，本文也会结束在这段代码的注解。
 
-我创建了[一个Gist](https://gist.github.com/RobinQu/5b5cbe4d30213e5bfa9c)来注解John Resig的方案，大家可以去看看。
-
-更复杂的对象系统，例如`Sencha`、`Ember`里面用到的，往往需要引入其他新的概念来实现更复杂的功能，已经不是本文的初衷了，也不是一篇文章可以搞定的。
-
-而继承系统，其实是对象系统中的很小一部分，往往完整的框架，还会提供更多功能。JavaScript的确是一门激发创造性的语言啊！
-
+还有一些更高级的话题和技巧，会在另外一篇文章中给出。
 
 [^1]: http://javascript.crockford.com/prototypal.html
 [^2]: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/create
