@@ -6,7 +6,7 @@
 <meta name="baidu-site-verification" content="LPyqUhB1p3" />
 <meta name="viewport" content="width=device-width">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="JavaScript编程语言 - 一本开源的JavaScript编程指南; An open-sourced Javascript Guide and Tutorial; 基于原型的JavaScript继承 诚惶诚恐的写下这篇文章。用JavaScript实现继承模型，已经是非常成熟的技术，各种大牛也已经写过各式的经验总结和最佳实践。在这里，我只能就我所能，写下我自己的思考和总结。 在阅读之前，我们先假设几个在面向对象编程中的概念是大家熟悉的：  类, Class 构造函数, Constructor 继承, Inheritance 实例, Instance 实力化, ">
+<meta name="description" content="JavaScript编程语言 - 一本开源的JavaScript编程指南; An open-sourced Javascript Guide and Tutorial; 基于原型的JavaScript继承 诚惶诚恐的写下这篇文章。用JavaScript实现继承模型，已经是非常成熟的技术，各种大牛也已经写过各式的经验总结和最佳实践。在这里，我只能就我所能，写下我自己的思考和总结。 在阅读之前，我们先假设几个在面向对象编程中的概念是大家熟悉的：  类, Class 构造函数, Constructor 继承, Inheritance 实例, Instance 实例化, ">
 <meta name="keywords" content="Javascript, guide, open-sourced ">
 <link rel="stylesheet" type="text/css" href="/style.css" />
 <script>
@@ -52,7 +52,7 @@
 <li>构造函数, Constructor</li>
 <li>继承, Inheritance</li>
 <li>实例, Instance</li>
-<li>实力化, Instantiation</li>
+<li>实例化, Instantiation</li>
 <li>方法, Method</li>
 <li>多态, Polymorphism</li>
 <li>接口, Interface</li>
@@ -161,7 +161,7 @@ superFoo.bar(); // =&gt; &quot;haha, haha&quot;
 </ul>
 </li>
 <li><code>Object.prototype</code><ul>
-<li>这是该原型链的最后一环，因为<code>Object.prototype</code>这个对象的原型是<code>null</code>，我们无法继续查找 </li>
+<li>这是该原型链的最后一环，因为<code>Object.prototype</code>这个对象的原型是<code>null</code>，我们无法继续查找</li>
 <li>这是JavaScript中所有对象的祖先，上面定义了一个简单对象上存在的属性和方法，例如<code>toString</code></li>
 </ul>
 </li>
@@ -320,10 +320,8 @@ console.log(superFoo.bar()); // =&gt; &quot;super bar&quot;
 <li><code>XObject</code>是我们对象系统的根类</li>
 <li><code>XObject.extend</code>可以接受一个包含属性和方法的对象来定义子类</li>
 <li><code>XObject</code>的所有子类，都没有定义构造函数逻辑的机会！真是难以接受的：<ul>
-<li>我们偏好一个类上的<code>init</code>方法来初始化对象，而将构造函数本身最简化<ul>
-<li>绕开工厂方法的实现过程中，参数传递如何传递到构造函数的问题</li>
-</ul>
-</li>
+<li>我们偏好一个类上的<code>init</code>方法来初始化对象，而将构造函数本身最简化</li>
+<li>这个<code>init</code>方法绕开了工厂方法的实现过程中，参数传递如何传递到构造函数的问题</li>
 <li>可以支持更多新的特性，例如<code>super</code>属性、<code>mixin</code>特性等</li>
 </ul>
 </li>
@@ -335,7 +333,8 @@ console.log(superFoo.bar()); // =&gt; &quot;super bar&quot;
 <li>Angular中的函数依赖注入</li>
 <li>…</li>
 </ul>
-<p>但是，这些框架中对象系统的出发点都在本文所阐述的内容之中。如果作为教学，John Resig在2008年的一篇博客中<sup id="fnref3"><a href="#fn3">3</a></sup>，总结了一个现代JavaScript框架中的对象系统的雏形。我创建了<a href="/docco/john_resig_extend.html">docco代码注解</a>来立即这段代码，本文也会结束在这段代码的注解。</p>
+<p>但是，这些框架中对象系统的出发点都在本文所阐述的内容之中。作为教学，John Resig在2008年的一篇博客中<sup id="fnref3"><a href="#fn3">3</a></sup>总结了一个现代JavaScript框架中的对象系统的雏形。</p>
+<p>我创建了<a href="/docco/john_resig_extend.html">docco代码注解</a>来立即这段代码，本文也会结束在这段代码的注解。强力推荐大家去阅读该注解文档。</p>
 <p>还有一些更高级的话题和技巧，会在另外一篇文章中给出。</p>
 <hr>
 <div class="footnotes">
@@ -361,8 +360,8 @@ console.log(superFoo.bar()); // =&gt; &quot;super bar&quot;
   </div>
   <div class="right">
     <ul class="inline-list">
-      <li>Rev <a href="https://github.com/RobinQu/Programing-In-Javascript/tree/cd05d3d/chapters/JavaScript_Core/Object_Oriented_Javascript/Javascript_Prototypal_Inheritance.md">cd05d3d</a></li>
-      <li>2014-05-29T06:40:37.982Z</li>
+      <li>Rev <a href="https://github.com/RobinQu/Programing-In-Javascript/tree/664062a/chapters/JavaScript_Core/Object_Oriented_Javascript/Javascript_Prototypal_Inheritance.md">664062a</a></li>
+      <li>2014-05-29T12:57:36.459Z</li>
     </ul>
   </div>
 </footer>
