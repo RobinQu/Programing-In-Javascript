@@ -65,8 +65,10 @@
       prototype[name] =
         // 先判断是否是函数
         typeof prop[name] == "function" &&
-        // 在判断这个函数体内是否用到了`_super`
-        typeof _super[name] == "function" && fnTest.test(prop[name]) ?
+        // 并且父类上有同名方法
+        typeof _super[name] == "function"
+        // 紧接着，再判断这个函数体内是否用到了`_super`
+        && fnTest.test(prop[name]) ?
         // 如果用到了，我们就需要开始构建新的方法，这个方法执行时可以访问到`_super`
         (function(name, fn){
           return function() {
@@ -88,7 +90,7 @@
         prop[name];
     }
 
-    // 我们的模拟类的实际构造函数
+    // 我们的模拟子类的实际构造函数
     function Class() {
       // 判断我们是否需要进行构造
       if ( !initializing && this.init )
@@ -105,8 +107,10 @@
 
     // 在这个类上设置`extend`方法
     // 在`strict mode`中，`arguments.callee`*会抛出错误*，这里不推荐大家使用
+    // 如果之前根类的名字不是`Class`，而是`Base`，那么这里可以改写为`Class.extend = Base.extend`
     Class.extend = arguments.callee;
 
+    // 最后，我们返回这个子类
     return Class;
   };
 })();
