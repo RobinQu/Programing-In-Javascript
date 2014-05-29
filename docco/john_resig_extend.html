@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>简单的JavaScript继承</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+    <ul class="sections">
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <h1 id="-javascript-">简单的JavaScript继承</h1>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p><a href="http://ejohn.org/blog/simple-javascript-inheritance/">原文</a>的作者是John Resig。本文是对他的代码进行注释。</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>实现了几个目标:</p>
+<ul>
+<li>一个根类</li>
+<li>每个类上可以存在<code>extend</code>方法或者其他静态方法，并可以继承</li>
+<li>每个类的构造方法逻辑应该放到<code>init</code>的实例方法上</li>
+<li>每个方法可以通过<code>this._super</code>访问到父类的该方法；这在重载方法中非常有用</li>
+</ul>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>这里创建了一个匿名函数并立即运行。这时JavaScript中最常见的技巧，用来解决作用于污染等问题。</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p><code>initializing</code> 是是个标志为，代表我们是否是因为得到子类的一个原型而运行一个构造函数。当<code>initializing</code>为<code>true</code>时，代表我们运行构造函数时，并不是为了实例化一个类。</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">var</span> initializing = <span class="hljs-literal">false</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>这里涉及到了JavaScript的字符串解构特性。这个三元运算符的条件部分时这样计算的：</p>
+<ol>
+<li>由于<code>Regex.prototype.test</code>只接受<code>String</code>类型的参数，这里引擎会进行隐式转换</li>
+<li>将<code>function(){xyz;}</code>进行类型转换，自然会调用<code>Function.prototype.toString</code></li>
+<li>若当前引擎支持<code>Function.prototype.toString</code>,这个表达式当然会返回<code>true</code>，因为<code>&quot;function(){xyz;}&quot;</code>这个字符串表达中，当然包含<code>xyz</code></li>
+</ol>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>      fnTest = <span class="hljs-regexp">/xyz/</span>.test(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>xyz;}) ?</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>折腾了这么多，其实就是判断当前环境是否支持字符串解构的特性。后续的代码会利用这个特性去判断类的定义者是否使用了<code>_super</code>这个特殊的字段</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>      /\b_super\b/ :</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>如果不支持，那么给了一个非常宽泛的正则，也会导致后续过程中，每个方法的执行上下文都加上<code>_super</code>属性</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>      /.*/;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>这里是对象系统的根类构造函数，
+这句话也很有争议：</p>
+<ul>
+<li><code>this</code>被期望指向全局对象，这在<code>strict mode</code>中是不可能实现的，会<em>导致报错</em></li>
+<li>算然也叫<code>Class</code>，但是和后面我们返回Class并不是一回事。这无疑造成了混淆</li>
+</ul>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">this</span>.Class = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>};</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p><code>extend</code>方法用来根据一个基类创建子类。显而易见，在这个对象系统的实现中，<code>Class</code>就是最顶层的根类
+<code>props</code>作为唯一传入的参数，是一个简单的对象，其定义了子类上的属性和方法
+之所以我们能够获取我们之前定义的<code>Class</code>，完全是依赖闭包特性:</p>
+<ul>
+<li>在当前作用域找不到<code>Class</code></li>
+<li>会在包含的上一层作用域中查找，在这里，就是全局作用域了</li>
+<li>然后就找到了我们之前定义的<code>this.Class</code></li>
+</ul>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  Class.extend = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(prop)</span> {</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>持有当前类的<code>prototype</code>；这里利用了<code>this</code>的动态特性</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">var</span> _super = <span class="hljs-keyword">this</span>.prototype;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>这里通过初始化一个基类，来建立子类的<code>prototype</code>。这里绝对不是最佳做法，但是原文是2008年写的，所以有所局限也很正常。</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    initializing = <span class="hljs-literal">true</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>这里我们的备选方法之一：</p>
+<pre><code><span class="hljs-keyword">var</span> prototype = <span class="hljs-built_in">Object</span>.create(<span class="hljs-keyword">this</span>.prototype);
+</code></pre><p>在不支持ES5的环境中：
+```
+var prototype = (function(P) {
+  var F = function() {};
+  F.prototype = P.prototype;
+  return new F();
+})(this);</p>
+<p>这两种方法都不需要引入<code>initializing</code>这个变量。这里为什么John Resig要这么做，只有问他本人了。</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">var</span> prototype = <span class="hljs-keyword">new</span> <span class="hljs-keyword">this</span>();
+    initializing = <span class="hljs-literal">false</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>复制属性到子类的<code>prototype</code>上
+注意这里的for循环所用到的变量，它并没有很规范的将其放到函数体的前端定义</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> name <span class="hljs-keyword">in</span> prop) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>对于函数成员，我们要做一些特殊处理，以让它执行时，可以放到<code>_super</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>      prototype[name] =</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>先判断是否是函数</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="hljs-keyword">typeof</span> prop[name] == <span class="hljs-string">"function"</span> &amp;&amp;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p>并且父类上有同名方法</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="hljs-keyword">typeof</span> _super[name] == <span class="hljs-string">"function"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <p>紧接着，再判断这个函数体内是否用到了<code>_super</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        &amp;&amp; fnTest.test(prop[name]) ?</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-19">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-19">&#182;</a>
+              </div>
+              <p>如果用到了，我们就需要开始构建新的方法，这个方法执行时可以访问到<code>_super</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        (<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(name, fn)</span>{</span>
+          <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-20">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-20">&#182;</a>
+              </div>
+              <p>保存原用”_super”；这个值在多层继承的情况下有可能存在的。</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-keyword">var</span> tmp = <span class="hljs-keyword">this</span>._super;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-21">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-21">&#182;</a>
+              </div>
+              <p>获取父类上的同名方法，并设置到<code>this</code>上</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-keyword">this</span>._super = _super[name];</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-22">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-22">&#182;</a>
+              </div>
+              <p>动态执行该方法</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-keyword">var</span> ret = fn.apply(<span class="hljs-keyword">this</span>, <span class="hljs-built_in">arguments</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-23">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-23">&#182;</a>
+              </div>
+              <p>执行完毕后，我们复原<code>_super</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-keyword">this</span>._super = tmp;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-24">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-24">&#182;</a>
+              </div>
+              <p>返回方法的执行结果</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-keyword">return</span> ret;
+          };
+        })(name, prop[name]) :</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-25">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-25">&#182;</a>
+              </div>
+              <p>如果是非函数数值，我们直接进行赋值</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        prop[name];
+    }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-26">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-26">&#182;</a>
+              </div>
+              <p>我们的模拟子类的实际构造函数</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Class</span><span class="hljs-params">()</span> {</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-27">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-27">&#182;</a>
+              </div>
+              <p>判断我们是否需要进行构造</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>      <span class="hljs-keyword">if</span> ( !initializing &amp;&amp; <span class="hljs-keyword">this</span>.init )</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-28">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-28">&#182;</a>
+              </div>
+              <p>这里我们约定，所有的构造操作都是放在<code>init</code>方法上的，这也是非常流行的一种风格</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="hljs-keyword">this</span>.init.apply(<span class="hljs-keyword">this</span>, <span class="hljs-built_in">arguments</span>);
+    }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-29">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-29">&#182;</a>
+              </div>
+              <p>设置子类的<code>prototype</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    Class.prototype = prototype;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-30">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-30">&#182;</a>
+              </div>
+              <p>修改<code>constructor</code>属性，指向正确的构造函数
+否则这个值是指向父类构造函数的</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    Class.prototype.constructor = Class;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-31">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-31">&#182;</a>
+              </div>
+              <p>在这个类上设置<code>extend</code>方法
+在<code>strict mode</code>中，<code>arguments.callee</code><em>会抛出错误</em>，这里不推荐大家使用
+如果之前根类的名字不是<code>Class</code>，而是<code>Base</code>，那么这里可以改写为<code>Class.extend = Base.extend</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    Class.extend = <span class="hljs-built_in">arguments</span>.callee;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-32">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-32">&#182;</a>
+              </div>
+              <p>最后，我们返回这个子类</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">return</span> Class;
+  };
+})();</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>
