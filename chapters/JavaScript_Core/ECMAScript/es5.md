@@ -142,7 +142,7 @@ function(item, index, array) {}
 
 ```
 //property access on strings
-"abc"[2] === "b"
+"abc"[1] === "b"
 ```
 
 ## Function
