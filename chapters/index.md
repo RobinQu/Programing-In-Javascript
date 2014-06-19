@@ -35,18 +35,28 @@
         * [CPS变换](JavaScript_Core/Functional_JavaScript/Continuation_Passing_Style.md)
 
 * 面向浏览器编程
-    * DOM编程
-        * 操作DOM元素
-        * [Event接口](Browser_Scripting/DOM_Scripting/EventAPI.md)
-    * BOM编程
-        * BOM与DOM的区别和联系
-        * Timer和EventLoop
-        * `window`和`document`
+    * 浏览器与JavaScript
+      * JavaScript和浏览器的历史
+      * BOM与DOM的区别和联系
     * 文档加载
         * [脚本执行方式](Browser_Scripting/Document_Loading/ScriptExecution.md)
         * [Script标签和脚本执行顺序](Browser_Scripting/Document_Loading/ScriptTag.md)
-        * iframe标签
         * 文档流
+    * DOM编程
+        * 操作DOM节点
+        * DOM的遍历与查询
+        * DOM节点的属性特征
+          * 文本(text)特征
+          * 属性(attribute)与特性(property)
+        * [Event接口](Browser_Scripting/DOM_Scripting/EventAPI.md)
+          * Event概述
+          * MouseEvent
+          * KeyboardEvent
+          * TouchEvent
+          * FormEvent
+          * 其他类别事件
+          * 事件的模拟
+    * 操作浏览器样式表
     * 网络通讯
         * HTTP(s)和TCP
         * XML与JSON
@@ -54,6 +64,9 @@
         * XMLHttpRequest
         * Websocket
         * WebRTC
+        * 跨域请求
+          * JSON-P
+          * CORS
     * 文件与存储
         * Typed Array
         * File接口
@@ -71,12 +84,17 @@
         * CSS3动画
         * Audio、Video
         * Media Capture
-    * 应用与服务
+    * 历史管理
+      * HashChange
+      * History API
+    * 拖拽
+      * 元素的Draggable特性
+      * Drag-And-Drop API
+    * 其他应用与服务
         * 地理位置
         * 远程消息推送
-        * URL与历史管理
-        * Drag and Drop
-    * 多任务
+        * Full-screen API
+    * 任务调度
         * EventLoop
         * Web Worker
     * JavaScript调试与性能
@@ -100,7 +118,6 @@
         * Git和CI
     * 安全特性
         * SSL
-        * 同源策略和跨域技巧
         * XSS
         * Middle Man
         * 非对称加密和RSA
