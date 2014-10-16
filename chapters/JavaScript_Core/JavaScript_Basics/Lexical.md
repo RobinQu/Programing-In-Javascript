@@ -57,7 +57,7 @@ JavaScript支持两种格式的注释：
 
     var _1234567, __super_secret__, _$;
 
-* 通常使用ASCLL字符
+* 通常使用ASCII字符
 
     var iVar;
 
