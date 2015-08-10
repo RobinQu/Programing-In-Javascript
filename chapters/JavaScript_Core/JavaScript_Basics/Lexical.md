@@ -5,7 +5,7 @@
 
 JavaScript程序是用Unicode字符集。支持地球上几乎所有在用的语言。
 
-    var π = 3.14；
+    var π = 3.14;
 
 JavaScript是区分大小写的语言的。需要注意的是,HTML并不区分大小。
 
